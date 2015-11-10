@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  week: 1
+  vteam: MyString
+  vt_rec: MyString
+  hteam: MyString
+  ht_rec: MyString
+  gametime: MyString
+
+two:
+  week: 1
+  vteam: MyString
+  vt_rec: MyString
+  hteam: MyString
+  ht_rec: MyString
+  gametime: MyString

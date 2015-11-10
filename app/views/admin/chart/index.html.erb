@@ -1,0 +1,54 @@
+VIEWS ADMIN / CHART / INDEX
+<br>
+
+<h3>this page shows your current pick chart template.</h3>
+
+<% if @pickcharts %>
+	<table>
+		<tr>
+			<td>Week</td>
+			<td>Pickchart ID</td>
+			<td>Visitor</td>
+			<td>Vis Record</td>
+			<td>Home</td>
+			<td>H Record</td>
+			<td>Game Time</td>
+		</tr>
+
+		<% @pickcharts.each do |pickchart| %>
+		<tr>
+		<!-- <div class="pick_div"> -->
+			<td><%= pickchart.week %></td>
+			<td><%= pickchart.id %></td>
+			<td><%= pickchart.vteam %></td>
+			<td><%= pickchart.vt_rec %></td>
+			<td><%= pickchart.hteam %></td>
+			<td><%= pickchart.ht_rec %></td>
+			<td><%= pickchart.gametime %></td>
+		<!-- </div> -->
+		</tr>
+
+		<% end %>
+	</table>
+<% end %>
+
+		<%= form_for Pickchart.new, url: admin_chart_index_path, method: :post do |f| %>
+		  <div class="chart">Wk: <%= f.text_field :week, :class => "t_field" %></div>
+		  <div class="chart">xxxx</div>
+		  <div class="chart">Vis : <%= f.text_field :vteam %><div/>
+		  <div class="chart">V rec : <%= f.text_field :vt_rec, :class => "t_field" %><div/>
+		  <div class="chart">Hom : <%= f.text_field :hteam %><div/>
+		  <div class="chart">H rec : <%= f.text_field :ht_rec, :class => "t_field" %><div/>
+		  <div class="chart">G tim : <%= f.text_field :gametime %></div>
+		  <%= f.submit %>
+		<% end %>
+
+
+<br>
+<br>
+<br>
+<%= link_to ("BACK TO ADMIN"), "/admin", method: :get %>
+
+<br>
+<h5>button - create/save new chart</h5>
+<h5>button - select your picks</h5>

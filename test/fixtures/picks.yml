@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pickchart_id: 1
+  user_pick: MyString
+  user_id: 1
+
+two:
+  pickchart_id: 1
+  user_pick: MyString
+  user_id: 1

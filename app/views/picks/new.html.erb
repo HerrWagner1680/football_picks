@@ -1,0 +1,12 @@
+<h3>new#pick</h3>
+<h1>CREATE A NEW PICK</h1>
+
+<%= form_for @pick do |f| %>
+ <!-- Week: <%= number_field(:week, in: 1..20, step: 1) %>-->
+Week: <%= f.number_field :week %>
+ <br />
+  Position : <%= f.text_field :position %><br />
+  Team : <%= f.text_field :team %><br />
+  Player    : <%= f.text_field :player %><br />
+  <%= f.submit %>
+<% end %>

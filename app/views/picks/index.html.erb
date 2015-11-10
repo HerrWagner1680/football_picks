@@ -1,0 +1,30 @@
+<h1>picks#index</h1>
+<h3><%= Pick.first.week %></h3>
+<h3><%= Pick.first.team %></h3>
+
+<h1>CREATE A NEW PICK</h1>
+
+<%= form_for @pick do |f| %>
+Week: <%= f.number_field :week %><br />
+  Position : <%= f.text_field :position %><br />
+  Team : <%= f.text_field :team %><br />
+  Player    : <%= f.text_field :player %><br />
+  <%= f.submit %>
+<% end %>
+
+
+<% if @pickees %>
+	<ul>
+		<% @pickees.reverse.each do |pick| %>
+		<div class="community_div">
+			<li>
+			<h3><%= pick.week %></h3>
+			<h3><%= pick.position %></h3>
+			<h3><%= pick.player %></h3>
+			<h3><%= pick.team %></h3>
+			<br>
+			<em><%= pick.created_at %></em>
+			<br>
+		<% end %>
+	</ul>
+<% end %>

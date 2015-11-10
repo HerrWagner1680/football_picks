@@ -1,0 +1,12 @@
+<h1>Users#index</h1>
+<p>Find me in app/views/users/index.html.erb</p>
+<h3 class="profile_name"><%= "#{@current_user.user_name}" %>'s Profile</h3>
+<%= "#{@current_user.email}" %>
+<h1>CREATE A NEW USER - NOTE THIS IS USERS#INDEX</h1>
+
+<%= form_for @user do |f| %>
+  User Name: <%= f.text_field :user_name %><br />
+  email : <%= f.text_field :email %><br />
+  password : <%= f.text_field :password %><br />
+  <%= f.submit %>
+<% end %>

@@ -34,7 +34,7 @@ class Admin::ChartController < ApplicationController
     @user = User.all
     @picks = Pick.all
     @pickchart = Pickchart.new
-    @pickcharts = Pickchart.all
+    @pickcharts = Pickchart.where(week: '8')
   end
 
   def show

@@ -1,8 +1,9 @@
 VIEWS ADMIN / CHART / INDEX
 <br>
 
-<h3>this page shows your current pick chart template.</h3>
-
+<h3 class="pc_hide">this page shows your current pick chart template.</h3>
+<h3 class="pick_hide">make your picks</h3>
+<br>
 <% if @pickcharts %>
 	<table>
 		<tr>
@@ -19,12 +20,14 @@ VIEWS ADMIN / CHART / INDEX
 		<tr>
 		<!-- <div class="pick_div"> -->
 			<td><%= pickchart.week %></td>
+		<!-- remember remove pickchart id later -->
 			<td><%= pickchart.id %></td>
-			<td><%= pickchart.vteam %></td>
+			<td class="vis"><input type="radio" value="visit" name=<%="#{pickchart.id}"%> disabled="true" ><%= pickchart.vteam %></td>
 			<td><%= pickchart.vt_rec %></td>
-			<td><%= pickchart.hteam %></td>
+			<td class="hom"><input type="radio" value="home" name=<%= "#{pickchart.id}"%> disabled="true"><%= pickchart.hteam %></td>
 			<td><%= pickchart.ht_rec %></td>
 			<td><%= pickchart.gametime %></td>
+			<td>edit / delete</td>
 		<!-- </div> -->
 		</tr>
 
@@ -32,6 +35,14 @@ VIEWS ADMIN / CHART / INDEX
 	</table>
 <% end %>
 
+<button class="pick_hide">save your picks for week XVARIABLEX</button>
+
+<!-- link to set boolean field in Rails -->
+<!-- http://stackoverflow.com/questions/4843013/add-a-simple-link-to-set-a-boolean-field-in-rails-nothing-seems-to-happen -->
+
+<!-- ideal would be change var setting true / false / null -->
+<!-- that setting would cause dislay or no display of form -->
+	<section class="pc_hide">
 		<%= form_for Pickchart.new, url: admin_chart_index_path, method: :post do |f| %>
 		  <div class="chart">Wk: <%= f.text_field :week, :class => "t_field" %></div>
 		  <div class="chart">xxxx</div>
@@ -42,7 +53,7 @@ VIEWS ADMIN / CHART / INDEX
 		  <div class="chart">G tim : <%= f.text_field :gametime %></div>
 		  <%= f.submit %>
 		<% end %>
-
+	</section>
 
 <br>
 <br>
@@ -50,5 +61,6 @@ VIEWS ADMIN / CHART / INDEX
 <%= link_to ("BACK TO ADMIN"), "/admin", method: :get %>
 
 <br>
-<h5>button - create/save new chart</h5>
-<h5>button - select your picks</h5>
+<h5 class="sdfsdf">button - create/save new chart</h5>
+<a class="pc_hide" onclick="hidePC(true)">button - select your picks</a>
+<a class="pick_hide" onclick="hidePC(false)">button - see pickchart template</a>

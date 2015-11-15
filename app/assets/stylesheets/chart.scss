@@ -15,6 +15,20 @@ div {
 	display: none;
 }
 
+.clicky{
+	cursor: pointer;
+	background-color: #CCC;
+}
+
 .pc_hide{
 	color: blue;
+	cursor: pointer;
+}
+
+td input:checked{
+	background-color: #A1EFB4;
+}
+
+tr:nth-child(even) {
+	background: #EEE;
 }

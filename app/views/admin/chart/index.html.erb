@@ -1,42 +1,19 @@
-VIEWS ADMIN / CHART / INDEX
 <br>
+
+<%= link_to ("BACK TO ADMIN"), "/admin", method: :get %>
+
+<br>
+
 
 <h3 class="pc_hide">this page shows your current pick chart template.</h3>
-<h3 class="pick_hide">make your picks</h3>
+<h3 class="pick_hide">click on circle next to the team to make your picks</h3>
 <br>
-<% if @pickcharts %>
-	<table>
-		<tr>
-			<td>Week</td>
-			<td>Pickchart ID</td>
-			<td>Visitor</td>
-			<td>Vis Record</td>
-			<td>Home</td>
-			<td>H Record</td>
-			<td>Game Time</td>
-		</tr>
+<h2 class="center">WEEK <%= @latest %> (LATEST - and/or based on filter) PREV WEEK <%= @prev_week %> </h2>
 
-		<% @pickcharts.each do |pickchart| %>
-		<tr>
-		<!-- <div class="pick_div"> -->
-			<td><%= pickchart.week %></td>
-		<!-- remember remove pickchart id later -->
-			<td><%= pickchart.id %></td>
-			<td class="vis"><input type="radio" value="visit" name=<%="#{pickchart.id}"%> disabled="true" ><%= pickchart.vteam %></td>
-			<td><%= pickchart.vt_rec %></td>
-			<td class="hom"><input type="radio" value="home" name=<%= "#{pickchart.id}"%> disabled="true"><%= pickchart.hteam %></td>
-			<td><%= pickchart.ht_rec %></td>
-			<td><%= pickchart.gametime %></td>
-			<td>edit / delete</td>
-		<!-- </div> -->
-		</tr>
-
-		<% end %>
-	</table>
-<% end %>
+<%= render partial: "chart", locals: {pickcharts: @pickcharts} %>
 
 <button class="pick_hide">save your picks for week XVARIABLEX</button>
-
+<h3 class="pick_hide">Hit SAVE before leaving, or else you will lose your picks</h3>
 <!-- link to set boolean field in Rails -->
 <!-- http://stackoverflow.com/questions/4843013/add-a-simple-link-to-set-a-boolean-field-in-rails-nothing-seems-to-happen -->
 
@@ -45,7 +22,7 @@ VIEWS ADMIN / CHART / INDEX
 	<section class="pc_hide">
 		<%= form_for Pickchart.new, url: admin_chart_index_path, method: :post do |f| %>
 		  <div class="chart">Wk: <%= f.text_field :week, :class => "t_field" %></div>
-		  <div class="chart">xxxx</div>
+		  <!-- <div class="chart">xxxx</div> -->
 		  <div class="chart">Vis : <%= f.text_field :vteam %><div/>
 		  <div class="chart">V rec : <%= f.text_field :vt_rec, :class => "t_field" %><div/>
 		  <div class="chart">Hom : <%= f.text_field :hteam %><div/>
@@ -54,13 +31,11 @@ VIEWS ADMIN / CHART / INDEX
 		  <%= f.submit %>
 		<% end %>
 	</section>
+<h5>button - create/save new chart</h5>
+<a class="pc_hide clicky" onclick="hidePC(true)">button - select your picks</a>
+<a class="pick_hide clicky" onclick="hidePC(false)">button - see pickchart template</a>
 
-<br>
-<br>
-<br>
-<%= link_to ("BACK TO ADMIN"), "/admin", method: :get %>
-
-<br>
-<h5 class="sdfsdf">button - create/save new chart</h5>
-<a class="pc_hide" onclick="hidePC(true)">button - select your picks</a>
-<a class="pick_hide" onclick="hidePC(false)">button - see pickchart template</a>
+<h4>TO VIEW EARLIER WEEK, ENTER WEEK NUMBER HERE: _____</h4>
+<!-- assigns a value to @variable - that overrides @latest - if @variable exists OR it rewrites @latest -->
+<!-- dropdown menu ? -->
+<!-- button - return to latest -->

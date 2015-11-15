@@ -34,7 +34,11 @@ class Admin::ChartController < ApplicationController
     @user = User.all
     @picks = Pick.all
     @pickchart = Pickchart.new
-    @pickcharts = Pickchart.where(week: '8')
+    @latest = Pickchart.maximum(:week)
+    @prev_week = @latest - 1
+    @pickcharts = Pickchart.where(week: @latest)
+    # create helper method for week number filter
+    # use require helper_method to invoke
   end
 
   def show

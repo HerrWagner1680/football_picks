@@ -35,3 +35,5 @@ hidePC = function(bool) {
     hideSwitch(pc_style, pick_style);
   }
 };
+
+//document.getElementsByTagName("input")[5].parentNode.style.backgroundColor = "#A1EFB4"

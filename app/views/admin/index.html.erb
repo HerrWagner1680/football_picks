@@ -6,21 +6,18 @@
 
 
 <% if @picks %>
-	<table>
+	
 
-		<% @picks.reverse.each do |pick| %>
-		<tr>
-		<!-- <div class="pick_div"> -->
-			<td>Week: <%= pick.pickchart.week %></td>
-			<td>user pick: <%= pick.user_pick.first(8) %></td>
-			<td>User Name: <%= pick.user.user_name.first(5) %></td>
-		<!-- </div> -->
-		</tr>
-
-		<% end %>
-	</table>
+     <!-- PARTIAL - table - USERS - Latest picks -->
+			<td>Week: ??? </td>
+			<td>user pick: list of user picks past week</td>
+			<td>User Name: asdfasdf</td>
+     <!-- PARTIAL under that from prev weeks picks -->
+	<br>
 	<%= link_to ("pickcharts"), "/admin/chart", method: :get %>
-	<%= button_to ("pickcharts"), "/admin/chart", method: :get %>
+	<br>
+
+	<br>
 	<button><%= @current_user.user_name %> make your picks</button>
 	<button>Create new week / pickchart</button>
 	<br>
@@ -28,4 +25,8 @@
 	<h4>CREATE / DELETE USERS</h4>
 	<h5 onclick="hideCOF(true)"> CLICK HERE TO SEE WEEK 7 </h5>
 	<h5 onclick="hideCOF(false)"> CLICK HERE TO SEE WEEK 6 </h5>
+
+	<%= link_to ("make pickchart template"), "/admin/chart#template", method: :get%>  <!-- :onclick => 'hidePC(false)' %> -->
+	<%= link_to ("make your picks"), "/admin/chart#picks", method: :get, :onclick => 'hidePC(true).delay( 2000 )' %>
+
 <% end %>

@@ -32,13 +32,42 @@ hideSwitch = function(pc_style, pick_style, bool) {
 		document.getElementsByClassName("pick_hide")[i].style.display = pick_style
 	}
 
-  var radio_num = document.getElementsByClassName("vis").length
+  var radio_num = document.querySelectorAll('input[type=radio]').length
   //var radio_num = radio_num * 2
 
-  for (var i = 0; i < radio_num*2; i++){
-    document.getElementsByTagName("input")[i].disabled = bool
+  for (var i = 0; i < radio_num; i++){
+    document.querySelectorAll('input[type=radio]')[i].disabled = bool
   };
 };
+
+var oldchartPicks;
+oldchartPicks = function(){
+  var old_ch_num = $(".hidden").length
+
+  for (var i=0; i < old_ch_num; i++){
+    var current_pick = $(".hidden")[i].innerHTML
+
+    if (current_pick === "visit") {
+      $(".v_checkbox")[i].innerHTML = "&#10003";
+      $(".h_checkbox")[i].innerHTML = "...";
+      $(".v_pick")[i].style.textDecoration = "underline";
+      $(".v_checkbox")[i].style.color = "#222";
+      $(".v_pick")[i].style.color = "#222";
+      // REM adding the underline
+    } else if (current_pick === "home") {
+      $(".v_checkbox")[i].innerHTML = "...";
+      $(".h_checkbox")[i].innerHTML = "&#10003";
+      $(".h_pick")[i].style.textDecoration = "underline";
+      $(".h_checkbox")[i].style.color = "#222";
+      $(".h_pick")[i].style.color = "#222";
+    } else {
+      $(".v_checkbox")[i].innerHTML = "...";
+      $(".h_checkbox")[i].innerHTML = "...";
+    }
+
+  }
+};
+
 
 hidePC = function(bool) {
   if (bool === true) {

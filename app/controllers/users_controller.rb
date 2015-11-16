@@ -23,9 +23,9 @@ class UsersController < ApplicationController
    # @pick.user_id = current_user.id
 
     if @user.save!
-      flash[:notice] = "Pick Created"
+      flash[:notice] = "User Created"
     else
-      flash[:alert] = @pick.errors.full_messages
+      flash[:alert] = @user.errors.full_messages
     end
     redirect_to "/users"
   end

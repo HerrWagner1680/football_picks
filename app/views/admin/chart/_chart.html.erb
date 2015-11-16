@@ -1,6 +1,7 @@
 <% if pickcharts %>
-	<table>
+	<table class="new_chart">
 		<tr>
+		<!--	<td>USER ID</td>  -->
 			<td>Week</td>
 			<td class="pick_hide">Pickchart ID</td>
 			<td>Visitor</td>
@@ -11,22 +12,30 @@
 			<td>Game Time</td>
 		</tr>
 
+<%= form_for Pick.new, url: picks_path, method: :post do |f| %>
 		<% pickcharts.each do |pickchart| %>
+
+
 		<tr>
 		<!-- <div class="pick_div"> -->
+		<!--	<td><%= current_user.id %></td> -->
 			<td><%= pickchart.week %></td>
 		<!-- remember remove pickchart id later -->
 			<td class="pick_hide" ><%= pickchart.id %></td>
-			<td class="vis"><input type="radio" onclick="highLight(this)" value="visit" name=<%="#{pickchart.id}"%> disabled="true" ><%= pickchart.vteam %></td>
+			<td class="vis"><input type="radio" onclick="highLight(this)" value="visit" name=<%="picks[]#{pickchart.id}"%> disabled="true" ><%= pickchart.vteam %></td>
 			<td><%= pickchart.vt_rec %></td>
 			<td class="pick_hide"> at </td>
-			<td class="hom"><input type="radio" onclick="highLight(this)" value="home" name=<%= "#{pickchart.id}"%> disabled="true"><%= pickchart.hteam %></td>
+			<td class="hom"><input type="radio" onclick="highLight(this)" value="home" name=<%= "picks[]#{pickchart.id}"%> disabled="true"><%= pickchart.hteam %></td>
 			<td><%= pickchart.ht_rec %></td>
 			<td><%= pickchart.gametime %></td>
 			<td class="pick_hide" >edit / delete</td>
 		<!-- </div> -->
+			<!-- <td><%= f.submit %></td> -->
 		</tr>
+<% end %> <!-- end of pickcharts each loop -->
+		<td class="pick_hide"><%= f.submit %></td>
+<% end %> <!-- end of the form -->	
 
-		<% end %>
 	</table>
-<% end %>
+
+<% end %> <!-- end of the if pickcharts -->

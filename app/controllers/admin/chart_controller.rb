@@ -2,41 +2,35 @@ class Admin::ChartController < ApplicationController
 
   def create
     @pickchart = Pickchart.new(pickchart_params)
-    if @pickchart.save!
+    if @pickchart.save
       flash[:notice] = "Chart Created"
-    else
+    else 
       flash[:alert] = @pickchart.errors.full_messages
     end
-    redirect_to "/admin/chart"
-  end
 
-  def current_user
-    if session[:user_id]
-      @current_user = User.find(session[:user_id])
-    else
-      @current_user = nil
-    end
+    redirect_to "/admin/chart"
   end
 
   def new
     @pickchart = Pickchart.new
+    @pick = Pick.new
   end
 
   def destroy
   end
-
-    def pickchart_path
-      redirect_to "/admin/chart"
-    end
 
   def index
     current_user
     @user = User.all
     @picks = Pick.all
     @pickchart = Pickchart.new
+    @pickcharts = Pickchart.all
     @latest = Pickchart.maximum(:week)
-    @prev_week = @latest - 1
-    @pickcharts = Pickchart.where(week: @latest)
+    @latest_charts = Pickchart.where(week: @latest)
+
+    #if @latest_charts  #technically, this should check if last wk picks
+     # render :js => "oldchartPicks()"
+    #end
     # create helper method for week number filter
     # use require helper_method to invoke
   end
@@ -46,6 +40,10 @@ class Admin::ChartController < ApplicationController
   end
 
   private
+
+  def pick_params
+    params.require(:pick).permit(:pickchart_id,:user_pick,:user_id)
+  end
 
   def pickchart_params
     params.require(:pickchart).permit(:week,:vteam,:vt_rec,:hteam,:ht_rec,:gametime)

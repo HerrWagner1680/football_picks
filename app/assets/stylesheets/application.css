@@ -14,10 +14,20 @@
  *= require_self
  */
 
+ body {
+ 	background-color: #eee;
+ 	color: #222;
+ 	font-family: sans-serif;
+ }
+
  td {
     padding: 15px;
 }
 
 h2.center {
 	text-align: center;
+}
+
+.hidden{
+	display: none;
 }

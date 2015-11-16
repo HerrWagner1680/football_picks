@@ -1,0 +1,35 @@
+<%= stylesheet_link_tag  "chart" %>
+
+<% if pickcharts %>
+	<table class="old_chart">
+		<tr>
+			<td>Week</td>
+			<td> </td>
+			<td>Visitor</td>
+			<td>Rec</td>
+			<td> </td>
+			<td>Home</td>
+			<td>Rec</td>
+			<td> </td>
+			<td>Game Time</td>
+		</tr>
+
+		<% pickcharts.each do |pickchart| %>
+		<tr>
+		<!-- <div class="pick_div"> -->
+			<td class="hidden"><%= picks.where(pickchart_id: pickchart.id).last.user_pick %></td>
+			<td><%= pickchart.week %></td>
+			<td class="v_checkbox"> &#10003 </td>
+			<td class="v_pick"><%= pickchart.vteam %></td>
+			<td><%= pickchart.vt_rec %></td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td class="h_pick"><%= pickchart.hteam %></td>
+			<td><%= pickchart.ht_rec %></td>
+			<td class="h_checkbox"> ... </td>
+			<td><%= pickchart.gametime %></td>
+		<!-- </div> -->
+		</tr>
+
+		<% end %>
+	</table>
+<% end %>

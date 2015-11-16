@@ -1,6 +1,7 @@
-// Place all the styles related to the Chart controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* Place all the styles related to the Chart controller here.
+* They will automatically be included in application.css.
+* You can use Sass (SCSS) here: http://sass-lang.com/
+*/
 
 input.t_field{
 	width: 30px;
@@ -29,6 +30,31 @@ td input:checked{
 	background-color: #A1EFB4;
 }
 
-tr:nth-child(even) {
-	background: #EEE;
+
+.new_chart tr:nth-child(even) {
+	background: #d5ecef; 
+} 
+
+.new_chart tr:nth-child(odd) {
+	background: #e8edf6;
+}
+
+.new_chart tr:nth-child(1) {
+	background: #d5ecef;
+}
+
+
+.old_chart {
+	background-color: #ebefd6; /* #e0dfb2; */
+	opacity: 0.9;
+	color: #8b5d2e;
+}
+
+.old_chart tr:nth-child(even) {
+	background: #f6f1e8; /* #d6ebef; */
+}
+
+.dim {
+	color: #555;
+	text-align: center;
 }

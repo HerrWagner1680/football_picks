@@ -1,3 +1,64 @@
 // Place all the styles related to the Admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin_link_button {
+	background-color: #777;
+	width: 300px;
+	margin-top: 20px;
+	padding: 50px, 10px, 50px, 10px;
+	border-radius: 15px;
+	text-decoration: none;
+	font-size: 20px;
+	color: white;
+	letter-spacing: 3px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.link_button {
+	background-color: #777;
+	width: 150px;
+	margin-top: 20px;
+	padding: 35px, 10px, 35px, 10px;
+	border-radius: 15px;
+	text-decoration: none;
+	font-size: 20px;
+	color: white;
+	letter-spacing: 3px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.vis_admin {
+	background-color: #ffdb99;
+}
+
+.hom_admin {
+	background-color: pink;
+}
+
+.nil_admin {
+	/* text-align: center; */
+	background-color: #CCC;
+}
+
+section.column {
+	display: inline;
+	background-color: green;
+}
+
+form#new_pick {
+	display: inline-block;
+}
+
+.index_pick {
+	border: 3px solid blue;
+	display: inline-block;
+	width: 160px;
+}
+
+/* #overflow_box {
+	background-color: green;
+	display: block;
+} */

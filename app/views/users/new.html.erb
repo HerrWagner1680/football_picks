@@ -1,9 +1,12 @@
+this page can be used later for editing account info
+
+
 <h1>CREATE A NEW USER</h1>
 
 <%= form_for @user do |f| %>
-  First Name: <%= f.text_field :fname %><br />
-  Last Name : <%= f.text_field :lname %><br />
-  email : <%= f.text_field :email %><br />
-  password : <%= f.text_field :password %><br />
+	<%= f.hidden_field :admin, :value => false %>
+  User Name: <%= f.text_field :user_name %><br />
+  email : <%= f.email_field :email %><br />
+  password : <%= f.password_field :password %><br />
   <%= f.submit %>
 <% end %>

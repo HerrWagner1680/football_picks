@@ -22,11 +22,7 @@
 
 <br>
 <h3 class="pick_hide">Hit SAVE before leaving, or else you will lose your picks</h3>
-<!-- link to set boolean field in Rails -->
-<!-- http://stackoverflow.com/questions/4843013/add-a-simple-link-to-set-a-boolean-field-in-rails-nothing-seems-to-happen -->
 
-<!-- ideal would be change var setting true / false / null -->
-<!-- that setting would cause dislay or no display of form -->
 	<section class="pc_hide">
 		<%= form_for Pickchart.new, url: admin_chart_index_path, method: :post do |f| %>
 		  <div class="chart">Wk: <%= f.text_field :week, :class => "t_field" %></div>
@@ -50,8 +46,3 @@
 <!-- IF prevwk exists, then render -->
 	<%= render partial: "oldchart", locals: {pickcharts: Pickchart.where(week: prev_wk(@pickcharts)), current_user: current_user, picks: Pick.where(user_id: current_user)} %>
 <!--- end of if prevwk exists -->
-
-
-<!-- assigns a value to @variable - that overrides @latest - if @variable exists OR it rewrites @latest -->
-<!-- dropdown menu ? -->
-<!-- button - return to latest -->

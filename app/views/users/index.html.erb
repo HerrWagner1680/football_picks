@@ -1,12 +1,21 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
-<h3 class="profile_name"><%= "#{@current_user.user_name}" %>'s Profile</h3>
+<h3 class="profile_name"><%= "#{@current_user.user_name}" %>'s Profile------link to edit account info goes to users/new ?--</h3>
 <%= "#{@current_user.email}" %>
-<h1>CREATE A NEW USER - NOTE THIS IS USERS#INDEX</h1>
+<br>
+<h2>Save or Update your picks for week <%= latest_wk(@pickcharts) %></h2>
+<!-- current_user.user_name -->
+<!-- current_user.id -->
+<h5>This user already saved picks for week <%= latest_wk(@pickcharts) %> ? ----
+<%= Pick.where(user_id: current_user.id, created_at: @range).exists? %></h5>
+<!-- Pick.where(user_id: current_user.id, created_at: @range).last.pickchart_id -->
+<br>
+<br>
+<h2 class="center">WEEK <%= latest_wk(@pickcharts) %> (LATEST)</h2>
 
-<%= form_for @user do |f| %>
-  User Name: <%= f.text_field :user_name %><br />
-  email : <%= f.text_field :email %><br />
-  password : <%= f.text_field :password %><br />
-  <%= f.submit %>
-<% end %>
+
+	<%= render partial: "already_submitted_picks", locals: {pickcharts: @latest_charts, picks: @picks} %>
+
+	<%= render partial: "active_pickchart", locals: {pickcharts: @latest_charts, picks: @picks} %>
+
+
+<br>
+<h3 class="pick_hide">Hit SAVE before leaving, or else you will lose your picks</h3>

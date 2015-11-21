@@ -16,11 +16,27 @@ class UsersController < ApplicationController
     if @current_user.admin == true
         redirect_to "/admin"
     end
+    current_user
+    @user = User.all
+    @picks = Pick.all
+    @pickchart = Pickchart.new
+    @pickcharts = Pickchart.all
+    @latest = Pickchart.maximum(:week)
+    @latest_charts = Pickchart.where(week: @latest)
+    @earliest = Pickchart.minimum(:week)
+
+    @pc_time = Pickchart.where(week: @latest).first.created_at
+    @range = @pc_time .. Time.now
+    @any_picks = Pick.where(user_id: current_user.id, created_at: @range).exists?
+
   end
 
   def create
-    @user = User.new(params[:users])
+    @user = User.new(user_params)
    # @pick.user_id = current_user.id
+   p "user admin below XXXXXXXXX"
+   p @user.admin
+   p params[:admin]
 
     if @user.save!
       flash[:notice] = "User Created"
@@ -62,5 +78,12 @@ class UsersController < ApplicationController
     end
     redirect_to "/users"
   end
+
+  private
+
+    def user_params
+      params.require(:user).permit(:admin,:user_name,:email,:password,:password_digest)
+    end
+
 
 end

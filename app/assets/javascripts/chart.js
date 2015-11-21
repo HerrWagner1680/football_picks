@@ -45,9 +45,3 @@ $(document).ready(function(){
   }
     oldchartPicks();
 });
-
-
-// last letter of url $(location).attr('href').slice(-5);
-// if s ... it's picks ..... hidePC(true)
-// if e ... it's template .... default
-//document.getElementsByTagName("input")[5].parentNode.style.backgroundColor = "#A1EFB4"

@@ -1,32 +1,84 @@
 <%= javascript_include_tag "admin" %>
 
+ <%= link_to ("Create New User"), "/admin/new",method: :get %>
 <h1>Admin#index</h1>
 <p>Find me in app/views/admin/index.html.erb</p>
 
-
+<h4>CONTENT OF LATEST PICK ARRAY: <%= @latest_picks.pluck(:user_id).uniq %></h4>
+<h4> LENGTH OF LATEST PICK ARRAY: <%= @latest_picks_array.length %></h4>
+<%= @latest_picks_array[0] %>
+<br>
 
 <% if @picks %>
-	
+<table>
+<!-- @latest_picks_array.length.times do |i| -->
+	<tr>
+<%= @latest_picks_array.each do |i| %>
 
-     <!-- PARTIAL - table - USERS - Latest picks -->
-			<td>Week: ??? </td>
-			<td>user pick: list of user picks past week</td>
-			<td>User Name: asdfasdf</td>
-     <!-- PARTIAL under that from prev weeks picks -->
-	<br>
-	<%= link_to ("pickcharts"), "/admin/chart", method: :get %>
-	<br>
+	<td class="index_pick"><%= User.where(id: i).first.user_name %>'s PICKS</td>
+
+<% end %>
+	</tr>
+
+		<% @latest_charts.each do |pickchart| %>
+
+<!-- original location of class column -->
+		<tr>
+	<!-- change @current_user to @latest_picks_array[i] -->
+		<%= @latest_picks_array.length.times do |i| %>
+		<% if @picks.where(pickchart_id: pickchart.id, user_id: @latest_picks_array[i]).last %>
+
+			<% if @picks.where(pickchart_id: pickchart.id, user_id: @latest_picks_array[i]).last.user_pick === "visit" %>
+				<td class="vis_admin index_pick"><%= pickchart.vteam %></td>
+			<% else @picks.where(pickchart_id: pickchart.id, user_id: @latest_picks_array[i]).last.user_pick === "home"  %>
+				<td class="hom_admin index_pick"><%= pickchart.hteam %></td>
+			<% end %>
+
+		<% else %>
+			<td class="nil_admin index_pick"> --- no pick --- </td>
+
+
+		<% end %>
+		
+		<% end %>
+		</tr>
+
+<% end %>		
+		
+</table>
+
 
 	<br>
-	<button><%= @current_user.user_name %> make your picks</button>
-	<button>Create new week / pickchart</button>
+	<br>
+	<br>
+	<br>
+	<%= link_to ("#{@current_user.user_name} make your picks"), "/admin/chart#picks", method: :get, class: "admin_link_button" %>
+	<%= link_to ("Create / Edit weekly chart"), "/admin/chart#template", method: :get, class: "admin_link_button" %> 
+	<br>
+	<br>
 	<br>
 	<h4>EDIT USER SETTINGS</h4>
 	<h4>CREATE / DELETE USERS</h4>
-	<h5 onclick="hideCOF(true)"> CLICK HERE TO SEE WEEK 7 </h5>
-	<h5 onclick="hideCOF(false)"> CLICK HERE TO SEE WEEK 6 </h5>
 
-	<%= link_to ("make pickchart template"), "/admin/chart#template", method: :get%>  <!-- :onclick => 'hidePC(false)' %> -->
-	<%= link_to ("make your picks"), "/admin/chart#picks", method: :get, :onclick => 'hidePC(true).delay( 2000 )' %>
+	<select name="post[category]">
+	  <option>ARCHIVE</option>
+	  <option>LATEST WEEK <%= @latest %></option>
+	  <option>WEEK <%= @latest-1 %></option>
+	</select>
 
-<% end %>
+<h2>LIST ALL VALID WEEKS</h2>
+	<h1> earliest <%= @earliest %> </h1>
+
+	<p>ARCHIVE WEEK <%= @archive_work %> ...... </p>
+
+	 <%= form_for @pickchart , :url => { :action => "create" }  do |f|  %>
+		<%= f.select :week, (@earliest..@latest).to_a.reverse %>
+		<!-- if nil, then message "no data to display" -->
+	    <%= f.text_field  :week %> 
+	    <%= f.submit "Add todo", class: "btn btn-primary" %>
+
+	<% end %>
+
+
+	<% end %>
+

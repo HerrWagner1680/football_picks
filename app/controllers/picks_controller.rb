@@ -21,7 +21,12 @@ class PicksController < ApplicationController
             flash[:alert] = @pick.errors.full_messages   
           end
     end
-    redirect_to "/admin/chart"
+    @current_user = User.find(session[:user_id])
+    #@userrr = User.find(params[:id])
+    if @current_user.admin == true
+        redirect_to "/admin/chart"
+    end
+    redirect_to "/users"
   end
 
   private

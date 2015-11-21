@@ -1,12 +1,18 @@
+<br>
+<br>
+<br>
+<br>
+ACTIVE PICKCHART
+
 <% if pickcharts %>
 	<table class="new_chart">
 		<tr>
 		<!--	<td>USER ID</td>  -->
 			<td>Week</td>
-			<td class="pick_hide">Pickchart ID</td>
+			<td class="hidden">Pickchart ID</td>
 			<td>Visitor</td>
 			<td>Vis Record</td>
-			<td class="pick_hide"> </td>
+			<td> </td>
 			<td>Home</td>
 			<td>H Record</td>
 			<td>Game Time</td>
@@ -21,21 +27,22 @@
 		<!--	<td><%= current_user.id %></td> -->
 			<td><%= pickchart.week %></td>
 		<!-- remember remove pickchart id later -->
-			<td class="pick_hide" ><%= pickchart.id %></td>
-			<td class="vis"><input type="radio" onclick="highLight(this)" value="visit" name=<%="picks[]#{pickchart.id}"%> disabled="true" ><%= pickchart.vteam %></td>
+			<td class="hidden"><%= pickchart.id %></td>
+			<td class="vis"><input type="radio" onclick="highLight(this)" value="visit" name=<%="picks[]#{pickchart.id}"%>><%= pickchart.vteam %></td>
 			<td><%= pickchart.vt_rec %></td>
-			<td class="pick_hide"> at </td>
-			<td class="hom"><input type="radio" onclick="highLight(this)" value="home" name=<%= "picks[]#{pickchart.id}"%> disabled="true"><%= pickchart.hteam %></td>
+			<td> at </td>
+			<td class="hom"><input type="radio" onclick="highLight(this)" value="home" name=<%= "picks[]#{pickchart.id}"%>><%= pickchart.hteam %></td>
 			<td><%= pickchart.ht_rec %></td>
 			<td><%= pickchart.gametime %></td>
-			<td class="pick_hide" >edit / delete</td>
+			<td class="hidden">edit / delete</td>
 		<!-- </div> -->
 			<!-- <td><%= f.submit %></td> -->
 		</tr>
 <% end %> <!-- end of pickcharts each loop -->
-		<td class="pick_hide"><%= f.submit "SAVE", class: 'link_button'%></td>
+	</table>
+		<div id="save_button"><%= f.submit "SAVE", class: 'link_button'%></div>
 <% end %> <!-- end of the form -->	
 
-	</table>
-
+<br>
+<h3>Hit SAVE before leaving, or else you will lose your new picks</h3>
 <% end %> <!-- end of the if pickcharts -->

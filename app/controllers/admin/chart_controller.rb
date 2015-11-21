@@ -7,6 +7,10 @@ class Admin::ChartController < ApplicationController
     else 
       flash[:alert] = @pickchart.errors.full_messages
     end
+    @current_user = User.find(session[:user_id])
+    if @current_user.admin == false or @current_user.admin == nil
+        redirect_to "/users"
+    end
 
     redirect_to "/admin/chart"
   end
@@ -14,9 +18,17 @@ class Admin::ChartController < ApplicationController
   def new
     @pickchart = Pickchart.new
     @pick = Pick.new
+    @current_user = User.find(session[:user_id])
+    if @current_user.admin == false or @current_user.admin == nil
+        redirect_to "/users"
+    end
   end
 
   def destroy
+    @current_user = User.find(session[:user_id])
+    if @current_user.admin == false or @current_user.admin == nil
+        redirect_to "/users"
+    end
   end
 
   def index
@@ -27,7 +39,12 @@ class Admin::ChartController < ApplicationController
     @pickcharts = Pickchart.all
     @latest = Pickchart.maximum(:week)
     @latest_charts = Pickchart.where(week: @latest)
+    @earliest = Pickchart.minimum(:week)
 
+    @current_user = User.find(session[:user_id])
+    if @current_user.admin == false or @current_user.admin == nil
+        redirect_to "/users"
+    end
     #if @latest_charts  #technically, this should check if last wk picks
      # render :js => "oldchartPicks()"
     #end
@@ -37,6 +54,10 @@ class Admin::ChartController < ApplicationController
 
   def show
     current_user
+    @current_user = User.find(session[:user_id])
+    if @current_user.admin == false or @current_user.admin == nil
+        redirect_to "/users"
+    end
   end
 
   private

@@ -3,38 +3,15 @@
 <%= link_to ("BACK TO ADMIN"), "/admin", method: :get %>
 
 <br>
-
-
-<h3 class="pc_hide">this page shows your current pick chart template.</h3>
-<h3 class="pick_hide">click on circle next to the team to make your picks</h3>
 <br>
-
-
-<a class="pc_hide clicky" onclick="hidePC(true)">button - select your picks</a>
-<a class="pick_hide clicky" onclick="hidePC(false)">button - see pickchart template</a>
-
-
-<br>
+<h3>click on circle next to the team to make your picks</h3>
+<h5>Hit SAVE before leaving, or else you will lose your picks</h5>
 <br>
 <h2 class="center">WEEK <%= latest_wk(@pickcharts) %> (LATEST)</h2>
 
 <%= render partial: "chart", locals: {pickcharts: @latest_charts} %>
 
 <br>
-<h3 class="pick_hide">Hit SAVE before leaving, or else you will lose your picks</h3>
-
-	<section class="pc_hide">
-		<%= form_for Pickchart.new, url: admin_chart_index_path, method: :post do |f| %>
-		  <div class="chart">Wk: <%= f.text_field :week, :class => "t_field" %></div>
-		  <!-- <div class="chart">xxxx</div> -->
-		  <div class="chart">Vis : <%= f.text_field :vteam %><div/>
-		  <div class="chart">V rec : <%= f.text_field :vt_rec, :class => "t_field" %><div/>
-		  <div class="chart">Hom : <%= f.text_field :hteam %><div/>
-		  <div class="chart">H rec : <%= f.text_field :ht_rec, :class => "t_field" %><div/>
-		  <div class="chart">G tim : <%= f.text_field :gametime %></div>
-		  <%= f.submit %>
-		<% end %>
-	</section>
 <br>
 <br>
 <br>

@@ -55,11 +55,16 @@ class AdminController < ApplicationController
   end
 
   def new
+    @user = User.new
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false
         redirect_to "/users"
     end
-    @user = User.all
+    @pickchart = Pickchart.new
+    @pickcharts = Pickchart.all
+    @latest = Pickchart.maximum(:week)
+    @latest_charts = Pickchart.where(week: @latest)
+    #@user = User.all
 
   end
 
@@ -70,4 +75,10 @@ class AdminController < ApplicationController
         redirect_to "/users"
     end
   end
+
+  #private
+
+  #def user_params
+  #  params.require(:user).permit(:admin,:user_name,:email,:password,:password_digest)
+  #end
 end

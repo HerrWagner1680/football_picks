@@ -1,31 +1,36 @@
 <%= javascript_include_tag "admin" %>
 
  <%= link_to ("Create New User"), "/admin/new",method: :get %>
-<h1>Admin#index</h1>
-<p>Find me in app/views/admin/index.html.erb</p>
-
-<h4>CONTENT OF LATEST PICK ARRAY: <%= @latest_picks.pluck(:user_id).uniq %></h4>
-<h4> LENGTH OF LATEST PICK ARRAY: <%= @latest_picks_array.length %></h4>
-<%= @latest_picks_array[0] %>
+ <%= link_to ("#{@current_user.user_name} make your picks"), "/admin/chart", method: :get, class: "admin_link_button" %>
+<%= link_to ("Create / Edit weekly chart"), "/admin/chart/new", method: :get, class: "admin_link_button" %> 
 <br>
+<br>
+<h1>MASTER PICK LIST FOR WEEK <%= @latest %></h1>
+<div class="vis_admin boxxy"></div><div class="texty">VISITING</div>
+<div class="hom_admin boxxy"></div><div class="texty">HOME</div>
+
+
+<div id="horiz_overflow">
 
 <% if @picks %>
 <table>
+
 <!-- @latest_picks_array.length.times do |i| -->
 	<tr>
-<%= @latest_picks_array.each do |i| %>
+<% @latest_picks_array.each do |i| %>
 
-	<td class="index_pick"><%= User.where(id: i).first.user_name %>'s PICKS</td>
+	<td class="index_pick zedpick"><%= User.where(id: i).first.user_name %>'s PICKS</td>
 
 <% end %>
+
 	</tr>
 
-		<% @latest_charts.each do |pickchart| %>
+	<% @latest_charts.each do |pickchart| %>
 
 <!-- original location of class column -->
 		<tr>
 	<!-- change @current_user to @latest_picks_array[i] -->
-		<%= @latest_picks_array.length.times do |i| %>
+		<% @latest_picks_array.length.times do |i| %>
 		<% if @picks.where(pickchart_id: pickchart.id, user_id: @latest_picks_array[i]).last %>
 
 			<% if @picks.where(pickchart_id: pickchart.id, user_id: @latest_picks_array[i]).last.user_pick === "visit" %>
@@ -44,19 +49,16 @@
 		</tr>
 
 <% end %>		
-		
-</table>
+</table>	
 
 
+<% if false %> <!-- block comment out -->
+	<%= link_to ("#{@current_user.user_name} make your picks"), "/admin/chart", method: :get, class: "admin_link_button" %>
+	<%= link_to ("Create / Edit weekly chart"), "/admin/chart/new", method: :get, class: "admin_link_button" %> 
 	<br>
 	<br>
 	<br>
-	<br>
-	<%= link_to ("#{@current_user.user_name} make your picks"), "/admin/chart#picks", method: :get, class: "admin_link_button" %>
-	<%= link_to ("Create / Edit weekly chart"), "/admin/chart#template", method: :get, class: "admin_link_button" %> 
-	<br>
-	<br>
-	<br>
+
 	<h4>EDIT USER SETTINGS</h4>
 	<h4>CREATE / DELETE USERS</h4>
 
@@ -79,6 +81,7 @@
 
 	<% end %>
 
+<% end %> <!-- block comment out with line 60 if false -->
 
 	<% end %>
-
+</div> <!-- end of #horiz_overflow div -->

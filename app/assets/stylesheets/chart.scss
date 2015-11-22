@@ -26,10 +26,34 @@ div {
 	cursor: pointer;
 }
 
+td input[type="radio"]{
+	background-color: orange;
+	border-color: red;
+}
+
 td input:checked{
 	background-color: #A1EFB4;
 }
 
+td input[disabled]{
+	display: none;
+}
+
+.new_chart_picks tr:nth-child(even) {
+	background: #d5ecef; 
+} 
+
+.new_chart_picks tr:nth-child(odd) {
+	background: #e8edf6;
+}
+
+.new_chart_picks tr:nth-child(1) {
+	background: #d5ecef;
+}
+
+/* .new_chart_picks tr:nth-last-child(1){
+	background: red;
+} */
 
 .new_chart tr:nth-child(even) {
 	background: #d5ecef; 
@@ -43,6 +67,178 @@ td input:checked{
 	background: #d5ecef;
 }
 
+/* .new_chart tr:nth-last-child(1){
+	background: red;
+} */
+
+/* placeholder brown  #663e00  */
+
+::-webkit-input-placeholder{
+	color: #AAA;
+}
+input:focus::-webkit-input-placeholder{
+	color: #fff6e7;
+}
+:-ms-input-placeholder {
+	color: #AAA;
+}
+input:focus:-ms-input-placeholder{
+	color: #fff6e7;
+}
+::-moz-placeholder {
+	color: #AAA;
+}
+input:focus::-moz-placeholder {
+	color: #fff6e7;
+}
+:-moz-placeholder {
+	color: #AAA;
+}
+input:focus:-moz-placeholder {
+	color: #fff6e7;
+}
+
+.wk>input {
+	height: 30px;
+	width: 62px;
+	padding-left: 3px;
+	padding-right: 3px;
+	background: #ffedd0;
+	border: solid 2px #7f7059;
+	font-size: 20px;
+	color: #111;
+}
+
+.wk>input:hover {
+	background: #fff6e7;
+	border: solid 2px #7f7059;
+	font-size: 20px;
+}
+
+.wk>input:focus {
+	background: #fff6e7;
+	border: solid 2px #7f7059;
+	font-size: 20px;
+}
+
+
+.teams>input {
+	height: 30px;
+	width: 197px;
+	padding-left: 3px;
+	padding-right: 3px;
+	background: #ffedd0;
+	border: solid 2px #7f7059;
+	font-size: 20px;
+	color: #111;
+}
+
+.teams>input:hover{
+	background: #fff6e7;
+	border: solid 2px #7f7059;
+	font-size: 20px;
+}
+
+.teams>input:focus{
+	background: #fff6e7;
+	border: solid 2px #7f7059;
+	font-size: 20px;
+}
+
+.rec>input {
+	height: 30px;
+	width: 100px;
+	padding-left: 3px;
+	padding-right: 3px;
+	background: #ffedd0;
+	border: solid 2px #7f7059;
+	font-size: 20px;
+	color: #111;
+}
+
+.rec>input:hover {
+	background: #fff6e7;
+	border: solid 2px #7f7059;
+	font-size: 20px;
+}
+
+.rec>input:focus {
+	background: #fff6e7;
+	border: solid 2px #7f7059;
+	font-size: 20px;
+}
+
+.gametime>input {
+	height: 30px;
+	width: 145px;
+	padding-left: 3px;
+	padding-right: 3px;
+	background: #ffedd0;
+	border: solid 2px #7f7059;
+	font-size: 20px;
+	color: #111;
+}
+
+.gametime>input:hover {
+	background: #fff6e7;
+	border: solid 2px #7f7059;
+	font-size: 20px;
+
+}
+
+.gametime>input:focus {
+	background: #fff6e7;
+	border: solid 2px #7f7059;
+	font-size: 20px;
+
+}
+
+section #new_pc{
+	margin-top: -15px;
+	border: solid 5px #AAA;
+	background: #AAA;
+	display: inline-block;
+}
+
+input[type=submit] {
+    padding:5px 15px; 
+    background:#eee; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+	box-shadow: 2px 2px 1px #888;
+}
+
+input[type=submit]:hover {
+    padding:5px 15px; 
+    background:#fff; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+	box-shadow: 2px 2px 1px #666;
+}
+
+.week_table{
+	width: 41px;
+	border: solid 2px white;
+}
+
+.team_table{
+	width: 175px;
+	border: solid 2px white;	
+}
+
+.record{
+	width: 79px;
+	border: solid 2px white;	
+}
+
+.gtime_table{
+	width: 150px;
+	border: solid 2px white;	
+}
 
 .old_chart {
 	background-color: #ebefd6; /* #e0dfb2; */
@@ -56,5 +252,5 @@ td input:checked{
 
 .dim {
 	color: #555;
-	text-align: center;
+	margin-left: 30%;
 }

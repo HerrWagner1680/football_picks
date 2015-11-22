@@ -1,20 +1,25 @@
+
+<% if false %>
 <h3 class="profile_name"><%= "#{@current_user.user_name}" %>'s Profile------link to edit account info goes to users/new ?--</h3>
+
 <%= "#{@current_user.email}" %>
 <br>
 <h2>Save or Update your picks for week <%= latest_wk(@pickcharts) %></h2>
 <!-- current_user.user_name -->
 <!-- current_user.id -->
+
 <h5>This user already saved picks for week <%= latest_wk(@pickcharts) %> ? ----
 <%= Pick.where(user_id: current_user.id, created_at: @range).exists? %></h5>
+<% end %>
 <!-- Pick.where(user_id: current_user.id, created_at: @range).last.pickchart_id -->
 <br>
 <br>
-<h2 class="center">WEEK <%= latest_wk(@pickcharts) %> (LATEST)</h2>
-
-
-	<%= render partial: "already_submitted_picks", locals: {pickcharts: @latest_charts, picks: @picks} %>
+<h2 class="center user_new_picks">WEEK <%= latest_wk(@pickcharts) %> (LATEST)</h2>
 
 	<%= render partial: "active_pickchart", locals: {pickcharts: @latest_charts, picks: @picks} %>
+<br>
+<br>
+	<%= render partial: "already_submitted_picks", locals: {pickcharts: @latest_charts, picks: @picks} %>
 
 
 <br>

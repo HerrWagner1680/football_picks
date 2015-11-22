@@ -25,9 +25,37 @@
 }
 
 h2.center {
-	text-align: center;
+	margin-left: 30%;
 }
 
+/* hidden is for visit home nil values for existing pick chart */
 .hidden{
 	display: none;
+}
+
+.hide{
+	display: none;
+}
+
+input.login_email{
+	height: 40px;
+	font-size: 20px;
+	padding-left: 5px;
+}
+
+input.login_password{
+	height: 40px;
+	font-size: 20px;
+	padding-left: 5px;
+}
+
+input.login_button{
+	height: 40px;
+	width: 100px;
+	background-color: #329932;
+	font-size: 20px;
+	text-align: center;
+	color: white;
+	letter-spacing: 2px;
+	text-shadow: #333 0.1em 0.1em 0.1em;
 }

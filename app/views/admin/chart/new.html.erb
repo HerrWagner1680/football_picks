@@ -1,0 +1,65 @@
+
+<%= link_to ("BACK TO ADMIN HOME"), "/admin", method: :get %>
+<h3>NOTE - Only the newest week (highest week number) is accessible to users.</h3>
+
+<br>
+<h1> ADD TO TEMPLATE CHART FOR WEEK <%= @latest %> </h1>
+<% if @latest_charts %>
+	<table class="new_chart">
+		<tr>
+		<!--	<td>USER ID</td>  -->
+			<td>Week</td>
+			<td>Visitor</td>
+			<td>Vis Record</td>
+			<td class="pick_hide">............. </td>
+			<td>Home</td>
+			<td>H Record</td>
+			<td>Game Time</td>
+		</tr>
+
+<%= form_for Pick.new, url: picks_path, method: :post do |f| %>
+		<% @latest_charts.each do |pickchart| %>
+
+
+		<tr>
+		<!-- <div class="pick_div"> -->
+		<!--	<td><%= current_user.id %></td> -->
+			<td class="week_table"><%= pickchart.week %></td>
+		<!-- remember remove pickchart id later -->
+			<td class="vis team_table"><input type="radio" onclick="highLight(this)" value="visit" name=<%="picks[]#{pickchart.id}"%> disabled="true" ><%= pickchart.vteam %></td>
+			<td class="record"><%= pickchart.vt_rec %></td>
+			<td class="pick_hide">.... at ....</td>
+			<td class="hom team_table"><input type="radio" onclick="highLight(this)" value="home" name=<%= "picks[]#{pickchart.id}"%> disabled="true"><%= pickchart.hteam %></td>
+			<td class="record"><%= pickchart.ht_rec %></td>
+			<td class="gtime_table"><%= pickchart.gametime %></td>
+			<td class="pick_hide" >edit / delete</td>
+		<!-- </div> -->
+			<!-- <td><%= f.submit %></td> -->
+		</tr>
+<% end %> <!-- end of pickcharts each loop -->
+
+<% end %> <!-- end of the form -->	
+
+
+	</table>
+
+<% end %> <!-- end of the if pickcharts -->
+
+<br>
+
+	<section id="new_pc">
+		<%= form_for Pickchart.new, url: admin_chart_index_path, method: :post do |f| %>
+		  <div class="chart wk"><%= f.text_field :week, :class => "t_field", :placeholder => '0'%></div>
+		  <!-- <div class="chart">xxxx</div> -->
+		  <div class="chart teams"><%= f.text_field :vteam, :placeholder => 'Visitor' %><div/>
+		  <div class="chart rec"><%= f.text_field :vt_rec, :class => "t_field", :placeholder => '0-0' %><div/>
+		  <div class="chart teams"><%= f.text_field :hteam, :placeholder => 'Home' %><div/>
+		  <div class="chart rec"><%= f.text_field :ht_rec, :class => "t_field", :placeholder => '0-0' %><div/>
+		  <div class="chart gametime"><%= f.text_field :gametime, :placeholder => 'Time' %></div>
+		  <%= f.submit "Add Game Listing" %>
+		<% end %>
+	</section>
+<br>
+<br>
+<br>
+

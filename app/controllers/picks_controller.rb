@@ -22,11 +22,11 @@ class PicksController < ApplicationController
           end
     end
     @current_user = User.find(session[:user_id])
-    #@userrr = User.find(params[:id])
     if @current_user.admin == true
-        redirect_to "/admin/chart"
+        redirect_to "/admin"
+    else
+        redirect_to "/users"
     end
-    redirect_to "/users"
   end
 
   private

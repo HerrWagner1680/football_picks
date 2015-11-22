@@ -2,24 +2,51 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+table::after{
+	color: pink;
+}
+
+table::before{
+	color: blue;
+}
+
+#create_user_form{
+	padding: 20px;
+	background: #66a1ff;
+	display: inline-block;
+	height: 30px;
+	color: #eee;
+	text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+span.user_form{
+	margin: 10px;
+}
+
+#horiz_overflow {
+	border: 3px solid #444;
+	background: tan;
+	width: 95%;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+	display: inline-block;
+	margin-bottom: 50px;
+}
+
 .admin_link_button {
-	background-color: #777;
-	width: 300px;
-	margin-top: 20px;
-	padding: 50px, 10px, 50px, 10px;
-	border-radius: 15px;
-	text-decoration: none;
+	margin-left: 25px;
 	font-size: 20px;
-	color: white;
 	letter-spacing: 3px;
 	text-align: center;
 	cursor: pointer;
+	display: inline-block;
 }
 
-.link_button {
-	background-color: #777;
+#link_button {
+	background-color: #1a72ff;
 	width: 150px;
-	margin-top: 20px;
+	/* margin-top: 10px; */
 	padding: 35px, 10px, 35px, 10px;
 	border-radius: 15px;
 	text-decoration: none;
@@ -31,7 +58,7 @@
 }
 
 .vis_admin {
-	background-color: #ffdb99;
+	background-color: #d8e7ff;
 }
 
 .hom_admin {
@@ -40,7 +67,7 @@
 
 .nil_admin {
 	/* text-align: center; */
-	background-color: #CCC;
+	background-color: #BBB;
 }
 
 section.column {
@@ -53,12 +80,39 @@ form#new_pick {
 }
 
 .index_pick {
-	border: 3px solid blue;
+	margin: 3px 30px 3px 3px;
+	border: 2px solid #444;
 	display: inline-block;
 	width: 160px;
 }
+
+.zedpick {
+	border: 2px solid white;
+	background: #fff;
+	text-align: center;
+}
+
 
 /* #overflow_box {
 	background-color: green;
 	display: block;
 } */
+
+div.boxxy {
+	margin-top: 15px;
+	margin-bottom: 45px;
+	height: 30px;
+	width: 80px;
+	display: inline-block;
+	border: 2px solid #333;
+}
+
+div.texty {
+	margin-bottom: 45px;
+	padding-top: 20px;
+	padding-left: 15px;
+	/*height: 30px;*/
+	width: 190px;
+	display: inline-block;
+	vertical-align: top;
+}

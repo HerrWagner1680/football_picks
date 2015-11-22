@@ -11,7 +11,8 @@ class UsersController < ApplicationController
 
   def index
     @current_user = User.find(session[:user_id])
-    #@userrr = User.find(params[:id])
+    #@userrr = User.find(params[:id]) 
+
     @user = User.new
     if @current_user.admin == true
         redirect_to "/admin"

@@ -1,23 +1,15 @@
 <%= link_to ("BACK TO ADMIN"), "/admin", method: :get %>
 <br>
-CREATE NEW USER PAGE
-<br>
-???checkbox for admin or not?
-<br>
-or just default to NO
-<br>
-<h1>User model</h1>
-<h3>admin - t or f</h3>
-<h3>email</h3>
-<h3>user_name</h3>
-<h3>password</h3>
-<h3>(password_digest)</h3>
-<h1>CREATE A NEW USER - NOTE THIS IS USERS#INDEX</h1>
 
+<br>
+
+<h1>CREATE A NEW USER - note you can not create admins</h1>
+<div id="create_user_form">
 <%= form_for @user, url: users_path, method: :post do |f| %>
 	<%= f.hidden_field :admin, :value => false %>
-  User Name: <%= f.text_field :user_name %><br />
-  email : <%= f.email_field :email %><br />
-  password : <%= f.password_field :password %><br />
+  <span class="user_form">User Name: <%= f.text_field :user_name %></span>
+  <span class="user_form">Email : <%= f.email_field :email %></span>
+  <span class="user_form">Password : <%= f.password_field :password %></span>
   <%= f.submit %>
 <% end %>
+</div>

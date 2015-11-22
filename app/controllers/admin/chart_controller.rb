@@ -12,7 +12,7 @@ class Admin::ChartController < ApplicationController
         redirect_to "/users"
     end
 
-    redirect_to "/admin/chart"
+    redirect_to "/admin/chart/new"
   end
 
   def new
@@ -22,6 +22,10 @@ class Admin::ChartController < ApplicationController
     if @current_user.admin == false or @current_user.admin == nil
         redirect_to "/users"
     end
+
+    @pickcharts = Pickchart.all
+    @latest = Pickchart.maximum(:week)
+    @latest_charts = Pickchart.where(week: @latest)
   end
 
   def destroy

@@ -39,9 +39,5 @@ hidePC = function(bool) {
 // function of oldchartPicks is in application.js
 // underlines and checkmarks picks from previous wk
 $(document).ready(function(){
-  var readURL =  $(location).attr('href').slice(-5);
-  if (readURL === "picks"){
-    hidePC(true);
-  }
     oldchartPicks();
 });

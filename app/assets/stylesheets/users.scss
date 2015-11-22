@@ -8,4 +8,24 @@
 
 #save_button {
 	background-color: #eee;
+	margin-left: 60%;
+}
+
+#save_button .link_button {
+	background-color: #1e9699;
+	width: 120px;
+	height: 40px;
+	font-size: 25px;
+	color: #eee;
+	letter-spacing: 3px;
+	text-shadow: #333 0.1em 0.1em 0.1em;
+}
+
+#save_button .link_button:hover {
+	background-color: #197d7f;
+	color: white;
+}
+
+.user_new_picks{
+	margin-bottom: -30px;
 }

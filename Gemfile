@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.2.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
@@ -17,7 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 #gem 'libv8', '~> 4.5', '>= 4.5.95.5'
 #gem 'libv8-freebsd', '~> 3.11.8.3'
 gem 'execjs'
-gem 'therubyracer'
+#gem 'therubyracer'
 #gem 'therubyracer' #, '~> 0.12.2'
 #gem 'libv8', '~> 3.16.14.7'
 

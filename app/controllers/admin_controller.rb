@@ -30,10 +30,10 @@ class AdminController < ApplicationController
   end
 
   def destroy
-    Pickchart.find(params[:pickchart]).destroy
-    @pickcharts = Pickchart.all
-    @latest = Pickchart.maximum(:week)
-    @latest_charts = Pickchart.where(week: @latest)
+    Pickchart.find(params[:pickchart][:id]).destroy
+    #@pickcharts = Pickchart.all
+    #@latest = Pickchart.maximum(:week)
+    #@latest_charts = Pickchart.where(week: @latest)
 
 
     @current_user = User.find(session[:user_id])

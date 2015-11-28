@@ -29,8 +29,7 @@ class Admin::ChartController < ApplicationController
   end
 
   def destroy
-    p pickchart.id
-    Pickchart.find(pickchart.id).destroy
+    Pickchart.find(params[:pickchart]).destroy
     @pickcharts = Pickchart.all
     @latest = Pickchart.maximum(:week)
     @latest_charts = Pickchart.where(week: @latest)

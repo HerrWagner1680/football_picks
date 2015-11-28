@@ -29,11 +29,12 @@ class Admin::ChartController < ApplicationController
   end
 
   def destroy
+    p pickchart.id
     @pickcharts = Pickchart.all
     @latest = Pickchart.maximum(:week)
     @latest_charts = Pickchart.where(week: @latest)
 
-    
+
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
         redirect_to "/users"

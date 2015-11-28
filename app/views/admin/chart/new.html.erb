@@ -17,7 +17,7 @@
 			<td>Game Time</td>
 		</tr>
 
-<%= form_for Pickchart.new, url: admin_chart_index_path, method: :post do |f| %>
+<%= form_for (Pickchart, url: admin_chart_index_path, method: :delete do |f| %>
 		<% @latest_charts.each do |pickchart| %>
 
 
@@ -33,7 +33,7 @@
 			<td class="record"><%= pickchart.ht_rec %></td>
 			<td class="gtime_table"><%= pickchart.gametime %></td>
 			<td class="pick_hide" >edit / delete</td>
-			<td><%= button_to "delete", admin_chart_path(pickchart.id), :method => :delete, data: { confirm: "You sure?" } %></td>
+			<td><%= button_to "delete", :method => :delete, data: { confirm: "You sure?" } %></td>
 		<!-- </div> -->
 			<!-- <td><%= f.submit %></td> -->
 		</tr>

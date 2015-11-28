@@ -29,6 +29,21 @@ class AdminController < ApplicationController
     end
   end
 
+  def destroy
+    p pickchart.id
+    Pickchart.find(pickchart.id).destroy
+    @pickcharts = Pickchart.all
+    @latest = Pickchart.maximum(:week)
+    @latest_charts = Pickchart.where(week: @latest)
+
+
+    @current_user = User.find(session[:user_id])
+    if @current_user.admin == false or @current_user.admin == nil
+        redirect_to "/users"
+    end
+    redirect_to "/admin/chart/new"
+  end
+
   def index
     @user = User.all
     @picks = Pick.all

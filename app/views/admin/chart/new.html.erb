@@ -17,7 +17,7 @@
 			<td>Game Time</td>
 		</tr>
 
-<%= form_for @latest_charts, url: admin_chart_index_path, method: :delete do |f| %>
+<%= form_for @latest_charts.new, url: admin_chart_index_path, method: :delete do |f| %>
 		<% @latest_charts.each do |pickchart| %>
 
 

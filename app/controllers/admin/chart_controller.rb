@@ -30,6 +30,7 @@ class Admin::ChartController < ApplicationController
 
   def destroy
     p pickchart.id
+    Pickchart.find(pickchart.id).destroy
     @pickcharts = Pickchart.all
     @latest = Pickchart.maximum(:week)
     @latest_charts = Pickchart.where(week: @latest)
@@ -39,6 +40,7 @@ class Admin::ChartController < ApplicationController
     if @current_user.admin == false or @current_user.admin == nil
         redirect_to "/users"
     end
+    redirect_to "/admin/chart/new"
   end
 
   def index

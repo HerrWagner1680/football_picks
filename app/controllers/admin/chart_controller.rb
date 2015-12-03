@@ -1,4 +1,5 @@
 class Admin::ChartController < ApplicationController
+  #respond_to :json
 
   def create
     @pickchart = Pickchart.new(pickchart_params)
@@ -15,7 +16,9 @@ class Admin::ChartController < ApplicationController
     redirect_to "/admin/chart/new"
   end
 
+#http://stackoverflow.com/questions/25582878/angularjs-post-data-to-rails-server-by-service
   def new
+    #respond_with(Pickchart.all)
     @pickchart = Pickchart.new
     @pick = Pick.new
     @current_user = User.find(session[:user_id])
@@ -29,11 +32,11 @@ class Admin::ChartController < ApplicationController
   end
 
   def destroy
-    Pickchart.find(params[:pickchart][:id]).destroy
+    @pc = Pickchart.find(params[:id])
+    @pc.destroy
     #@pickcharts = Pickchart.all
     #@latest = Pickchart.maximum(:week)
     #@latest_charts = Pickchart.where(week: @latest)
-
 
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
@@ -42,7 +45,9 @@ class Admin::ChartController < ApplicationController
     redirect_to "/admin/chart/new"
   end
 
+#http://stackoverflow.com/questions/25582878/angularjs-post-data-to-rails-server-by-service
   def index
+    #respond_with(Pickchart.all)
     current_user
     @user = User.all
     @picks = Pick.all
@@ -69,6 +74,12 @@ class Admin::ChartController < ApplicationController
     if @current_user.admin == false or @current_user.admin == nil
         redirect_to "/users"
     end
+  end
+
+  def update
+    @pickchart = Pickchart.find(params[:id])
+    @pickchart.update_attributes(params[:pickchart])
+    respond_with @pickchart
   end
 
   private

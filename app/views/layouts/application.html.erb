@@ -3,8 +3,9 @@
 
 <head>
 	  <title>FantasySports</title>
-	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-	      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= stylesheet_link_tag    'application', media: 'all'%>
+	      <%= javascript_include_tag 'application' %>
+	      <!-- removed 'data-turbolinks-track' => true from stylesheet and js tag -->
 	  <!-- #javascript_include_tag 'application', 'data-turbolinks-track' => true -->
 	  <%= csrf_meta_tags %>
 	</head>  

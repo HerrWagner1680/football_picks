@@ -1,0 +1,189 @@
+verbose: true
+exit_code: web
+before_command: bash -c "rm -Rf target && rm -Rf spec/dummy/log"
+
+# ---
+# create a global gemset to be shared amongst all ruby 2.2.2 containers.
+gemset:
+  name: 2.2.2
+  # setup GEM_HOME environment variable and `volumes_from` to mount the global gemset container
+  containers:
+    - web
+
+# ---
+# Make the host user's id_rsa key available to the web container e.g. for cloning from github
+#   If you see "Host key verification failed", make sure the same command runs on the host first 
+#   which will add to the known_hosts file. The known_hosts is copied from the host to the ssh-agent automatically.
+ssh-agent:
+  containers:
+    - web
+  keys:
+    - id_rsa
+
+# ---
+# Declare a reusable extract set
+extractions: &extractions
+  web:
+    extract:
+      - '/project/target'
+      - '/project/vcr'
+      - '/project/spec/dummy/log:spec/dummy'
+      - '/project/tmp/parallel_runtime_cucumber.log:./tmp'
+      - '/project/tmp/parallel_runtime_rspec.log:./tmp'
+
+
+# ---
+# Declare a reusable elasticsearch container, staging/production connects to existing running instance.
+elasticsearch: &elasticsearch
+  elasticsearch:
+    image: library/elasticsearch:1.7
+    ports:
+      - "9200"
+
+# ---
+# Base docker-compose configuration for all environments.  Anything under the `compose` element must be standard docker-compose syntax.
+compose:
+  web:
+    build: .
+    working_dir: /project/spec/dummy
+    ports:
+      - "3000"
+
+    links:
+      - db
+
+  db:
+    # https://github.com/docker-library/docs/tree/master/mysql
+    image: library/mysql:5.7.6
+    ports:
+      - "3306"
+
+    # https://github.com/docker-library/docs/tree/master/mysql#environment-variables
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true      
+
+# ---
+# Overrides based on the named targets ssh_test | development | test | parallel_tests | staging       
+ssh_test:
+  compose:
+    web:
+      command: bash -c "ssh -T git@bitbucket.org"      
+
+development:
+  compose:
+    <<: *elasticsearch
+    web:
+      links:
+        - elasticsearch # standard yaml doesn't merge arrays so we have to add this explicitly
+      environment:
+        - RAILS_ENV=development
+      command: >
+        bash -c "
+
+        echo 'Bundling gems'
+        && bundle install --jobs 4 --retry 3
+
+        && echo 'Generating Spring binstubs'
+        && bundle exec spring binstub --all
+
+        && echo 'Clearing logs and tmp dirs'
+        && bundle exec rake log:clear tmp:clear
+
+        && echo 'Check and wait for database connection'
+        && bundle exec docker-rails db_check mysql
+
+        && echo 'Setting up new db if one doesn't exist'
+        && bundle exec rake db:version || { bundle exec rake db:setup; }
+
+        && echo "Starting app server"
+        && bundle exec rails s -p 3000
+
+        && echo 'Setup and start foreman'
+        && gem install foreman
+        && foreman start
+        "
+
+test:
+  <<: *extractions
+  compose:
+    <<: *elasticsearch
+    web:
+      links:
+        - elasticsearch # standard yaml doesn't merge arrays so we have to add this explicitly
+      environment:
+        - RAILS_ENV=test
+      command: >
+        bash -c "
+        echo 'Bundling gems'
+        && bundle install --jobs 4 --retry 3
+
+        && echo 'Clearing logs and tmp dirs'
+        && bundle exec rake log:clear tmp:clear
+
+        && echo 'Check and wait for database connection'
+        && bundle exec docker-rails db_check mysql
+
+        && echo 'Setting up new db if one doesn't exist'
+        && bundle exec rake db:version || { bundle exec rake db:setup; }
+
+        && echo 'Tests'
+        && cd ../..
+        && xvfb-run -a bundle exec rake spec cucumber
+        "
+
+parallel_tests:
+  <<: *extractions
+  compose:
+    <<: *elasticsearch
+    web:
+      links:
+        - elasticsearch # standard yaml doesn't merge arrays so we have to add this explicitly
+      environment:
+        - RAILS_ENV=test
+      command: >
+        bash -c "
+
+        echo 'Bundling gems'
+        && bundle install --jobs 4 --retry 3
+
+        && echo 'Clearing logs and tmp dirs'
+        && bundle exec rake log:clear tmp:clear
+
+        && echo 'Check and wait for database connection'
+        && bundle exec docker-rails db_check mysql
+
+        && echo 'Setting up new db if one doesn't exist'
+        && bundle exec rake parallel:drop parallel:create parallel:migrate parallel:seed
+
+        && echo 'Tests'
+        && cd ../..
+        && xvfb-run -a bundle exec rake parallel:spec parallel:features
+        "
+
+staging:
+  compose:
+    web:
+      environment:
+        - RAILS_ENV=staging
+      command: >
+        bash -c "
+
+        echo 'Bundling gems'
+        && bundle install --jobs 4 --retry 3
+
+        && echo 'Clearing logs and tmp dirs'
+        && bundle exec rake log:clear tmp:clear
+
+        && echo 'Check and wait for database connection'
+        && bundle exec docker-rails db_check mysql
+
+        && echo 'Setting up new db if one doesn't exist'
+        && bundle exec rake db:migrate
+
+        && echo "Starting app server"
+        && bundle exec rails s -p 3000
+
+        && echo 'Setup and start foreman'
+        && gem install foreman
+        && foreman start
+        "

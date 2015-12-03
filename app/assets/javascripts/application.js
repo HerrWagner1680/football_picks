@@ -12,9 +12,75 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require angular
+//= require angular-resource
+//= require angular-route
+// REMOVED TURBOLINKS
 //= require admin
 //= require_tree .
+
+
+
+app = angular.module('app',['ngResource', 'ngRoute'
+]) // injecting ngResource into module
+
+app.config(['$resourceProvider', function($resourceProvider) {
+  // Don't strip trailing slashes from calculated URLs
+  $resourceProvider.defaults.stripTrailingSlashes = false;
+}])
+
+
+.controller('FirstCtrl', function($scope, $log, $http, $resource, Secure) {
+    $scope.data = {id: "234", content: "Hello", asdf: "yes"};
+    $scope.data.frog = Secure;
+    //$log.info();
+
+    // var ThePickChart = $resource('/:id', {id: 2}, {
+    //       query: {method:'GET',isArray:false}
+    //   });
+
+    // $scope.regions = ThePickChart.query();
+    // $scope.regions.$promise.then(function (result, $log) {
+    // $scope.regions = result;
+    // $log.info(result);
+
+//});
+})
+
+
+// 'use strict';
+
+// app.factory('Forum', function($http) {
+//       console.log("line 54");
+//     return $http.get("admin/chart.json", {headers: {
+//       getItem('Pickchart')
+//     }});
+//     // console.log("line 56");
+//     // var ThePickChart = $resource('admin/chart/:id', {id: 2})
+//     // var charty = ThePickChart.query()
+//     // console.log(charty);
+// });
+
+app.factory("Secure", function($resource, $http, $log) {
+
+  return $http.get("http://fantasy-sports.dev/admin/chart/:id").success(function(data){
+  $log.info(data);
+  });
+  // return $resource("/admin/chart/:id", { id: "@id" },
+  //   {
+  //     'show':    { method: 'GET', isArray: false },
+  //     'update':  { method: 'PUT' },
+  //     'destroy': { method: 'DELETE' }
+  //   }
+  // );
+});
+
+
+
+// $http.get('/res').success(function(data){
+//   $scope.test = data;
+// });
+
 
 var hidePC;
 var hideSwitch;

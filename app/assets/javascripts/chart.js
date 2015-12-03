@@ -2,6 +2,28 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
+// receta = angular.module('receta',['ngResource'
+// ]) // injecting ngResource into module
+
+// function FirstCtrl($scope) {
+//     $scope.data = {id: "234", content: "Hello"};
+// };
+
+// // var Hello;
+// function Hello($scope, $http) {
+//     $http.get('http://fantasy-sports.dev/admin/chart/2').
+//         success(function(data) {
+//             $scope.greeting = data;
+//             console.log(data);
+//         });
+// }
+
+// function Hello() {
+//   this.id = "1";
+//   this.content = "hoo he ha ha";
+//   this.greeting.id = "234"
+// }
+
 
 var hidePC;
 var hideSwitch;
@@ -41,3 +63,20 @@ hidePC = function(bool) {
 $(document).ready(function(){
     oldchartPicks();
 });
+
+count = 0
+function asdfasdf(f) { 
+  var clr = $(".buttonGrey[pc="+f+"]").css('color');
+  if (count%2 === 0){
+    $(".buttonGrey[pc="+f+"]").css('color','red');
+    $('.buttonGrey[pc='+f+']').html("UPDATE")
+    $('.game_form[pc='+f+']').css('display', 'table-cell')
+    $('.game_text[pc='+f+']').css('display', 'none')
+  } else if (count%2 === 1) {
+    $(".buttonGrey[pc="+f+"]").css('color', 'black')
+    $('.buttonGrey[pc='+f+']').html("&nbsp;&nbsp;&nbsp;&nbsp;edit&nbsp;&nbsp;&nbsp;&nbsp;")
+    $('.game_form[pc='+f+']').css('display', 'none') 
+    $('.game_text[pc='+f+']').css('display', 'table-cell') 
+  } else {  alert("nope")}
+  count = count + 1;
+};

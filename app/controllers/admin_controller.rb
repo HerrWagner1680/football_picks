@@ -56,7 +56,8 @@ class AdminController < ApplicationController
     @pickcharts = Pickchart.all
     # @latest can also serve as week number variable
     @latest = Pickchart.maximum(:week)
-    @latest_charts = Pickchart.where(week: @latest)
+    @latest_charttees = Pickchart.where(week: @latest)
+    @latest_charts = @latest_charttees.order('id')
     @earliest = Pickchart.minimum(:week)
     latest_picks
     latest_text
@@ -67,7 +68,8 @@ class AdminController < ApplicationController
     @range = @latest_pc_wk_created_at .. Time.now
     @latest_picks = Pick.where(created_at: @range).all
     @latest_picks_array = @latest_picks.pluck(:user_id).uniq
-    @latest_ordered = @latest_picks_array.order('id')
+    @latest_ordered = @latest_picks_array.sort_by{:pickchart_id}
+    #@latest_ordered = @latest_ordered.reverse if sort_direction == 'DESC'
   end
 
   def latest_text

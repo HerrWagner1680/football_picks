@@ -76,14 +76,14 @@ class Admin::ChartsController < ApplicationController
   end
 
   def latest_text
-    if @latest = 18
-      @latest_text = "18 - Wild Card 1"
-    elsif @latest = 19
-      @latest_text = "19 - Wild Card 2"
-    elsif @latest = 20
-      @latest_text = "20 - Championship"
+    if @latest == 18
+      @latest_text == "18 - Wild Card 1"
+    elsif @latest == 19
+      @latest_text == "19 - Wild Card 2"
+    elsif @latest == 20
+      @latest_text == "20 - Championship"
     else
-      @latest_text = @latest
+      @latest_text == @latest
     end
   end
 
@@ -93,6 +93,16 @@ class Admin::ChartsController < ApplicationController
     if @current_user.admin == false or @current_user.admin == nil
         redirect_to "/users"
     end
+
+    @user = User.all
+    @picks = Pick.all
+    @pickchart = Pickchart.new
+    @pickcharts = Pickchart.all
+    @latest = Pickchart.maximum(:week)
+    #latest_text
+    @latest_charttees = Pickchart.where(week: @latest)
+    @latest_charts = @latest_charttees.order('id')
+    @earliest = Pickchart.minimum(:week)
   end
 
   def update

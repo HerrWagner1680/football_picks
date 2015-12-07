@@ -1,0 +1,38 @@
+This is the show page in the chart thingee
+
+<h1>Show existing picks somehow? or is main page fine</h1>
+<%= javascript_include_tag "charts" %>
+
+<div class="container-fluid" ng-app="app">
+  	<div ng-controller="FirstCtrl">
+		<p>The ID is {{data.id}}</p>
+		<p>sessions query {{data.asdf}}</p>
+		<p>frogger query <%= latest_wk(@pickcharts) %> {{data.frog}}</p>
+
+	</div>
+
+</div><br>
+
+<%= link_to ("BACK TO ADMIN"), "/admin", method: :get %>
+
+<br>
+<br>
+<h3>click on circle next to the team to make your picks</h3>
+<h5>Hit SAVE before leaving, or else you will lose your new selections</h5>
+<br>
+<h2 class="center">WEEK <%= latest_wk(@pickcharts) %> (LATEST)</h2>
+
+<%= render partial: "chart", locals: {pickcharts: @latest_charts} %>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<h4 class="dim">PREVIOUS WEEK - WEEK <%= prev_wk(@pickcharts) %></h4>
+
+<!-- IF prevwk exists, then render -->
+	<%= render partial: "oldchart", locals: {pickcharts: Pickchart.where(week: prev_wk(@pickcharts)), current_user: current_user, picks: Pick.where(user_id: current_user)} %>
+<!--- end of if prevwk exists -->

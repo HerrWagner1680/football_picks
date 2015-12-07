@@ -25,6 +25,7 @@ gem 'angularjs-rails'
 gem 'puma'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks' #REMOVED TURBOLINKS
 # http://blog.steveklabnik.com/posts/2013-06-25-removing-turbolinks-from-rails-4

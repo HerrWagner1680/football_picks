@@ -1,15 +1,10 @@
 <%= javascript_include_tag "chart" %>
 <%= link_to ("BACK TO ADMIN HOME"), "/admin", method: :get %>
 <h3>NOTE - Only the newest week (highest week number) is accessible to users.</h3>
-
-<div class="container-fluid" ng-app="app">
-  	<div ng-controller="FirstCtrl">
-		<td>the data content {{data.content}}</td>
-  	</div>
-</div>
+<h5>Week numbers 18, 19, and 20 should be used instead of Wild Card 1, Wild Card 2, and Championship -- since the program searches for a number</h5>
 
 <br>
-<h1> ADD TO TEMPLATE CHART FOR WEEK <%= @latest %> </h1>
+<h1> ADD TO TEMPLATE CHART FOR WEEK <%= latest_wk(@pickcharts) %> </h1>
 <% if @latest_charts %>
 	<table class="new_chart">
 		<tr>
@@ -23,7 +18,7 @@
 			<td>Game Time</td>
 		</tr>
 
-<%= form_for Pickchart.new, url: admin_chart_index_path, method: :post do |f| %>
+<%= form_for Pickchart.new, url: admin_charts_path, method: :post do |f| %>
 		<% @latest_charts.each do |pickchart| %>
 
 
@@ -53,22 +48,26 @@
 		<tr>
 		<!-- <div class="pick_div"> -->
 		<!--	<td><%= current_user.id %></td> -->
-			<td class="game_form EDchart wk" pc=<%= "#{pickchart.id}"%> ><%= f.text_field :week, placeholder: pickchart.week %></td>
+		<%= form_for Pickchart.find(pickchart.id), url: admin_charts_path, method: :patch do |f| %>
+			<%= f.hidden_field :id, placeholder: pickchart.id, :input_html => { :value => pickchart.id } %>
+			<td class="game_form EDchart wk" pc=<%= "#{pickchart.id}"%> ><%= f.text_field :week, placeholder: pickchart.week, :input_html => { :value => pickchart.week } %></td>
 		<!-- remember remove pickchart id later -->
-			<td class="game_form EDchart EDteams" pc=<%= "#{pickchart.id}"%>><%= f.text_field :vteam, placeholder: pickchart.vteam %></td>
-			<td class="game_form EDchart rec" pc=<%= "#{pickchart.id}"%>><%= f.text_field :vt_rec, placeholder: pickchart.vt_rec %></td>
+			<td class="game_form EDchart EDteams" pc=<%= "#{pickchart.id}"%>><%= f.text_field :vteam, placeholder: pickchart.vteam, :input_html => { :value => pickchart.vteam } %></td>
+			<td class="game_form EDchart rec" pc=<%= "#{pickchart.id}"%>><%= f.text_field :vt_rec, placeholder: pickchart.vt_rec, :input_html => { :value => pickchart.vt_rec } %></td>
 			<td class="pick_hide">.... at ....</td>
-			<td class="game_form EDchart EDteams" pc=<%= "#{pickchart.id}"%>><%= f.text_field :hteam, placeholder: pickchart.hteam %></td>
-			<td class="game_form EDchart rec" pc=<%= "#{pickchart.id}"%>><%= f.text_field :ht_rec, placeholder: pickchart.ht_rec %></td>
+			<td class="game_form EDchart EDteams" pc=<%= "#{pickchart.id}"%>><%= f.text_field :hteam, placeholder: pickchart.hteam, :input_html => { :value => pickchart.hteam } %></td>
+			<td class="game_form EDchart rec" pc=<%= "#{pickchart.id}"%>><%= f.text_field :ht_rec, placeholder: pickchart.ht_rec, :input_html => { :value => pickchart.ht_rec } %></td>
 			<td class="pick_hide"  >edit / delete</td>
-			<!-- problem is field below for PICK attr -->
-			<td class="game_form EDchart EDgametime" pc=<%= "#{pickchart.id}"%>><%= f.text_field :gametime, placeholder: pickchart.gametime %></td>
+	
+			<td class="game_form EDchart EDgametime" pc=<%= "#{pickchart.id}"%>><%= f.text_field :gametime, placeholder: pickchart.gametime, :input_html => { :value => pickchart.gametime } %></td>
+			<td class="game_form"><%= f.submit "Update Game Listing" %></td>
 
-          <td class="game_form" pc=<%= "#{pickchart.id}"%>><button class="buttonGrey" pc=<%= "#{pickchart.id}"%> onclick=<%= "asdfasdf(#{ pickchart.id })"%> type="button">UPDATE</button></td>
+          <td class="game_form" pc=<%= "#{pickchart.id}"%>><%= button_to(("update"), url: admin_charts_path, _method: :patch, class: "buttonGrey", type: 'button') %></td>
 			<td class="game_form" pc=<%= "#{pickchart.id}"%>><%= link_to(
           ("delete"),
           "/admin/chart/#{ pickchart.id }",
           method: :delete, data: {confirm: "Are you sure?"} ) %></td>
+        <% end %>
 		<!-- </div> -->
 			<!-- <td><%= f.submit %></td> -->
 		</tr>
@@ -84,17 +83,21 @@
 <br>
 
 	<section id="new_pc">
-		<%= form_for Pickchart.new, url: admin_chart_index_path, method: :post do |f| %>
+		<%= form_for Pickchart.new, url: admin_charts_path, method: :post do |f| %>
+		<div ng-controller="TypeaheadCtrl">
 		  <div class="chart wk"><%= f.text_field :week, :class => "t_field", :placeholder => '0'%></div>
 		  <!-- <div class="chart">xxxx</div> -->
 		  <div class="chart teams"><%= f.text_field :vteam, :placeholder => 'Visitor' %><div/>
 		  <div class="chart rec"><%= f.text_field :vt_rec, :class => "t_field", :placeholder => '0-0' %><div/>
 		  <div class="chart teams"><%= f.text_field :hteam, :placeholder => 'Home' %><div/>
 		  <div class="chart rec"><%= f.text_field :ht_rec, :class => "t_field", :placeholder => '0-0' %><div/>
+
 		  <div class="chart gametime"><%= f.text_field :gametime, :placeholder => 'Time' %></div>
+
 		  <%= f.submit "Add Game Listing" %>
 		<% end %>
 	</section>
+
 <br>
 <br>
 <br>

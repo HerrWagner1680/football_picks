@@ -67,16 +67,16 @@ $(document).ready(function(){
 count = 0
 function asdfasdf(f) { 
   var clr = $(".buttonGrey[pc="+f+"]").css('color');
-  if (count%2 === 0){
-    $(".buttonGrey[pc="+f+"]").css('color','red');
+  if (clr === 'rgb(51, 51, 51)'){
+    $(".buttonGrey[pc="+f+"]").css('color','rgb(255, 0, 0)');
     $('.buttonGrey[pc='+f+']').html("UPDATE")
     $('.game_form[pc='+f+']').css('display', 'table-cell')
     $('.game_text[pc='+f+']').css('display', 'none')
-  } else if (count%2 === 1) {
-    $(".buttonGrey[pc="+f+"]").css('color', 'black')
+  } else if (clr === 'rgb(255, 0, 0)') {
+    $(".buttonGrey[pc="+f+"]").css('color', 'rgb(51, 51, 51)')
     $('.buttonGrey[pc='+f+']').html("&nbsp;&nbsp;&nbsp;&nbsp;edit&nbsp;&nbsp;&nbsp;&nbsp;")
     $('.game_form[pc='+f+']').css('display', 'none') 
     $('.game_text[pc='+f+']').css('display', 'table-cell') 
-  } else {  alert("nope")}
+  } else {  alert("The Toggler is askew")}
   count = count + 1;
 };

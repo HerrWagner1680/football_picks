@@ -1,7 +1,10 @@
-class Admin::ChartController < ApplicationController
+class Admin::ChartsController < ApplicationController
   #respond_to :json
+  helper_method :latest_text
 
   def create
+    @latest = Pickchart.maximum(:week)
+    latest_text
     @pickchart = Pickchart.new(pickchart_params)
     if @pickchart.save
       flash[:notice] = "Chart Created"
@@ -13,7 +16,7 @@ class Admin::ChartController < ApplicationController
         redirect_to "/users"
     end
 
-    redirect_to "/admin/chart/new"
+    redirect_to "/admin/charts/new"
   end
 
 #http://stackoverflow.com/questions/25582878/angularjs-post-data-to-rails-server-by-service
@@ -28,7 +31,9 @@ class Admin::ChartController < ApplicationController
 
     @pickcharts = Pickchart.all
     @latest = Pickchart.maximum(:week)
-    @latest_charts = Pickchart.where(week: @latest)
+    @latest_charttees = Pickchart.where(week: @latest)
+    @latest_charts = @latest_charttees.order('id')
+    latest_text
   end
 
   def destroy
@@ -42,7 +47,7 @@ class Admin::ChartController < ApplicationController
     if @current_user.admin == false or @current_user.admin == nil
         redirect_to "/users"
     end
-    redirect_to "/admin/chart/new"
+    redirect_to "/admin/charts/new"
   end
 
 #http://stackoverflow.com/questions/25582878/angularjs-post-data-to-rails-server-by-service
@@ -54,7 +59,9 @@ class Admin::ChartController < ApplicationController
     @pickchart = Pickchart.new
     @pickcharts = Pickchart.all
     @latest = Pickchart.maximum(:week)
-    @latest_charts = Pickchart.where(week: @latest)
+    latest_text
+    @latest_charttees = Pickchart.where(week: @latest)
+    @latest_charts = @latest_charttees.order('id')
     @earliest = Pickchart.minimum(:week)
 
     @current_user = User.find(session[:user_id])
@@ -68,6 +75,18 @@ class Admin::ChartController < ApplicationController
     # use require helper_method to invoke
   end
 
+  def latest_text
+    if @latest = 18
+      @latest_text = "18 - Wild Card 1"
+    elsif @latest = 19
+      @latest_text = "19 - Wild Card 2"
+    elsif @latest = 20
+      @latest_text = "20 - Championship"
+    else
+      @latest_text = @latest
+    end
+  end
+
   def show
     current_user
     @current_user = User.find(session[:user_id])
@@ -77,18 +96,25 @@ class Admin::ChartController < ApplicationController
   end
 
   def update
-    @pickchart = Pickchart.find(params[:id])
-    @pickchart.update_attributes(params[:pickchart])
-    respond_with @pickchart
+    @pickchart = Pickchart.find(params[:pickchart][:id])
+    @latest = Pickchart.maximum(:week)
+    latest_text
+    if @pickchart.update(pickchart_params)
+      flash[:notice] = "Game listing updated"
+      redirect_to "/admin/charts/new"
+    else
+      flash[:alert] = @pickchart.errors.full_messages
+      redirect_to "/admin/charts/new"
+    end
   end
 
   private
 
   def pick_params
-    params.require(:pick).permit(:pickchart_id,:user_pick,:user_id)
+    params.require(:pick).permit(:id,:pickchart_id,:user_pick,:user_id)
   end
 
   def pickchart_params
-    params.require(:pickchart).permit(:week,:vteam,:vt_rec,:hteam,:ht_rec,:gametime)
+    params.require(:pickchart).permit(:id,:week,:vteam,:vt_rec,:hteam,:ht_rec,:gametime)
   end
 end

@@ -5,7 +5,7 @@ class AdminController < ApplicationController
 
   helper_method :current_user
   helper_method :latest_picks
-
+  helper_method :latest_text
 
   def create
     @archive_week = params[:pickchart]
@@ -40,7 +40,7 @@ class AdminController < ApplicationController
     if @current_user.admin == false or @current_user.admin == nil
         redirect_to "/users"
     end
-    redirect_to "/admin/chart/new"
+    redirect_to "/admin/charts/new"
   end
 
   def index
@@ -59,6 +59,7 @@ class AdminController < ApplicationController
     @latest_charts = Pickchart.where(week: @latest)
     @earliest = Pickchart.minimum(:week)
     latest_picks
+    latest_text
   end
 
   def latest_picks
@@ -66,6 +67,19 @@ class AdminController < ApplicationController
     @range = @latest_pc_wk_created_at .. Time.now
     @latest_picks = Pick.where(created_at: @range).all
     @latest_picks_array = @latest_picks.pluck(:user_id).uniq
+    @latest_ordered = @latest_picks_array.order('id')
+  end
+
+  def latest_text
+    if @latest = 18
+      @latest_text = "18 - Wild Card 1"
+    elsif @latest = 19
+      @latest_text = "19 - Wild Card 2"
+    elsif @latest = 20
+      @latest_text = "20 - Championship"
+    else
+      @latest_text = @latest
+    end
   end
 
   def new
@@ -89,6 +103,7 @@ class AdminController < ApplicationController
         redirect_to "/users"
     end
   end
+
 
   #private
 

@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   root 'home#index' #get'/' => 'home#index'
 
   namespace :admin do  
-    resources :chart
+    resource :charts
   end
+  #below example of route
+  #patch "admin/usersupdate" => "admin#usersupdate", :as => "admin/usersupdate"
 
   resources :admin
   resources :users

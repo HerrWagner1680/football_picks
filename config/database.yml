@@ -1,31 +1,32 @@
-default: &default  
-  adapter: postgresql
-  encoding: unicode
-  #username: postgres
-  database: <%= ENV["DATABASE_URL"] %>
-  #host: localhost
- # port: 3000
- # host: <%= ENV['BLOG_DB_1_PORT_5432_TCP_ADDR'] %>
- # port: <%= ENV['BLOG_DB_1_PORT_5432_TCP_PORT'] %>
-  pool: 5
+development:
+  adapter:  postgresql
+  host:     localhost
+  encoding: utf8
+  database: todoism
+  pool:     5
+  username: <%= ENV['PG_USERNAME'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
+  template: template0
+  # others options
 
-#production:
-#  encoding: utf8
-#  pool: 15
+test:
+   adapter:  postgresql
+   host:     127.0.0.1
+   encoding: utf8
+   database: todoism
+   pool:     5
+   username: <%= ENV['PG_USERNAME'] %>
+   password: <%= ENV['PG_PASSWORD'] %>
+   template: template0
+   # others options
 
 production:
-  url:  <%= ENV["DATABASE_URL"] %>
-  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
-  database: DATABASE_URL
-  #username: postgres
-
-development:  
-  <<: *default
-  database: DATABASE_URL
-  #database: demo_development
- # username: postgres
-
-test:  
-  <<: *default
-  database: DATABASE_URL
-  #database: demo_test
+  adapter:  postgresql
+  host:     127.0.0.1
+  encoding: utf8
+  database: todoism
+  pool:     5
+  username: <%= ENV['PG_USERNAME'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
+  template: template0
+  # others options

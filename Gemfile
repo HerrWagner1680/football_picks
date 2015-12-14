@@ -3,9 +3,10 @@ source 'https://rubygems.org'
 ruby '2.2.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
+
 # Use sqlite3 as the database for Active Record
 # changing gem 'sqlite3' to gem 'pg' for Heroku
-gem 'pg'
+#gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -26,6 +27,9 @@ gem 'puma'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+
+gem 'ng-rails-csrf', :git => "git://github.com/xrd/ng-rails-csrf.git"
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks' #REMOVED TURBOLINKS
 # http://blog.steveklabnik.com/posts/2013-06-25-removing-turbolinks-from-rails-4
@@ -39,7 +43,7 @@ gem 'bcrypt', '~> 3.1.9'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-gem 'rails_12factor', group: :production
+#gem 'rails_12factor', group: :production
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'rails_serve_static_assets'
@@ -55,5 +59,12 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'sqlite3'
 end
+
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'
+end 
 

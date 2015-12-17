@@ -6,7 +6,10 @@
 		<p>The content is {{data.content}}</p>
 		<p>sessions query {{data.asdf}}</p>
 		<p>frogger query <%= latest_wk(@pickcharts) %> {{data.frog}}</p>
-		<p>TEST{{Pickchart.all}}</p>
+		<p>TEST {{user.id}}</p>
+		<tr ng-repeat="user in users">
+  			<td>{{user.id}}</td>
+		</tr>
 	</div>
 
 </div><br>

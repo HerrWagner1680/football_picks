@@ -4,6 +4,8 @@
  <%= link_to ("#{@current_user.user_name} make your picks"), "/admin/charts", method: :get, class: "admin_link_button" %>
 <%= link_to ("Create / Edit weekly chart"), "/admin/charts/new", method: :get, class: "admin_link_button" %> 
 <br>
+<%= current_user %>
+<%= latest_text %>
 <br>
 <h1>MASTER PICK LIST FOR WEEK <%= latest_wk(@pickcharts) %></h1>
 <div class="vis_admin boxxy"></div><div class="texty">VISITING</div>

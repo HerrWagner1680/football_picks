@@ -38,7 +38,7 @@
           <td class="game_text" pc=<%= "#{pickchart.id}"%>><button class="buttonGrey" pc=<%= "#{pickchart.id}"%> onclick=<%= "asdfasdf(#{ pickchart.id })"%> type="button">&nbsp;&nbsp;&nbsp;&nbsp;edit&nbsp;&nbsp;&nbsp;&nbsp;</button></td>
 			<td class="game_text" pc=<%= "#{pickchart.id}"%>><%= link_to(
           ("delete"),
-          "/admin/chart/#{ pickchart.id }",
+          admin_charts_path(:id => pickchart.id),
           method: :delete, data: {confirm: "Are you sure?"} ) %></td>
 		<!-- </div> -->
 			<!-- <td><%= f.submit %></td> -->
@@ -65,7 +65,7 @@
           <td class="game_form" pc=<%= "#{pickchart.id}"%>><%= button_to(("update"), url: admin_charts_path, _method: :patch, class: "buttonGrey", type: 'button') %></td>
 			<td class="game_form" pc=<%= "#{pickchart.id}"%>><%= link_to(
           ("delete"),
-          "/admin/chart/#{ pickchart.id }",
+          admin_charts_path(:id => pickchart.id),
           method: :delete, data: {confirm: "Are you sure?"} ) %></td>
         <% end %>
 		<!-- </div> -->
@@ -83,7 +83,7 @@
 <br>
 
 	<section id="new_pc">
-		<%= form_for Pickchart.new, url: admin_charts_path, method: :post do |f| %>
+		<%= form_for @pickchart, url: admin_charts_path, method: :post, remote: true do |f| %>
 		<div ng-controller="TypeaheadCtrl">
 		  <div class="chart wk"><%= f.text_field :week, :class => "t_field", :placeholder => '0'%></div>
 		  <!-- <div class="chart">xxxx</div> -->

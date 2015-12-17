@@ -3,27 +3,47 @@ class Admin::ChartsController < ApplicationController
   helper_method :latest_text
 
   def create
+    p 'charts create'
     @latest = Pickchart.maximum(:week)
     latest_text
     @pickchart = Pickchart.new(pickchart_params)
     if @pickchart.save
-      flash[:notice] = "Chart Created"
+      respond_to do |format|
+        format.html { redirect_to "/admin/charts/new" }
+        format.js { render "create.js.erb", :locals => {:id => params[Pickchart]} }# render charts/create.js.erb
+      end
     else 
-      flash[:alert] = @pickchart.errors.full_messages
+      flash[:alert] = @pickchart.errors.full_messages    
     end
+
+    # if @pickchart.save
+    #   flash[:notice] = "Chart Created"
+    # else 
+    #   flash[:alert] = @pickchart.errors.full_messages
+    # end
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
         redirect_to "/users"
     end
 
-    redirect_to "/admin/charts/new"
+    #redirect_to "/admin/charts/new"
   end
 
 #http://stackoverflow.com/questions/25582878/angularjs-post-data-to-rails-server-by-service
   def new
+    p 'charts new'
     #respond_with(Pickchart.all)
     @pickchart = Pickchart.new
     @pick = Pick.new
+
+    # respond_to do |format|
+    #   if @pickchart.save
+    #     format.html { redirect_to "/admin/charts/new/"}
+    #     format.js {}
+    #     format.json { render json: @pickchart, status: :created, location: @pickchart}
+    #   end
+    # end
+
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
         redirect_to "/users"
@@ -52,6 +72,7 @@ class Admin::ChartsController < ApplicationController
 
 #http://stackoverflow.com/questions/25582878/angularjs-post-data-to-rails-server-by-service
   def index
+    p 'charts index'
     #respond_with(Pickchart.all)
     current_user
     @user = User.all
@@ -88,6 +109,7 @@ class Admin::ChartsController < ApplicationController
   end
 
   def show
+    p 'charts show'
     current_user
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
@@ -106,6 +128,7 @@ class Admin::ChartsController < ApplicationController
   end
 
   def update
+    p 'charts update'
     @pickchart = Pickchart.find(params[:pickchart][:id])
     @latest = Pickchart.maximum(:week)
     latest_text

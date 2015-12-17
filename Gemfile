@@ -27,8 +27,8 @@ gem 'puma'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-
-gem 'ng-rails-csrf', :git => "git://github.com/xrd/ng-rails-csrf.git"
+gem 'lodash-rails'
+# also using npm to install Restangular
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks' #REMOVED TURBOLINKS

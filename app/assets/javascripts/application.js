@@ -15,40 +15,111 @@
 //= require angular
 //= require angular-resource
 //= require angular-route
+//= require lodash
 
 // REMOVED TURBOLINKS
 //= require admin
 //= require_tree .
 
+var token = $("meta[name='_csrf']").attr("content");
+var header = $("meta[name='_csrf_header']").attr("content");
 
-
-app = angular.module('app',['ngResource', 'ngRoute'
+app = angular.module('app',['ngResource', 'ngRoute', 'restangular'
 ]) // injecting ngResource into module
 
-app.config(['$resourceProvider', function($resourceProvider) {
-  // Don't strip trailing slashes from calculated URLs
-  $resourceProvider.defaults.stripTrailingSlashes = false;
+.config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.defaults.headers.common[header] = token;
 }])
+// app.config(['$resourceProvider', function($resourceProvider) {
+//   // Don't strip trailing slashes from calculated URLs
+//   $resourceProvider.defaults.stripTrailingSlashes = false;
+// }])
 
 
-.controller('FirstCtrl', function($scope, $log, $http, $resource, Secure) {
-    $scope.data = {id: "234", content: "Hello", asdf: "yes"};
-    $scope.data.frog = Secure;
+.controller('FirstCtrl', function($scope, $log, $http, $resource, Restangular, Secure) {
+    $scope.data = {id: "234", content: "Hello", asdf: "yesss"};
+    //$scope.items = Restangular.restangularizeCollection(null, users, 'users');
+    //$log.info($scope.items);
+ 
+    $http({
+    url: "http://localhost:3000/users",
+    method: "GET",
+    //params: {orderBy: id}
+    }).success(function(data, headers, current_user, latest_text)
+    {
+        $log.info("sdfsdfsdfs");
+        //$log.info(data);
+        $log.info(headers);
+        $log.info(latest_text);
+        $log.info(current_user)
+    })
+    Restangular.one('users', '').get().then(function(users){
+        //$scope.accounts = Restangular.all('accounts').getList().$object;
+        $scope.users = users;
+        //$log.info(users.headers)
+        //  var userWithId = _.find(users, function(user) {
+        //   return user.id === 1;
+        //   $log.info("werwer");
+        // });
+        //$log.info($("td").filter('.zedpick')[0]);
+        $log.info($scope.users);
+    });
+    
+
+
+   // var baseUsers = Restangular.all('users').getList()
+   // .then(function(response){ yoyo = response.data });
+  //  $log.info(baseUsers);
+    //$log.info("yoyo " + yoyo);
+
+    // This will query /accounts and return a promise.
+  //  baseUsers.getList().setListTypeIsArray(false).then(function(users) {
+  //    $scope.allUsers.setListTypeIsArray(false) = user;
+  //    $log.info("all users " + $scope.allUsers);
+  //  });
+
+  //  $scope.users = Restangular.all('users').getList().$object;
+    // Restangular returns promises
+ //   $log.info($scope.users);
+    // Restangular.all('users').customGet()  // GET: /users
+    // .then(function(users) {
+    //   $log.info(user.customGet('user_name'));
+    //   // returns a list of users
+    //   $scope.user = user[0]; // first Restangular obj in list: { id: 123 }
+    //   $scope.data.frog = user.customGet('user_name')
+    // })
 
 })
 
 
 
 
-app.factory("Secure", function($resource, $http, $log) {
 
-  return $http.get("http://fantasy-sports.dev/admin/chart").success(function(data){
-  $log.info(data);
-  var inout = $(data).filter('.loginout');
-  $log.info(inout.html());
+
+app.factory("Secure", function($resource, $http, $log, Restangular) {
+
+  return Restangular.all('users')
+  //return $http.get("http://localhost:3000/admin/charts").success(function(data){
+  //$http.defaults.headers.post['My-Header']='value';
+  var csrf_stuff = $(data).filter('meta');
+  $log.info("csrf-token: " + csrf_stuff[1].content); //this displays csrf-token in meta tag
+  $log.info(Restangular.all('users'));
+  //var inout = $(data).filter('.loginout');
+  //$log.info(inout.html());
   });
 
-});
+
+
+
+// angular.module('cookiesExample', ['ngCookies'])
+// .controller('ExampleController', ['$cookies', function($cookies) {
+//   // Retrieving a cookie
+//   var favoriteCookie = $cookies.get('_fantasy_sports_session');
+//   // Setting a cookie
+//   $log.info(favoriteCookie);
+//   //$cookies.put('myFavorite', 'oatmeal');
+// }]);
+
 
 
 // setup controller and pass data source

@@ -1,0 +1,26 @@
+{
+  "name": "football_picks",
+  "version": "1.0.0",
+  "description": "Football Picks",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HerrWagner1680/football_picks.git"
+  },
+  "keywords": [
+    "football",
+    "picks"
+  ],
+  "author": "HerrWagner1680",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HerrWagner1680/football_picks/issues"
+  },
+  "homepage": "https://github.com/HerrWagner1680/football_picks#readme"
+}

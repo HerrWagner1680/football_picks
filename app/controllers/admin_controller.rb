@@ -12,6 +12,11 @@ class AdminController < ApplicationController
     p @archive_week.values[0]
     @archive_week = @archive_week.values[0]
 
+    respond_to do |format|
+      format.html { redirect_to "/admin/charts/new" }
+      format.js # render charts/create.js.erb
+    end
+
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
         redirect_to "/users"
@@ -100,6 +105,7 @@ class AdminController < ApplicationController
 
   def show
     current_user
+    latest_text
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
         redirect_to "/users"

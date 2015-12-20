@@ -33,6 +33,7 @@ class Admin::ChartsController < ApplicationController
   def new
     p 'charts new'
     #respond_with(Pickchart.all)
+
     @pickchart = Pickchart.new
     @pick = Pick.new
 
@@ -58,7 +59,15 @@ class Admin::ChartsController < ApplicationController
 
   def destroy
     @pc = Pickchart.find(params[:id])
-    @pc.destroy
+
+    if @pc.destroy
+      respond_to do |format|
+        format.html { redirect_to "/admin/charts/new" }
+        format.js { render "destroy.js.erb", :locals => {:id => @pc.id} }# render charts/create.js.erb
+      end
+    else 
+      flash[:alert] = @pc.errors.full_messages    
+    end
     #@pickcharts = Pickchart.all
     #@latest = Pickchart.maximum(:week)
     #@latest_charts = Pickchart.where(week: @latest)
@@ -67,7 +76,7 @@ class Admin::ChartsController < ApplicationController
     if @current_user.admin == false or @current_user.admin == nil
         redirect_to "/users"
     end
-    redirect_to "/admin/charts/new"
+    #redirect_to "/admin/charts/new"
   end
 
 #http://stackoverflow.com/questions/25582878/angularjs-post-data-to-rails-server-by-service
@@ -132,13 +141,22 @@ class Admin::ChartsController < ApplicationController
     @pickchart = Pickchart.find(params[:pickchart][:id])
     @latest = Pickchart.maximum(:week)
     latest_text
+
     if @pickchart.update(pickchart_params)
-      flash[:notice] = "Game listing updated"
-      redirect_to "/admin/charts/new"
-    else
-      flash[:alert] = @pickchart.errors.full_messages
-      redirect_to "/admin/charts/new"
+      respond_to do |format|
+        format.html { redirect_to "/admin/charts/new" }
+        format.js { render "update.js.erb" }# render charts/update.js.erb
+      end
+    else 
+      flash[:alert] = @pc.errors.full_messages    
     end
+    # if @pickchart.update(pickchart_params)
+    #   flash[:notice] = "Game listing updated"
+    #   redirect_to "/admin/charts/new"
+    # else
+    #   flash[:alert] = @pickchart.errors.full_messages
+    #   redirect_to "/admin/charts/new"
+    # end
   end
 
   private

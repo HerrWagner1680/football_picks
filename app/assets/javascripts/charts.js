@@ -76,7 +76,26 @@ function asdfasdf(f) {
     $(".buttonGrey[pc="+f+"]").css('color', 'rgb(51, 51, 51)')
     $('.buttonGrey[pc='+f+']').html("&nbsp;&nbsp;&nbsp;&nbsp;edit&nbsp;&nbsp;&nbsp;&nbsp;")
     $('.game_form[pc='+f+']').css('display', 'none') 
-    $('.game_text[pc='+f+']').css('display', 'table-cell') 
+    $('.game_text[pc='+f+']').css('display', 'table-cell')
+    updateText(f); 
   } else {  alert("The Toggler is askew")}
   count = count + 1;
+};
+
+function updateText(f) {
+    console.log("YES YOU HIT UPDATE TEXT")
+    console.log("the pc number is " + f)
+    //console.log($('.tr_row_' + f + ' .vt input').val())
+    var _wk = $('.tr_row_' + f + ' .wk input').val()
+    var _vt = $('.tr_row_' + f + ' .vt input').eq(1).val()
+    var _vr = $('.tr_row_' + f + ' .vr input').val()
+    var _ht = $('.tr_row_' + f + ' .ht input').eq(1).val()
+    var _hr = $('.tr_row_' + f + ' .hr input').val()
+    var _gt = $('.tr_row_' + f + ' .gt input').val()
+    $('.tr_row_' + f + ' .wk').text(_wk)
+    $('.tr_row_' + f + ' .vt').eq(0).text(_vt)
+    $('.tr_row_' + f + ' .vr').text(_vr)
+    $('.tr_row_' + f + ' .ht').eq(0).text(_ht)
+    $('.tr_row_' + f + ' .hr').text(_hr)
+    $('.tr_row_' + f + ' .gt').text(_gt)
 };

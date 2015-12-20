@@ -21,8 +21,8 @@
 <%= form_for Pickchart.new, url: admin_charts_path, method: :post do |f| %>
 		<% @latest_charts.each do |pickchart| %>
 
-
-		<tr>
+<% if false %>
+		<tr class="tr_row_<%="#{pickchart.id}"%>" pc=<%= "#{pickchart.id}"%>>
 		<!-- <div class="pick_div"> -->
 		<!--	<td><%= current_user.id %></td> -->
 			<td class="week_table game_text" pc=<%= "#{pickchart.id}"%>><%= pickchart.week %></td>
@@ -39,13 +39,13 @@
 			<td class="game_text" pc=<%= "#{pickchart.id}"%>><%= link_to(
           ("delete"),
           admin_charts_path(:id => pickchart.id),
-          method: :delete, data: {confirm: "Are you sure?"} ) %></td>
+          method: :delete, data: {confirm: "Are you sure?", remote: true} ) %></td>
 		<!-- </div> -->
 			<!-- <td><%= f.submit %></td> -->
 		</tr>
 
 
-		<tr>
+		<tr class="tr_row_<%="#{pickchart.id}"%>" pc=<%= "#{pickchart.id}"%>>
 		<!-- <div class="pick_div"> -->
 		<!--	<td><%= current_user.id %></td> -->
 		<%= form_for Pickchart.find(pickchart.id), url: admin_charts_path, method: :patch do |f| %>
@@ -66,11 +66,16 @@
 			<td class="game_form" pc=<%= "#{pickchart.id}"%>><%= link_to(
           ("delete"),
           admin_charts_path(:id => pickchart.id),
-          method: :delete, data: {confirm: "Are you sure?"} ) %></td>
+          method: :delete, data: {confirm: "Are you sure?", remote: true} ) %></td>
         <% end %>
 		<!-- </div> -->
 			<!-- <td><%= f.submit %></td> -->
 		</tr>
+<% end %>
+
+<%= render partial: "save", locals: {pickchart: pickchart, pcfind: Pickchart.find(pickchart.id)} %>
+
+
 <% end %> <!-- end of pickcharts each loop -->
 
 <% end %> <!-- end of the form -->	
@@ -101,4 +106,4 @@
 <br>
 <br>
 <br>
-
+<div id="pc_2b_deleted" class="hide"></div> <!-- destroy js reads pickchart deletion info here -->

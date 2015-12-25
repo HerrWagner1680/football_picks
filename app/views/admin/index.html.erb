@@ -1,5 +1,5 @@
 <%= javascript_include_tag "admin" %>
-
+<%= link_to ("WINS"), "/admin/wins", method: :get %>
  <%= link_to ("Create New User"), "/admin/new",method: :get %>
  <%= link_to ("#{@current_user.user_name} make your picks"), "/admin/charts", method: :get, class: "admin_link_button" %>
 <%= link_to ("Create / Edit weekly chart"), "/admin/charts/new", method: :get, class: "admin_link_button" %> 

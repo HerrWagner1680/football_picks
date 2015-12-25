@@ -136,6 +136,9 @@ class Admin::ChartsController < ApplicationController
     @earliest = Pickchart.minimum(:week)
   end
 
+  def standing
+  end
+
   def update
     p 'charts update'
     @pickchart = Pickchart.find(params[:pickchart][:id])
@@ -157,6 +160,9 @@ class Admin::ChartsController < ApplicationController
     #   flash[:alert] = @pickchart.errors.full_messages
     #   redirect_to "/admin/charts/new"
     # end
+  end
+
+  def wins
   end
 
   private

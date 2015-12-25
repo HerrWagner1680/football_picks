@@ -9,9 +9,14 @@ Rails.application.routes.draw do
 
   namespace :admin do  
     resource :charts
+    resources :standing, only: [:index, :show]
+    resources :wins, only: [:index, :show]
   end
   #below example of route
   #patch "admin/usersupdate" => "admin#usersupdate", :as => "admin/usersupdate"
+  #get 'admin/standing', :to => 'admin/#standing' 
+  #get 'admin/wins', :to => 'admin/#wins'
+
 
   resources :admin
   resources :users

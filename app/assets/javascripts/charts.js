@@ -83,8 +83,8 @@ function asdfasdf(f) {
 };
 
 function updateText(f) {
-    console.log("YES YOU HIT UPDATE TEXT")
-    console.log("the pc number is " + f)
+    //console.log("YES YOU HIT UPDATE TEXT")
+    //console.log("the pc number is " + f)
     //console.log($('.tr_row_' + f + ' .vt input').val())
     var _wk = $('.tr_row_' + f + ' .wk input').eq(0).val()
     var _vt = $('.tr_row_' + f + ' .vt input').eq(1).val()

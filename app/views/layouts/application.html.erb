@@ -30,6 +30,7 @@
 	 	<% if @current_user %>
 	           <div class="loginout">
 	        <%= link_to ("LOGOUT"), "/sessions",method: :delete %>
+	        <%= link_to ("STANDINGS"), "/admin/standing", method: :get %>
 	      		</div>
 		      </br>
 		     <h3>Welcome, <%= @current_user.user_name %>!</h3>

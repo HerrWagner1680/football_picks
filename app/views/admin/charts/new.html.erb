@@ -3,6 +3,11 @@
 <h3>NOTE - Only the newest week (highest week number) is accessible to users.</h3>
 <h5>Week numbers 18, 19, and 20 should be used instead of Wild Card 1, Wild Card 2, and Championship -- since the program searches for a number</h5>
 
+<p>list of unique week numbers <%= Pickchart.uniq.pluck(:week) %></p>
+<%= link_to ("UPDATING WINS"), "/admin/wins", method: :get %>
+
+
+
 <br>
 <h1> ADD TO TEMPLATE CHART FOR WEEK <%= latest_wk(@pickcharts) %> </h1>
 <% if @latest_charts %>

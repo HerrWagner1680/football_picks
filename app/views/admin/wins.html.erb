@@ -1,0 +1,42 @@
+<h4>WINS.HTML.ERB</h4>
+
+UPDATE THE WINS - THIS WILL BE ADDED TO PICKCHART
+<h1> ADD TO TEMPLATE CHART FOR WEEK <%= latest_wk(@pickcharts) %> </h1>
+<% if @latest_charts %>
+	<table class="new_chart">
+		<tr>
+		<!--	<td>USER ID</td>  -->
+			<td>Week</td>
+			<td>Visitor</td>
+			<td>Vis Record</td>
+			<td class="pick_hide">............. </td>
+			<td>Home</td>
+			<td>H Record</td>
+			<td>Game Time</td>
+		</tr>
+
+<%= form_for Pickchart.new, url: admin_charts_path, method: :post do |f| %>
+		<% @latest_charts.each do |pickchart| %>
+
+		<tr class="tr_row_<%="#{pickchart.id}"%>" pc=<%= "#{pickchart.id}"%>>
+		<!-- <div class="pick_div"> -->
+		<!--	<td><%= current_user.id %></td> -->
+			<td class="week_table game_text" pc=<%= "#{pickchart.id}"%>><%= pickchart.week %></td>
+		<!-- remember remove pickchart id later -->
+			<td class="vis team_table game_text" pc=<%= "#{pickchart.id}"%>><input type="radio" onclick="highLight(this)" value="visit" name=<%="picks[]#{pickchart.id}"%> disabled="true" ><%= pickchart.vteam %></td>
+			<td class="record game_text" pc=<%= "#{pickchart.id}"%>><%= pickchart.vt_rec %></td>
+			<td class="pick_hide">.... at ....</td>
+			<td class="hom team_table game_text" pc=<%= "#{pickchart.id}"%>><input type="radio" onclick="highLight(this)" value="home" name=<%= "picks[]#{pickchart.id}"%> disabled="true"><%= pickchart.hteam %></td>
+			<td class="record game_text" pc=<%= "#{pickchart.id}"%>><%= pickchart.ht_rec %></td>
+			<td class="gtime_table game_text" pc=<%= "#{pickchart.id}"%>><%= pickchart.gametime %></td>
+
+
+          <td class="game_text" pc=<%= "#{pickchart.id}"%>><button class="buttonGrey" pc=<%= "#{pickchart.id}"%> onclick=<%= "asdfasdf(#{ pickchart.id })"%> type="button">&nbsp;&nbsp;&nbsp;&nbsp;edit&nbsp;&nbsp;&nbsp;&nbsp;</button></td>
+			<td class="game_text" pc=<%= "#{pickchart.id}"%>><%= link_to(
+          ("delete"),
+          admin_charts_path(:id => pickchart.id),
+          method: :delete, data: {confirm: "Are you sure?", remote: true} ) %></td>
+		<!-- </div> -->
+			<!-- <td><%= f.submit %></td> -->
+		</tr>
+<% end %>

@@ -42,7 +42,7 @@ app = angular.module('app',['ngResource', 'ngRoute', 'restangular'
     //$log.info($scope.items);
  
     $http({
-    url: "http://localhost:3000/users",
+    url: "http://www.fftoday.com/nfl/schedule.php?o=1&Week=12",
     method: "GET",
     //params: {orderBy: id}
     }).success(function(data, headers, current_user, latest_text)

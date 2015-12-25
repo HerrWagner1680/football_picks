@@ -112,6 +112,11 @@ class AdminController < ApplicationController
     end
   end
 
+  def standing
+  end
+
+  def wins
+  end
 
   #private
 

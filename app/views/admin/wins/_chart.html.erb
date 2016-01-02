@@ -1,0 +1,47 @@
+ABILITY TO VIEW PAST WINNERS
+OR ADJUST/EDIT WINS?
+
+
+<% if pickcharts %>
+	<table class="new_chart_picks">
+		<tr>
+		<!--	<td>USER ID</td>  -->
+			<td>Week</td>
+			<td>Visitor</td>
+			<td>............. </td>
+			<td>Home</td>
+			<td>Game Time</td>
+			<td>WINNER</td>
+		</tr>
+
+<%= form_for Pick.new, url: picks_path, method: :post do |f| %>
+		<% pickcharts.each do |pickchart| %>
+
+
+		<tr>
+		<!-- <div class="pick_div"> -->
+		<!--	<td><%= current_user.id %></td> -->
+			<td><%= pickchart.week %></td>
+		<!-- remember remove pickchart id later -->
+			<td class="vis"><input type="radio" onclick="highLight(this)" value="visit" name=<%="picks[]#{pickchart.id}"%>><%= pickchart.vteam %></td>
+			<td>.... vs ....</td>
+			<td class="hom"><input type="radio" onclick="highLight(this)" value="home" name=<%= "picks[]#{pickchart.id}"%>><%= pickchart.hteam %></td>
+			<td><%= pickchart.gametime %></td>
+			<td class="win"></td>
+			<!-- <td>edit / delete</td> -->
+		<!-- </div> -->
+			<!-- <td><%= f.submit %></td> -->
+		</tr>
+<% end %> <!-- end of pickcharts each loop -->
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>		
+		<td><%= f.submit "SAVE", id: 'link_button'%></td>
+<% end %> <!-- end of the form -->	
+
+	</table>
+
+<% end %> <!-- end of the if pickcharts -->

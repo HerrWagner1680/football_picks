@@ -1,2 +1,19 @@
 <h2>WINS - INDEX</h2>
 <%= link_to ("BACK TO ADMIN HOME"), "/admin", method: :get %>
+<h1> SELECT WHICH TEAMS WON THE GAME, BELOW</h1>
+<h2>NOTE - THESE are NOT picks. These are the winners</h2>
+
+user a system similar looking to picks,
+but only see the team names and week number
+NO STATS.
+
+<br>
+<br>
+<h3>click on circle next to the team to make your picks</h3>
+<h5>Hit SAVE before leaving, or else you will lose your new selections</h5>
+<br>
+<h2 class="center">WEEK <%= latest_wk(@pickcharts) %> (LATEST)</h2>
+<%= render partial: "chart", locals: {pickcharts: @latest_charts} %>
+
+<br>
+<br>

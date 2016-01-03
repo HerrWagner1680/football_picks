@@ -12,6 +12,7 @@
 			<td>Rec</td>
 			<td> </td>
 			<td>Game Time</td>
+			<td>Winner</td>
 		</tr>
 
 		<% pickcharts.each do |pickchart| %>
@@ -31,6 +32,7 @@
 			<td><%= pickchart.ht_rec %></td>
 			<td class="h_checkbox"> ... </td>
 			<td><%= pickchart.gametime %></td>
+			<td class="oc_winner"><%= pickchart.winner %></td>
 		<!-- </div> -->
 		</tr>
 

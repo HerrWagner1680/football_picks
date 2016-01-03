@@ -15,6 +15,15 @@ class Admin::ChartsController < ApplicationController
     else 
       flash[:alert] = @pickchart.errors.full_messages    
     end
+    @number_of_wins.times do |i|
+ #       @standing = Standing.new(user_id: current_user.id, pickchart_id: @pick_keys[i], user_pick: @pick_values[i])
+    @standing = Standing.new
+          if @standing.save! 
+            flash[:notice] = "Standing Created"
+          else
+            flash[:alert] = @standing.errors.full_messages   
+          end
+    end
 
     # if @pickchart.save
     #   flash[:notice] = "Chart Created"
@@ -132,7 +141,9 @@ class Admin::ChartsController < ApplicationController
     @latest = Pickchart.maximum(:week)
     #latest_text
     @latest_charttees = Pickchart.where(week: @latest)
-    @latest_charts = @latest_charttees.order('id')
+    @latest_chart = @latest_charttees.order('id')
+    @latest_charts = @latest_chart.where(winner: nil)
+    @latest_charts_over = @latest_chart.where.not(winner: nil)
     @earliest = Pickchart.minimum(:week)
   end
 
@@ -141,18 +152,37 @@ class Admin::ChartsController < ApplicationController
 
   def update
     p 'charts update'
-    @pickchart = Pickchart.find(params[:pickchart][:id])
-    @latest = Pickchart.maximum(:week)
-    latest_text
+    @number_of_wins = params[:pickchart][0].length
+    @win_values = params[:pickchart][0].values
+    @win_keys = params[:pickchart][0].keys
+    p "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
-    if @pickchart.update(pickchart_params)
-      respond_to do |format|
-        format.html { redirect_to "/admin/charts/new" }
-        format.js { render "update.js.erb" }# render charts/update.js.erb
+    p @number_of_wins
+    p @win_values
+    p @win_keys
+
+    @number_of_wins.times do |i|
+      p @win_keys[i].to_i
+      p @win_values[i]
+      @winner = @win_values[i]
+      p "WINNER below"
+      p @winner
+      @param_id = @win_keys[i].to_i
+      @win_id = Pickchart.find(@param_id)
+      if @winner === "clear"
+        Pickchart.update(@param_id, {winner: nil})
+      else
+        Pickchart.update(@param_id, {winner: @winner})
       end
-    else 
-      flash[:alert] = @pc.errors.full_messages    
+
+    #@pickchart = Pickchart.update(pickchart_params)
+         # if @standing.update! 
+         #   flash[:notice] = "Winner updated"
+         # else
+         #   flash[:alert] = @standing.errors.full_messages   
+         # end
     end
+    redirect_to "/admin/wins"
     # if @pickchart.update(pickchart_params)
     #   flash[:notice] = "Game listing updated"
     #   redirect_to "/admin/charts/new"

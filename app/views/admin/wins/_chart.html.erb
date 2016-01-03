@@ -1,5 +1,6 @@
-ABILITY TO VIEW PAST WINNERS
+<h4>ABILITY TO VIEW PAST WINNERS
 OR ADJUST/EDIT WINS?
+WINNER LIST WILL ONLY BE UPDATABLE AS LONG AS ITS THE LATEST WK, before a new week added to game list</h4>
 
 
 <% if pickcharts %>
@@ -12,9 +13,10 @@ OR ADJUST/EDIT WINS?
 			<td>Home</td>
 			<td>Game Time</td>
 			<td>WINNER</td>
+			<td>clear win from database</td>
 		</tr>
 
-<%= form_for Pick.new, url: picks_path, method: :post do |f| %>
+<%= form_for Pickchart.new, url: admin_charts_path, method: :patch do |f| %>
 		<% pickcharts.each do |pickchart| %>
 
 
@@ -23,11 +25,12 @@ OR ADJUST/EDIT WINS?
 		<!--	<td><%= current_user.id %></td> -->
 			<td><%= pickchart.week %></td>
 		<!-- remember remove pickchart id later -->
-			<td class="vis"><input type="radio" onclick="highLight(this)" value="visit" name=<%="picks[]#{pickchart.id}"%>><%= pickchart.vteam %></td>
+			<td class="vis"><input type="radio" onclick="highLight(this)" value="visit" name=<%="pickchart[]#{pickchart.id}"%>><%= pickchart.vteam %></td>
 			<td>.... vs ....</td>
-			<td class="hom"><input type="radio" onclick="highLight(this)" value="home" name=<%= "picks[]#{pickchart.id}"%>><%= pickchart.hteam %></td>
+			<td class="hom"><input type="radio" onclick="highLight(this)" value="home" name=<%= "pickchart[]#{pickchart.id}"%>><%= pickchart.hteam %></td>
 			<td><%= pickchart.gametime %></td>
-			<td class="win"></td>
+			<td name=<%= "pickchart[]#{pickchart.winner}"%>  class="win"></td>
+			<td class="clear"><input type="radio" onclick="highLight(this)" value="clear" name=<%= "pickchart[]#{pickchart.id}"%>>REMOVE WIN FROM DB</td>
 			<!-- <td>edit / delete</td> -->
 		<!-- </div> -->
 			<!-- <td><%= f.submit %></td> -->

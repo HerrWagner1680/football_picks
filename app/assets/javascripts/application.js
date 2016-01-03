@@ -167,22 +167,78 @@ oldchartPicks = function(){
   for (var i=0; i < old_ch_num; i++){
     var current_pick = $(".hidden")[i].innerHTML
 
-    if (current_pick === "visit") {
-      $(".v_checkbox")[i].innerHTML = "&#10003";
-      $(".h_checkbox")[i].innerHTML = "...";
-      $(".v_pick")[i].style.textDecoration = "underline";
-      $(".v_checkbox")[i].style.color = "#222";
-      $(".v_pick")[i].style.color = "#222";
+    var the_win = $('.oc_winner')[i].innerHTML
+
+    console.log("the win " + the_win)
+
+    if (current_pick === "visit" && the_win === "visit") {
+      //$(".oc_winner")[i].innerHTML = "sdfsdfs";
+      $(".v_checkbox").eq(i).html("&#10003");
+      $(".h_checkbox").eq(i).html("...");
+      $(".v_pick").eq(i).css('text-decoration', 'underline');
+      $(".v_checkbox")[i].style.color = "#006633"; //green
+      $(".v_pick")[i].style.color = "#006633"; //green
+      $(".oc_winner").eq(i).html("visitor");
+      //$(".oc_winner")[i].style.backgroundColor = "#b2d8b2";
+      $(".h_checkbox").eq(i).parent().css("background-color", "#b2d8b2");
+
+      //$(".v_checkbox")[i].style.color = "#222";
+      //$(".v_pick")[i].style.color = "#222";
       // REM adding the underline
-    } else if (current_pick === "home") {
-      $(".v_checkbox")[i].innerHTML = "...";
-      $(".h_checkbox")[i].innerHTML = "&#10003";
-      $(".h_pick")[i].style.textDecoration = "underline";
+    } else if (current_pick === "visit" && the_win === "home") {
+      $(".v_checkbox").eq(i).html("&#10003");
+      $(".h_checkbox").eq(i).html("...");
+      $(".v_pick").eq(i).css('text-decoration', 'underline');
+      $(".v_checkbox")[i].style.color = "red"; //red
+      $(".v_pick")[i].style.color = "red"; //red
+      //$(".oc_winner")[i].style.backgroundColor = "#ffb2b2";
+      $(".h_checkbox").eq(i).parent().css("background-color", "#ffcccc");
+      //$(".v_checkbox")[i].style.color = "#222";
+      //$(".v_pick")[i].style.color = "#222";
+      // REM adding the underline
+     } else if (current_pick === "visit" && the_win === "") {
+        $(".v_checkbox").eq(i).html("&#10003");
+        $(".h_checkbox").eq(i).html("...");
+        $(".v_pick").eq(i).css('text-decoration', 'underline');
+
+        $(".v_checkbox")[i].style.color = "#222";
+        $(".v_pick")[i].style.color = "#222";
+        // REM adding the underline
+
+
+    } else if (current_pick === "home" && the_win === "visit") {
+      //$(".oc_winner")[i].innerHTML = "sdfsdf";
+      $(".v_checkbox").eq(i).html("...");
+      $(".h_checkbox").eq(i).html("&#10003");
+      $(".h_pick").eq(i).css('text-decoration', 'underline');
+      $(".h_checkbox")[i].style.color = "red"; //red
+      $(".h_pick")[i].style.color = "red"; //red
+      $(".oc_winner").eq(i).html("visitor");
+      //$(".oc_winner")[i].style.backgroundColor = "#ffb2b2";
+      $(".h_checkbox").eq(i).parent().css("background-color", "#ffcccc");
+
+      //$(".h_checkbox")[i].style.color = "#222";
+      //$(".h_pick")[i].style.color = "#222";
+    } else if (current_pick === "home" && the_win === "home") {
+      $(".v_checkbox").eq(i).html("...");
+      $(".h_checkbox").eq(i).html("&#10003");
+      $(".h_pick").eq(i).css('text-decoration', 'underline');
+      $(".h_checkbox")[i].style.color = "#006633"; //green
+      $(".h_pick")[i].style.color = "#006633"; //green
+      //$(".oc_winner")[i].style.backgroundColor = "#b2d8b2";
+      $(".h_checkbox").eq(i).parent().css("background-color", "#b2d8b2");
+
+    } else if (current_pick === "home" && the_win === "") {
+      $(".v_checkbox").eq(i).html("...");
+      $(".h_checkbox").eq(i).html("&#10003");
+      $(".h_pick").eq(i).css('text-decoration', 'underline');
+
       $(".h_checkbox")[i].style.color = "#222";
       $(".h_pick")[i].style.color = "#222";
+
     } else {
-      $(".v_checkbox")[i].innerHTML = "...";
-      $(".h_checkbox")[i].innerHTML = "...";
+      $(".v_checkbox").eq(i).innerHTML = "...";
+      $(".h_checkbox").eq(i).innerHTML = "...";
     }
 
   }
@@ -223,13 +279,16 @@ highLight = function(obj){
     if (obj.value === "visit") {
       winner_column.style.backgroundColor = "blue";
       winner_column.style.color = "white";
+      winner_column.innerHTML = obj.parentNode.textContent
     }
     else if (obj.value === "home"){
       winner_column.style.backgroundColor = "green";
       winner_column.style.color = "white";
+      winner_column.innerHTML = obj.parentNode.textContent
     }
-
-  winner_column.innerHTML = obj.parentNode.textContent
+    else {
+      winner_column.innerHTML = "NULL"
+    }
  
 
   //document.getElementsByName(radio_chart_id)[0].parentNode.nextSibling.nextSibling.style.backgroundColor = "#A1EFB4"

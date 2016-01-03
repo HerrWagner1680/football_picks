@@ -30,9 +30,10 @@ This is the show page in the chart thingee
 <br>
 <br>
 
-
-<h4 class="dim">PREVIOUS WEEK - WEEK <%= prev_wk(@pickcharts) %></h4>
+<!--<h3>SHOW HTML ERB</h3> -->
+<!--<h4 class="dim">PREVIOUS WEEK - WEEK <%= prev_wk(@pickcharts) %></h4> -->
+<h4 class="dim">WINS AND LOSSES FROM LATEST WK - WEEK <%= latest_wk(@pickcharts) %></h4>
 
 <!-- IF prevwk exists, then render -->
-	<%= render partial: "oldchart", locals: {pickcharts: Pickchart.where(week: prev_wk(@pickcharts)), current_user: current_user, picks: Pick.where(user_id: current_user)} %>
+	<%= render partial: "oldchart", locals: {pickcharts: @latest_charts_over, current_user: current_user, picks: Pick.where(user_id: current_user)} %>
 <!--- end of if prevwk exists -->

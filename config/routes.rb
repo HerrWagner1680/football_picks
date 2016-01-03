@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   namespace :admin do  
     resource :charts
-    resources :standing, only: [:index, :show]
+    resources :standing, only: [:index, :show, :create, :update, :new]
     resources :wins, only: [:index, :show]
   end
   #below example of route

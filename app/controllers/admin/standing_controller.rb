@@ -1,5 +1,29 @@
 class Admin::StandingController < ApplicationController
 
+  def create
+    @number_of_wins = params[:picks][0].length
+    @win_values = params[:picks][0].values
+    @win_keys = params[:picks][0].keys
+    p "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    p params[:picks]
+    p params[:picks][0]
+    p params[:standing][0]
+    @number_of_wins.times do |i|
+ #       @standing = Standing.new(user_id: current_user.id, pickchart_id: @pick_keys[i], user_pick: @pick_values[i])
+    @standing = Standing.new
+          if @standing.save! 
+            flash[:notice] = "Standing Created"
+          else
+            flash[:alert] = @standing.errors.full_messages   
+          end
+    end
+    @current_user = User.find(session[:user_id])
+    if @current_user.admin == true
+        redirect_to "/admin"
+    else
+        redirect_to "/users"
+    end
+  end
 
   def index
     current_user
@@ -19,10 +43,14 @@ class Admin::StandingController < ApplicationController
     end
   end
 
+  def new
+  end
+
   def show
   end
 
-
+  def update
+  end
 
   private
 

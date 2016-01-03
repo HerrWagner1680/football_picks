@@ -1,4 +1,8 @@
-<% if pickcharts %>
+<% if pickcharts.count === 0 %>
+	<h1>NO GAMES POSTED -- TRY AGAIN LATER</h1>
+<% end %>
+
+<% if pickcharts.count > 0 %>
 	<table class="new_chart_picks">
 		<tr>
 		<!--	<td>USER ID</td>  -->

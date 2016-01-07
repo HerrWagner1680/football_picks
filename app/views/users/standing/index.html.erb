@@ -1,0 +1,8 @@
+<h1>USERS STANDING INDEX</h1>
+<h2> users / standing / </h2>
+<%= link_to ("USER HOME"), "/users", method: :get %>
+
+<h3> rem users / standing /:id as possibility - SHOW</h3>
+<h4> index should list standings of all players</h4>
+
+	<%= render partial: "standings_old_picks", locals: {pickcharts: @latest_charts, picks: @picks} %>

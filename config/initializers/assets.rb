@@ -13,3 +13,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( admin.js )
 Rails.application.config.assets.precompile += %w( charts.css )
 Rails.application.config.assets.precompile += %w( charts.js )
+Rails.application.config.assets.precompile += %w( standing.css )

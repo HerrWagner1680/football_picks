@@ -7,7 +7,7 @@ class Admin::StandingController < ApplicationController
     p "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     p params[:picks]
     p params[:picks][0]
-    p params[:standing][0]
+    p params[:standing]
     @number_of_wins.times do |i|
  #       @standing = Standing.new(user_id: current_user.id, pickchart_id: @pick_keys[i], user_pick: @pick_values[i])
     @standing = Standing.new
@@ -36,6 +36,10 @@ class Admin::StandingController < ApplicationController
     @latest_charttees = Pickchart.where(week: @latest)
     @latest_charts = @latest_charttees.order('id')
     @earliest = Pickchart.minimum(:week)
+
+    @standings = Standing.order('week').all
+    @standings = @standings.order('user_id')
+    @standing_users = @standings.pluck(:user_id).uniq
 
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil

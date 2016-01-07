@@ -1,3 +1,163 @@
+<%= stylesheet_link_tag  "standing" %>
+
 <h2>STANDING - INDEX</h2>
 <%= link_to ("BACK TO ADMIN HOME"), "/admin", method: :get %>
 <%= link_to ("WINS"), "/admin/wins", method: :get %>
+<br>
+<h2>scroll chart to see other weeks</h2>
+<%= name_wk(19) %><%= week_wo_week(3) %>
+
+
+
+
+	<% if @standings %>
+<br>
+<div id="horiz_overflow_standing">
+
+
+		<section>
+
+		<% @standing_users.each do |standing_user| %>
+			<article class="standing_header">
+				<div class="standing_name"><h3><%= name_of_user(standing_user) %></h3></div>
+
+				<div class="standing_winloss">
+					<span class="span_winloss">win</span>
+					<span class="span_winloss gray">..week..</span>
+					<span class="span_winloss">loss</span>
+				</div>
+			</article>
+		<% end %>
+
+
+		<div id="vert_overflow">
+		
+		<% @standing_users.each do |standing_user| %>
+			<table class="standing_table">
+		<% @standings.where(id: standing_user).each do |standing| %>
+
+				<tr class="standing_row">
+					<td class="green"><%= standing.wins %></td>
+					<td class="gray"><%= week_wo_week(standing.week) %></td>
+					<td class="red"><%= standing.losses %></td>
+				</tr>
+
+		<% end %> 
+			</table>
+		<% end %>
+
+		</div>
+
+		</section>
+
+</div>  <!-- end tag for horiz overflow -->
+
+	<% end %>
+
+
+<br>
+<br>
+<br>
+<div id="horiz_overflow_standing">
+	<section>
+	<article class="standing_header"><!-- previously a div within section -->
+		<div class="standing_name">Pugsley
+		</div>
+		<div class="standing_winloss">
+		<span class="span_winloss">win</span>
+		<span class="span_winloss gray">..week..</span>
+		<span class="span_winloss">loss</span>
+		</div>
+	</article>
+
+	<article class="standing_header"><!-- previously a div within section -->
+		<div class="standing_name">Rupert
+		</div>
+		<div class="standing_winloss">
+		<span class="span_winloss">win</span>
+		<span class="span_winloss gray">..week..</span>
+		<span class="span_winloss">loss</span>
+		</div>
+	</article>
+	</section>
+
+	<div id="vert_overflow">
+	<table class="standing_table">
+	<tr class="standing_row">
+		<td class="green">5</td>
+		<td class="gray">eight</td>
+		<td class="red">3</td>
+	</tr>
+	<tr class="standing_row">
+		<td class="green">1</td>
+		<td class="gray">nine</td>
+		<td class="red">7</td>
+	</tr>
+	<tr class="standing_row">
+		<td class="green">3</td>
+		<td class="gray">ten</td>
+		<td class="red">6</td>
+	</tr>
+	<tr class="standing_row">
+		<td class="green">5</td>
+		<td class="gray">eleven</td>
+		<td class="red">2</td>
+	</tr>
+	</table>
+
+	<table class="standing_table">
+	<tr class="standing_row">
+		<td>5</td>
+		<td class="gray">eight</td>
+		<td>3</td>
+	</tr>
+	<tr class="standing_row">
+		<td>1</td>
+		<td class="gray">nine</td>
+		<td>7</td>
+	</tr>
+	<tr class="standing_row">
+		<td>3</td>
+		<td class="gray">ten</td>
+		<td>6</td>
+	</tr>
+	<tr class="standing_row">
+		<td>5</td>
+		<td class="gray">eleven</td>
+		<td>2</td>
+	</tr>
+	</table>
+
+
+	<h2>anumberofwords anumberofwords anumberofwords anumberofwords anumberofwords</h2>
+	<h2>anumberofwords anumberofwords anumberofwords anumberofwords anumberofwords</h2>
+	<h2>anumberofwords anumberofwords anumberofwords anumberofwords anumberofwords</h2>
+	<h2>anumberofwords anumberofwords anumberofwords anumberofwords anumberofwords</h2>
+	<h2>anumberofwords anumberofwords anumberofwords anumberofwords anumberofwords</h2>
+	<h2>kjhgkgkjhgkjgjhkgkjhkjhgjkhkjhgkjhg</h2>
+	<h2>kjhgkgkjhgkjgjhkgkjhkjhgjkhkjhgkjhg</h2>
+	<h2>kjhgkgkjhgkjgjhkgkjhkjhgjkhkjhgkjhg</h2>
+	</div>
+
+	<section>
+	<article class="standing_header"><!-- previously a div within section -->
+		<div class="standing_winloss">
+		<span class="span_winloss green">87</span>
+		<span class="span_winloss">TOTALS</span>
+		<span class="span_winloss red">34</span>
+		</div>
+	</article>
+
+	<article class="standing_header"><!-- previously a div within section -->
+		<div class="standing_winloss">
+		<span class="span_winloss green">45</span>
+		<span class="span_winloss gray">TOTALS</span>
+		<span class="span_winloss red">12</span>
+		</div>
+	</article>
+	</section>
+
+</div>
+<br>
+<br>
+

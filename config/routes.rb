@@ -17,9 +17,12 @@ Rails.application.routes.draw do
   #get 'admin/standing', :to => 'admin/#standing' 
   #get 'admin/wins', :to => 'admin/#wins'
 
+  namespace :users do
+    resources :standing, only: [:index, :show]
+  end
 
   resources :admin
-  resources :users
+  resources :users 
   resources :picks
   resources :sessions
 

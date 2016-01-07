@@ -29,7 +29,7 @@ WINNER LIST WILL ONLY BE UPDATABLE AS LONG AS ITS THE LATEST WK, before a new we
 			<td>.... vs ....</td>
 			<td class="hom"><input type="radio" onclick="highLight(this)" value="home" name=<%= "pickchart[]#{pickchart.id}"%>><%= pickchart.hteam %></td>
 			<td><%= pickchart.gametime %></td>
-			<td name=<%= "pickchart[]#{pickchart.winner}"%>  class="win"></td>
+			<td name=<%= "pickchart[]#{pickchart.winner}"%>  class="win"><%= pickchart.winner %></td>
 			<td class="clear"><input type="radio" onclick="highLight(this)" value="clear" name=<%= "pickchart[]#{pickchart.id}"%>>REMOVE WIN FROM DB</td>
 			<!-- <td>edit / delete</td> -->
 		<!-- </div> -->

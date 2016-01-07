@@ -23,7 +23,10 @@ class UsersController < ApplicationController
     @pickchart = Pickchart.new
     @pickcharts = Pickchart.all
     @latest = Pickchart.maximum(:week)
-    @latest_charts = Pickchart.where(week: @latest)
+    @latest_charttees = Pickchart.where(week: @latest)
+    @latest_chart = @latest_charttees.order('id')
+    @latest_charts = @latest_chart.where(winner: nil)
+    @latest_charts_over = @latest_chart.where.not(winner: nil)
     @earliest = Pickchart.minimum(:week)
 
     @pc_time = Pickchart.where(week: @latest).first.created_at

@@ -1,0 +1,27 @@
+<%= stylesheet_link_tag  "chart" %>
+
+<% if pickcharts %>
+	<h4> number of games listed below <%= pickcharts.length %> </h4>
+
+	<h4 id="wins"></h4>
+	<h4 id="loss"></h4>
+	<table class="old_chart asdf">
+		<tr>
+			<td>Week</td>
+			<td>Winner</td>
+		</tr>
+
+		<% pickcharts.each do |pickchart| %>
+		<tr>
+		<% if picks.where(pickchart_id: pickchart.id, user_id: current_user.id).last %>
+			<td class="hidden"><%= picks.where(pickchart_id: pickchart.id).last.user_pick %></td>
+		<% else %>
+			<td class="hidden">nil</td>
+		<% end %>
+			<td><%= pickchart.week %></td>
+			<td class="oc_winner"><%= pickchart.winner %></td>
+		</tr>
+
+		<% end %>
+	</table>
+<% end %>

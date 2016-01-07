@@ -163,39 +163,49 @@ hideSwitch = function(pc_style, pick_style, bool) {
 var oldchartPicks;
 oldchartPicks = function(){
   var old_ch_num = $(".hidden").length
+  total_wins = 0
 
   for (var i=0; i < old_ch_num; i++){
     var current_pick = $(".hidden")[i].innerHTML
-
+    // comment out oc_winner when usser not admin
     var the_win = $('.oc_winner')[i].innerHTML
 
-    console.log("the win " + the_win)
+    if (current_pick === the_win){
+      total_wins = total_wins + 1;
+    }
+    // if ($('.oc_winner').length) {
+    //   //console.log("this is 172"); //if oc_winner exists
+    //   the_win = $('.oc_winner')[i].innerHTML;
+    // } else {
+    //   //console.log("this is 174"); //if oc_winner does not exist
+    //   the_win = "";
+    // }
+    //var the_win = ""
+    //console.log("the win " + the_win)
+    if ($(".v_checkbox").length){
+
 
     if (current_pick === "visit" && the_win === "visit") {
-      //$(".oc_winner")[i].innerHTML = "sdfsdfs";
       $(".v_checkbox").eq(i).html("&#10003");
       $(".h_checkbox").eq(i).html("...");
       $(".v_pick").eq(i).css('text-decoration', 'underline');
       $(".v_checkbox")[i].style.color = "#006633"; //green
       $(".v_pick")[i].style.color = "#006633"; //green
+          // comment out oc_winner when usser not admin
       $(".oc_winner").eq(i).html("visitor");
-      //$(".oc_winner")[i].style.backgroundColor = "#b2d8b2";
+    
       $(".h_checkbox").eq(i).parent().css("background-color", "#b2d8b2");
 
-      //$(".v_checkbox")[i].style.color = "#222";
-      //$(".v_pick")[i].style.color = "#222";
-      // REM adding the underline
+  
     } else if (current_pick === "visit" && the_win === "home") {
       $(".v_checkbox").eq(i).html("&#10003");
       $(".h_checkbox").eq(i).html("...");
       $(".v_pick").eq(i).css('text-decoration', 'underline');
       $(".v_checkbox")[i].style.color = "red"; //red
       $(".v_pick")[i].style.color = "red"; //red
-      //$(".oc_winner")[i].style.backgroundColor = "#ffb2b2";
+
       $(".h_checkbox").eq(i).parent().css("background-color", "#ffcccc");
-      //$(".v_checkbox")[i].style.color = "#222";
-      //$(".v_pick")[i].style.color = "#222";
-      // REM adding the underline
+
      } else if (current_pick === "visit" && the_win === "") {
         $(".v_checkbox").eq(i).html("&#10003");
         $(".h_checkbox").eq(i).html("...");
@@ -213,19 +223,18 @@ oldchartPicks = function(){
       $(".h_pick").eq(i).css('text-decoration', 'underline');
       $(".h_checkbox")[i].style.color = "red"; //red
       $(".h_pick")[i].style.color = "red"; //red
+          // comment out oc_winner when usser not admin
       $(".oc_winner").eq(i).html("visitor");
-      //$(".oc_winner")[i].style.backgroundColor = "#ffb2b2";
+   
       $(".h_checkbox").eq(i).parent().css("background-color", "#ffcccc");
 
-      //$(".h_checkbox")[i].style.color = "#222";
-      //$(".h_pick")[i].style.color = "#222";
     } else if (current_pick === "home" && the_win === "home") {
       $(".v_checkbox").eq(i).html("...");
       $(".h_checkbox").eq(i).html("&#10003");
       $(".h_pick").eq(i).css('text-decoration', 'underline');
       $(".h_checkbox")[i].style.color = "#006633"; //green
       $(".h_pick")[i].style.color = "#006633"; //green
-      //$(".oc_winner")[i].style.backgroundColor = "#b2d8b2";
+      
       $(".h_checkbox").eq(i).parent().css("background-color", "#b2d8b2");
 
     } else if (current_pick === "home" && the_win === "") {
@@ -241,7 +250,16 @@ oldchartPicks = function(){
       $(".h_checkbox").eq(i).innerHTML = "...";
     }
 
+  } // end of if v_checkbox exists
+
   }
+
+  if ($('.oc_winner').length) {
+    total_loss = old_ch_num - total_wins;
+    $('#wins').html("total wins: " + total_wins);
+    $('#loss').html("total NOT wins: " + total_loss);
+  }
+
 };
 
 

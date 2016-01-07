@@ -1,0 +1,9 @@
+<h1>USERS STANDING SHOW</h1>
+<h2> users / standing / :id </h2>
+<%= link_to ("USER STANDINGS"), "/users/standing", method: :get %>
+
+----NOT YET SET UP TO READ URL FOR ID----
+
+<h4>show lists detailed picks of one particular player</h4>
+
+	<%= render partial: "old_picks", locals: {pickcharts: @latest_charts, picks: @picks} %>

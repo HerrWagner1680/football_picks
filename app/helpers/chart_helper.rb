@@ -27,4 +27,26 @@ module ChartHelper
 		User.find(id_num).user_name
 	end
 
+	def standing_table(id_of_user)
+		Standing.where(user_id: id_of_user).order('week ASC')
+	end
+
+	def tot_win(id_of_user)
+		@tot = 0
+		@user_standings = Standing.where(user_id: id_of_user)
+		@user_standings.each do |win|
+			@tot = @tot + win.wins
+		end
+		@tot
+	end
+
+	def tot_loss(id_of_user)
+		@tot = 0
+		@user_standings = Standing.where(user_id: id_of_user)
+		@user_standings.each do |loss|
+			@tot = @tot + loss.losses
+		end
+		@tot
+	end
+
 end

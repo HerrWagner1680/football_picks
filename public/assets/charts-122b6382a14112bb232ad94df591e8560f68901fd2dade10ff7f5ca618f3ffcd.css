@@ -1,0 +1,342 @@
+/* Place all the styles related to the Chart controller here.
+* They will automatically be included in application.css.
+* You can use Sass (SCSS) here: http://sass-lang.com/
+*/
+/* line 7, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+input.t_field {
+  width: 30px;
+}
+
+/* line 11, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+div {
+  display: inline;
+}
+
+/* line 15, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.pick_hide {
+  color: red;
+  display: none;
+}
+
+/* line 20, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.clicky {
+  cursor: pointer;
+  background-color: #CCC;
+}
+
+/* line 25, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.pc_hide {
+  color: blue;
+  cursor: pointer;
+}
+
+/* line 30, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+td input[type="radio"] {
+  background-color: orange;
+  border-color: red;
+}
+
+/* line 35, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+td input:checked {
+  background-color: #A1EFB4;
+}
+
+/* line 39, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+td input[disabled] {
+  display: none;
+}
+
+/* line 43, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.new_chart_picks tr:nth-child(even) {
+  background: #d5ecef;
+}
+
+/* line 47, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.new_chart_picks tr:nth-child(odd) {
+  background: #e8edf6;
+}
+
+/* line 51, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.new_chart_picks tr:nth-child(1) {
+  background: #d5ecef;
+}
+
+/* .new_chart_picks tr:nth-last-child(1){
+	background: red;
+} */
+/* line 59, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.new_chart tr:nth-child(even) {
+  background: #d5ecef;
+}
+
+/* line 63, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.new_chart tr:nth-child(odd) {
+  background: #e8edf6;
+}
+
+/* line 67, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.new_chart tr:nth-child(1) {
+  background: #d5ecef;
+}
+
+/* .new_chart tr:nth-last-child(1){
+	background: red;
+} */
+/* placeholder brown  #663e00  */
+/* line 77, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+::-webkit-input-placeholder {
+  color: #AAA;
+}
+
+/* line 80, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+input:focus::-webkit-input-placeholder {
+  color: #fff6e7;
+}
+
+/* line 83, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+:-ms-input-placeholder {
+  color: #AAA;
+}
+
+/* line 86, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+input:focus:-ms-input-placeholder {
+  color: #fff6e7;
+}
+
+/* line 89, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+::-moz-placeholder {
+  color: #AAA;
+}
+
+/* line 92, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+input:focus::-moz-placeholder {
+  color: #fff6e7;
+}
+
+/* line 95, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+:-moz-placeholder {
+  color: #AAA;
+}
+
+/* line 98, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+input:focus:-moz-placeholder {
+  color: #fff6e7;
+}
+
+/* line 102, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.wk > input {
+  height: 30px;
+  width: 62px;
+  padding-left: 3px;
+  padding-right: 3px;
+  background: #ffedd0;
+  border: solid 2px #7f7059;
+  font-size: 20px;
+  color: #111;
+}
+
+/* line 113, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.wk > input:hover {
+  background: #fff6e7;
+  border: solid 2px #7f7059;
+  font-size: 20px;
+}
+
+/* line 119, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.wk > input:focus {
+  background: #fff6e7;
+  border: solid 2px #7f7059;
+  font-size: 20px;
+}
+
+/* line 126, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.teams > input {
+  height: 30px;
+  width: 197px;
+  padding-left: 3px;
+  padding-right: 3px;
+  background: #ffedd0;
+  border: solid 2px #7f7059;
+  font-size: 20px;
+  color: #111;
+}
+
+/* line 137, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.teams > input:hover {
+  background: #fff6e7;
+  border: solid 2px #7f7059;
+  font-size: 20px;
+}
+
+/* line 143, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.teams > input:focus {
+  background: #fff6e7;
+  border: solid 2px #7f7059;
+  font-size: 20px;
+}
+
+/* line 149, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.rec > input {
+  height: 30px;
+  width: 100px;
+  padding-left: 3px;
+  padding-right: 3px;
+  background: #ffedd0;
+  border: solid 2px #7f7059;
+  font-size: 20px;
+  color: #111;
+}
+
+/* line 160, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.rec > input:hover {
+  background: #fff6e7;
+  border: solid 2px #7f7059;
+  font-size: 20px;
+}
+
+/* line 166, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.rec > input:focus {
+  background: #fff6e7;
+  border: solid 2px #7f7059;
+  font-size: 20px;
+}
+
+/* line 172, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.gametime > input {
+  height: 30px;
+  width: 145px;
+  padding-left: 3px;
+  padding-right: 3px;
+  background: #ffedd0;
+  border: solid 2px #7f7059;
+  font-size: 20px;
+  color: #111;
+}
+
+/* line 183, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.gametime > input:hover {
+  background: #fff6e7;
+  border: solid 2px #7f7059;
+  font-size: 20px;
+}
+
+/* line 190, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.gametime > input:focus {
+  background: #fff6e7;
+  border: solid 2px #7f7059;
+  font-size: 20px;
+}
+
+/* line 197, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+section #new_pc {
+  margin-top: -15px;
+  border: solid 5px #AAA;
+  background: #AAA;
+  display: inline-block;
+}
+
+/* line 204, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+input[type=submit] {
+  padding: 5px 15px;
+  background: #eee;
+  border: 0 none;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px #888;
+}
+
+/* line 214, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+input[type=submit]:hover {
+  padding: 5px 15px;
+  background: #fff;
+  border: 0 none;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px #666;
+}
+
+/* line 224, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.week_table {
+  width: 41px;
+  border: solid 2px white;
+}
+
+/* line 229, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.team_table {
+  width: 175px;
+  border: solid 2px white;
+}
+
+/* line 234, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.record {
+  width: 79px;
+  border: solid 2px white;
+}
+
+/* line 239, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.gtime_table {
+  width: 150px;
+  border: solid 2px white;
+}
+
+/* line 244, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.old_chart {
+  background-color: #ebefd6;
+  /* #e0dfb2; */
+  opacity: 0.9;
+  color: #8b5d2e;
+}
+
+/* line 250, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.old_chart tr:nth-child(even) {
+  background: #f6f1e8;
+  /* #d6ebef; */
+}
+
+/* line 254, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.dim {
+  color: #555;
+  margin-left: 30%;
+}
+
+/* line 259, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.buttonGrey {
+  color: #333;
+  cursor: pointer;
+}
+
+/* line 264, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.game_text {
+  display: table-cell;
+}
+
+/* line 268, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.game_form {
+  display: none;
+}
+
+/* line 272, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.EDchart > input {
+  font-size: 15px;
+  max-width: 30px;
+  max-height: 20px;
+}
+
+/* line 277, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.EDchart {
+  background: #FF6666;
+  padding: 10px 15px 10px 15px;
+  border: 3px solid black;
+}
+
+/* line 283, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.EDteams > input {
+  max-width: 140px;
+}
+
+/* line 286, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/charts.scss.erb */
+.EDgametime > input {
+  max-width: 120px;
+}

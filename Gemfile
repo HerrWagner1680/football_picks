@@ -48,6 +48,7 @@ gem 'bcrypt', '~> 3.1.9'
 # gem 'capistrano-rails', group: :development
 gem 'rails_serve_static_assets'
 
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 
 group :development, :test do

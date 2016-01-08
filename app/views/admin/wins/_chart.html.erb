@@ -2,6 +2,8 @@
 OR ADJUST/EDIT WINS?
 WINNER LIST WILL ONLY BE UPDATABLE AS LONG AS ITS THE LATEST WK, before a new week added to game list</h4>
 
+<h5>* currently saved as winner</h5>
+
 
 <% if pickcharts %>
 	<table class="new_chart_picks">
@@ -12,7 +14,7 @@ WINNER LIST WILL ONLY BE UPDATABLE AS LONG AS ITS THE LATEST WK, before a new we
 			<td>............. </td>
 			<td>Home</td>
 			<td>Game Time</td>
-			<td>WINNER</td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp; WINNER &nbsp;&nbsp;&nbsp;&nbsp;</td>
 			<td>clear win from database</td>
 		</tr>
 
@@ -25,12 +27,12 @@ WINNER LIST WILL ONLY BE UPDATABLE AS LONG AS ITS THE LATEST WK, before a new we
 		<!--	<td><%= current_user.id %></td> -->
 			<td><%= pickchart.week %></td>
 		<!-- remember remove pickchart id later -->
-			<td class="vis"><input type="radio" onclick="highLight(this)" value="visit" name=<%="pickchart[]#{pickchart.id}"%>><%= pickchart.vteam %></td>
+			<td class="vis"><input type="radio" onclick="highLightt(this)" value="visit" name=<%="pickchart[]#{pickchart.id}"%>><%= mark_v_winner(pickchart.id) %></td>
 			<td>.... vs ....</td>
-			<td class="hom"><input type="radio" onclick="highLight(this)" value="home" name=<%= "pickchart[]#{pickchart.id}"%>><%= pickchart.hteam %></td>
+			<td class="hom"><input type="radio" onclick="highLightt(this)" value="home" name=<%= "pickchart[]#{pickchart.id}"%>><%= mark_h_winner(pickchart.id) %></td>
 			<td><%= pickchart.gametime %></td>
 			<td name=<%= "pickchart[]#{pickchart.winner}"%>  class="win"><%= pickchart.winner %></td>
-			<td class="clear"><input type="radio" onclick="highLight(this)" value="clear" name=<%= "pickchart[]#{pickchart.id}"%>>REMOVE WIN FROM DB</td>
+			<td class="clear"><input type="radio" onclick="highLightt(this)" value="clear" name=<%= "pickchart[]#{pickchart.id}"%>>REMOVE WIN</td>
 			<!-- <td>edit / delete</td> -->
 		<!-- </div> -->
 			<!-- <td><%= f.submit %></td> -->

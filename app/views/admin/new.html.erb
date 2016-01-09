@@ -1,4 +1,4 @@
-<%= link_to ("BACK TO ADMIN"), "/admin", method: :get %>
+<%= link_to ("HOME"), "/admin", method: :get %>
 <br>
 
 <br>
@@ -7,9 +7,9 @@
 <div id="create_user_form">
 <%= form_for @user, url: users_path, method: :post do |f| %>
 	<%= f.hidden_field :admin, :value => false %>
-  <span class="user_form">User Name: <%= f.text_field :user_name %></span>
-  <span class="user_form">Email : <%= f.email_field :email %></span>
-  <span class="user_form">Password : <%= f.password_field :password %></span>
+  <span class="user_form new_user">User Name: <%= f.text_field :user_name %></span>
+  <span class="user_form new_user">Email : <%= f.email_field :email %></span>
+  <span class="user_form new_user">Password : <%= f.password_field :password %></span>
   <%= f.submit %>
 <% end %>
 </div>

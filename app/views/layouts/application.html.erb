@@ -25,14 +25,13 @@
 		      </strong>
 		    <% end %>
 
-		    <h3> FOOTBALL PICKS </h3>
+		    <h3 class="header"> FOOTBALL PICKS </h3>
 
 	 	<% if @current_user %>
-	           <div class="loginout">
+	           <div class="loginout header center">
 	        <%= link_to ("LOGOUT"), "/sessions",method: :delete %>
 	      		</div>
-		      </br>
-		     <h3>Welcome, <%= @current_user.user_name %>!</h3>
+		     <h3 class="header right">Welcome, <%= @current_user.user_name %>!</h3>
 
 		<section>
 			<%= yield %>

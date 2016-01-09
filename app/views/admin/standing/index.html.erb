@@ -1,113 +1,14 @@
 <%= stylesheet_link_tag  "standing" %>
 <div id="no_scroll">
 
-
-<h2>STANDING - INDEX - use arrow keys to scroll to other weeks</h2>
-<%= link_to ("BACK TO ADMIN HOME"), "/admin", method: :get %>
+<%= link_to ("HOME"), "/admin", method: :get %><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <%= link_to ("WINS"), "/admin/wins", method: :get %>
-
-<%= name_wk(19) %><%= week_wo_week(3) %> add js to scroll to bottom/latest numbers default
-
-	<% if @standings %>
+<h2>STANDING - INDEX - scroll on chart to see other weeks (or players)</h2>
 <br>
-<div id="horiz_overflow_standing">
 
-
-		<section>
-
-		<% @standing_users.each do |standing_user| %>
-			<article class="standing_header">
-				<div class="standing_name"><h3><%= name_of_user(standing_user) %></h3></div>
-
-				<div class="standing_winloss">
-					<span class="span_winloss">win</span>
-					<span class="span_winloss gray">......week......</span>
-					<span class="span_winloss">loss</span>
-				</div>
-			</article>
-		<% end %>
-		</section>
-
-		<div id="vert_overflow">
-		
-		<% @standing_users.each do |standing_user| %>
-			<table class="standing_table">
-		<% standing_table(standing_user).each do |standing| %>
-
-				<tr class="standing_row">
-					<td class="green"><%= standing.wins %></td>
-					<td class="gray"><%= week_wo_week(standing.week) %></td>
-					<td class="red"><%= standing.losses %></td>
-				</tr>
-
-		<% end %> 
-
-			<tr class="standing_row">
-		<td class="green">5</td>
-		<td class="gray">-fake eight-</td>
-		<td class="red">3</td>
-	</tr>
-	<tr class="standing_row">
-		<td class="green">1</td>
-		<td class="gray">-fake nine-</td>
-		<td class="red">7</td>
-	</tr>
-	<tr class="standing_row">
-		<td class="green">3</td>
-		<td class="gray">-fake ten-</td>
-		<td class="red">6</td>
-	</tr>
-	<tr class="standing_row">
-		<td class="green">5</td>
-		<td class="gray">-fake eleven-</td>
-		<td class="red">2</td>
-	</tr>
-		<tr class="standing_row">
-		<td class="green">5</td>
-		<td class="gray">eight</td>
-		<td class="red">3</td>
-	</tr>
-	<tr class="standing_row">
-		<td class="green">1</td>
-		<td class="gray">nine</td>
-		<td class="red">7</td>
-	</tr>
-	<tr class="standing_row">
-		<td class="green">3</td>
-		<td class="gray">ten</td>
-		<td class="red">6</td>
-	</tr>
-	<tr class="standing_row">
-		<td class="green">5</td>
-		<td class="gray">eleven</td>
-		<td class="red">2</td>
-	</tr>
-
-
-			</table>
-		<% end %>
-
-		</div> <!-- end of vertical div -->
-
-		</section>
-
-		<footer>
-
-		<% @standing_users.each do |standing_user| %>
-			<article class="standing_footer">
-				<div class="standing_winloss">
-					<span class="span_winloss"><%= tot_win(standing_user) %></span>
-					<span class="span_winloss gray">...TOTAL...</span>
-					<span class="span_winloss"><%= tot_loss(standing_user) %></span>
-				</div>
-			</article>
-		<% end %>
-		</footer>
-
-</div>  <!-- end tag for horiz overflow -->
-
-	<% end %>
-
+<% if @standings %>
+<%= render partial: "chart", locals: {standings: @standings, standing_users: @standing_users} %>
+<% end %>
 
 <br>
 <br>

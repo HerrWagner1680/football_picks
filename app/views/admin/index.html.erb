@@ -1,12 +1,13 @@
 <%= javascript_include_tag "admin" %>
-<%= link_to ("WINS"), "/admin/wins", method: :get, class: "admin_link_button" %>
- <%= link_to ("Create New User"), "/admin/new",method: :get, class: "admin_link_button" %>
+
  <%= link_to ("#{@current_user.user_name} make your picks"), "/admin/charts", method: :get, class: "admin_link_button" %>
-<%= link_to ("Create / Edit weekly chart"), "/admin/charts/new", method: :get, class: "admin_link_button" %> 
-<br>
+<%= link_to ("Game Listings"), "/admin/charts/new", method: :get, class: "admin_link_button" %> 
+<%= link_to ("WINS"), "/admin/wins", method: :get, class: "admin_link_button" %>
 <%= link_to ("STANDINGS"), "/admin/standing", method: :get, class: "admin_link_button" %>
+ <%= link_to ("Create New User"), "/admin/new",method: :get, class: "admin_link_button" %>
 <br>
-<h1>MASTER PICK LIST FOR WEEK <%= latest_wk(@pickcharts) %></h1>
+<br>
+<h1>MASTER PICK LIST FOR <%= name_wk(latest_wk(@pickcharts)).upcase %></h1>
 <div class="vis_admin boxxy"></div><div class="texty">VISITING</div>
 <div class="hom_admin boxxy"></div><div class="texty">HOME</div>
 
@@ -20,7 +21,7 @@
 	<tr>
 <% @latest_picks_array.each do |i| %>
 
-	<td class="index_pick zedpick"><%= User.where(id: i).first.user_name %>'s PICKS</td>
+	<td class="index_pick zedpick"><%= User.where(id: i).first.user_name.first(15) %>'s PICKS</td>
 
 <% end %>
 

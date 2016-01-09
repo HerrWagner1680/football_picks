@@ -49,4 +49,11 @@ module ChartHelper
 		@tot
 	end
 
+	def vis_to_vistor(win_name)
+		if win_name === "visit"
+			win_name << "or"
+		end
+		win_name
+	end
+
 end

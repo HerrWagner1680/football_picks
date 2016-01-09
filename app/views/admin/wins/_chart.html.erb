@@ -1,5 +1,4 @@
-<h4>ABILITY TO VIEW PAST WINNERS
-OR ADJUST/EDIT WINS?
+<h4>
 WINNER LIST WILL ONLY BE UPDATABLE AS LONG AS ITS THE LATEST WK, before a new week added to game list</h4>
 
 <h5>* currently saved as winner</h5>
@@ -9,9 +8,8 @@ WINNER LIST WILL ONLY BE UPDATABLE AS LONG AS ITS THE LATEST WK, before a new we
 	<table class="new_chart_picks">
 		<tr>
 		<!--	<td>USER ID</td>  -->
-			<td>Week</td>
 			<td>Visitor</td>
-			<td>............. </td>
+			<td>....</td>
 			<td>Home</td>
 			<td>Game Time</td>
 			<td>&nbsp;&nbsp;&nbsp;&nbsp; WINNER &nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -23,22 +21,18 @@ WINNER LIST WILL ONLY BE UPDATABLE AS LONG AS ITS THE LATEST WK, before a new we
 
 
 		<tr>
-		<!-- <div class="pick_div"> -->
-		<!--	<td><%= current_user.id %></td> -->
-			<td><%= pickchart.week %></td>
 		<!-- remember remove pickchart id later -->
-			<td class="vis"><input type="radio" onclick="highLightt(this)" value="visit" name=<%="pickchart[]#{pickchart.id}"%>><%= mark_v_winner(pickchart.id) %></td>
-			<td>.... vs ....</td>
-			<td class="hom"><input type="radio" onclick="highLightt(this)" value="home" name=<%= "pickchart[]#{pickchart.id}"%>><%= mark_h_winner(pickchart.id) %></td>
-			<td><%= pickchart.gametime %></td>
-			<td name=<%= "pickchart[]#{pickchart.winner}"%>  class="win"><%= pickchart.winner %></td>
+			<td class="vis wins_team"><input type="radio" onclick="highLightt(this)" value="visit" name=<%="pickchart[]#{pickchart.id}"%>><%= mark_v_winner(pickchart.id) %></td>
+			<td>vs</td>
+			<td class="hom wins_team"><input type="radio" onclick="highLightt(this)" value="home" name=<%= "pickchart[]#{pickchart.id}"%>><%= mark_h_winner(pickchart.id) %></td>
+			<td class="wins_time"><%= pickchart.gametime %></td>
+			<td name=<%= "pickchart[]#{pickchart.winner}"%>  class="win"><%= vis_to_vistor(pickchart.winner) %></td>
 			<td class="clear"><input type="radio" onclick="highLightt(this)" value="clear" name=<%= "pickchart[]#{pickchart.id}"%>>REMOVE WIN</td>
 			<!-- <td>edit / delete</td> -->
 		<!-- </div> -->
 			<!-- <td><%= f.submit %></td> -->
 		</tr>
 <% end %> <!-- end of pickcharts each loop -->
-		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>

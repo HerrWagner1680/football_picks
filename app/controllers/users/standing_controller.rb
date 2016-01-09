@@ -12,6 +12,10 @@ class Users::StandingController < ApplicationController
     @latest_charts = @latest_charttees.order('id')
     @earliest = Pickchart.minimum(:week)
 
+    @standings = Standing.order('week').all
+    @standings = @standings.order('user_id')
+    @standing_users = @standings.pluck(:user_id).uniq
+
     @current_user = User.find(session[:user_id])
   end
 

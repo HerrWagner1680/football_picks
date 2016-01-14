@@ -1,3 +1,5 @@
 console.log("hello")
-$('#new_pc input[type="text"]').val('');
-$('.new_chart').append("<%= j render 'save' %>")
+//$('#new_pc input[type="text"]').val('');
+//$('.new_chart').append("<%= j render 'save' %>")
+$j('#info').append("<%= escape_javascript(render :partial  => "save",
+        :locals   => {:pickchart => @pc, :id => @pc.id}) %>" );

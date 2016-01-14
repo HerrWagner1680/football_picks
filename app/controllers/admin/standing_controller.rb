@@ -40,6 +40,7 @@ class Admin::StandingController < ApplicationController
     @standings = Standing.order('week').all
     @standings = @standings.order('user_id')
     @standing_users = @standings.pluck(:user_id).uniq
+    @standing_users.pop(1)
 
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil

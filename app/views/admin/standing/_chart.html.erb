@@ -1,14 +1,12 @@
-	<% if standings %>
-<br>
-<div id="horiz_overflow_standing">
-
+<% if standings %>
+	<br>
+	<div id="horiz_overflow_standing">
 
 		<section>
-
 		<% standing_users.each do |standing_user| %>
 			<article class="standing_header">
 				<div class="standing_name"><h3><%= name_of_user(standing_user).first(15) %></h3></div>
-		<!-- first(15) limits name to 15 char -->
+			<!-- first(15) limits name to 15 char -->
 
 				<div class="standing_winloss">
 					<span class="span_winloss">&nbsp;win&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; week &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loss&nbsp;</span>
@@ -16,30 +14,28 @@
 			</article>
 		<% end %>
 		</section>
+
 		<section>
-		<div id="vert_overflow">
-		
+		<div id="vert_overflow">		
 		<% standing_users.each do |standing_user| %>
+
 			<table class="standing_table">
-		<% standing_table(standing_user).each do |standing| %>
+			<% standing_table(standing_user).each do |standing| %>
 
-				<tr class="standing_row">
-					<td class="green"><%= standing.wins %></td>
-					<td class="gray"><%= week_wo_week(standing.week) %></td>
-					<td class="red"><%= standing.losses %></td>
-				</tr>
+					<tr class="standing_row">
+						<td class="green"><%= standing.wins %></td>
+						<td class="gray"><%= week_wo_week(standing.week) %></td>
+						<td class="red"><%= standing.losses %></td>
+					</tr>
 
-		<% end %> 
-
+			<% end %> 
 			</table>
+
 		<% end %>
-
 		</div> <!-- end of vertical div -->
-
 		</section>
 
 		<footer>
-
 		<% standing_users.each do |standing_user| %>
 			<article class="standing_footer">
 					<span class="span_winloss"><%= tot_win(standing_user) %>&nbsp;&nbsp;... TOTAL ...&nbsp;&nbsp;<%= tot_loss(standing_user) %></span>
@@ -47,6 +43,6 @@
 		<% end %>
 		</footer>
 
-</div>  <!-- end tag for horiz overflow -->
+	</div>  <!-- end tag for horiz overflow -->
 
-	<% end %>
+<% end %>

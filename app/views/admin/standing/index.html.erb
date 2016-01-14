@@ -1,17 +1,19 @@
 <%= stylesheet_link_tag  "standing" %>
 <div id="no_scroll">
 
-<%= link_to ("HOME"), "/admin", method: :get %><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<%= link_to ("WINS"), "/admin/wins", method: :get %>
-<h2>STANDING - INDEX - scroll on chart to see other weeks (or players)</h2>
-<br>
+	<%= link_to ("HOME"), "/admin", method: :get %><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	<%= link_to ("WINS"), "/admin/wins", method: :get %>
 
-<% if @standings %>
-<%= render partial: "chart", locals: {standings: @standings, standing_users: @standing_users} %>
-<% end %>
+	<h2>STANDING - INDEX - scroll on chart to see other weeks (or players)</h2>
+	
+	<br>
 
-<br>
-<br>
+	<% if @standings %>
+	<%= render partial: "chart", locals: {standings: @standings, standing_users: @standing_users} %>
+	<% end %>
 
-<br>
+	<br>
+	<br>
+	<br>
+
 </div> <!-- end of no_scroll -->

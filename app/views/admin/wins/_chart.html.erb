@@ -1,5 +1,4 @@
-<h4>
-WINNER LIST WILL ONLY BE UPDATABLE AS LONG AS ITS THE LATEST WK, before a new week added to game list</h4>
+<h4>WINNER LIST WILL ONLY BE UPDATABLE AS LONG AS ITS THE LATEST WK, before a new week added to game list</h4>
 
 <h5>* currently saved as winner</h5>
 
@@ -19,7 +18,6 @@ WINNER LIST WILL ONLY BE UPDATABLE AS LONG AS ITS THE LATEST WK, before a new we
 <%= form_for Pickchart.new, url: admin_charts_path, method: :patch do |f| %>
 		<% pickcharts.each do |pickchart| %>
 
-
 		<tr>
 		<!-- remember remove pickchart id later -->
 			<td class="vis wins_team"><input type="radio" onclick="highLightt(this)" value="visit" name=<%="pickchart[]#{pickchart.id}"%>><%= mark_v_winner(pickchart.id) %></td>
@@ -28,9 +26,6 @@ WINNER LIST WILL ONLY BE UPDATABLE AS LONG AS ITS THE LATEST WK, before a new we
 			<td class="wins_time"><%= pickchart.gametime %></td>
 			<td name=<%= "pickchart[]#{pickchart.winner}"%>  class="win"><%= vis_to_vistor(pickchart.winner) %></td>
 			<td class="clear"><input type="radio" onclick="highLightt(this)" value="clear" name=<%= "pickchart[]#{pickchart.id}"%>>REMOVE WIN</td>
-			<!-- <td>edit / delete</td> -->
-		<!-- </div> -->
-			<!-- <td><%= f.submit %></td> -->
 		</tr>
 <% end %> <!-- end of pickcharts each loop -->
 		<td></td>
@@ -39,6 +34,7 @@ WINNER LIST WILL ONLY BE UPDATABLE AS LONG AS ITS THE LATEST WK, before a new we
 		<td></td>
 		<td></td>		
 		<td><%= f.submit "SAVE", id: 'link_button'%></td>
+		<!-- this pulls up the Pickchart ID and updates Winner Column in db -->
 <% end %> <!-- end of the form -->	
 
 	</table>

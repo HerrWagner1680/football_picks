@@ -1,11 +1,9 @@
 class AdminController < ApplicationController
 
-
   protect_from_forgery with: :exception
 
   helper_method :current_user
   helper_method :latest_picks
-  helper_method :latest_text
 
   def create
     @archive_week = params[:pickchart]
@@ -65,7 +63,6 @@ class AdminController < ApplicationController
     @latest_charts = @latest_charttees.order('id')
     @earliest = Pickchart.minimum(:week)
     latest_picks
-    latest_text
   end
 
   def latest_picks
@@ -73,20 +70,9 @@ class AdminController < ApplicationController
     @range = @latest_pc_wk_created_at .. Time.now
     @latest_picks = Pick.where(created_at: @range).all
     @latest_picks_array = @latest_picks.pluck(:user_id).uniq
+    @latest_picks_array.pop(1)
     @latest_ordered = @latest_picks_array.sort_by{:pickchart_id}
     #@latest_ordered = @latest_ordered.reverse if sort_direction == 'DESC'
-  end
-
-  def latest_text
-    if @latest = 18
-      @latest_text = "18 - Wild Card 1"
-    elsif @latest = 19
-      @latest_text = "19 - Wild Card 2"
-    elsif @latest = 20
-      @latest_text = "20 - Championship"
-    else
-      @latest_text = @latest
-    end
   end
 
   def new
@@ -99,13 +85,13 @@ class AdminController < ApplicationController
     @pickcharts = Pickchart.all
     @latest = Pickchart.maximum(:week)
     @latest_charts = Pickchart.where(week: @latest)
+    #@latest_charts = @latest_charts.where(winner: nil)
     #@user = User.all
 
   end
 
   def show
     current_user
-    latest_text
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
         redirect_to "/users"

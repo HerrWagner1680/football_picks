@@ -12,12 +12,14 @@ class Admin::ChartsController < ApplicationController
     @params = pickchart_params
     @pickchart = Pickchart.new(pickchart_params)
     if @pickchart.save
-      @pc = pickchart_params
-      respond_to do |format|
-        #format.html { redirect_to "save.html.erb" , :id => params[Pickchart], :pickchart => @pc }
-        format.js { render "create.js.erb", :locals => {:pickchart => @pc } }# render charts/create.js.erb
-       # format.js { render "create.js.erb", :locals => {:id => params[Pickchart], :pickchart => pickchart_params} }# render charts/create.js.erb
-      end
+      @pc = Pickchart.where(:id => params[:id])
+      redirect_to "/admin/charts/new"
+
+      #respond_to do |format|
+
+       # format.js { render "admin/charts/create.js.erb", :locals => {:pickchart => @pc } }# render charts/create.js.erb
+      #  format.js { redirect_to "admin/charts/new.html.erb", :locals => {:pickchart => @pc } }
+      #end
     else 
       flash[:alert] = @pickchart.errors.full_messages    
     end
@@ -148,6 +150,22 @@ class Admin::ChartsController < ApplicationController
   end
 
   def update
+    @pc = Pickchart.where(:id => params[:id])
+
+      @pickchart = Pickchart.find(pickchart_params[:id])
+      if @pickchart.update(pickchart_params)
+        respond_to do |format|
+          format.js { render "update.js.erb", :locals => {:pickchart => @pc } }
+        end
+        #flash[:notice] = "Game listing updated"
+        #redirect_to "/admin/charts/new"
+      else
+        flash[:alert] = @pickchart.errors.full_messages
+        redirect_to "/admin/charts/new"
+      end
+  end
+
+  def update_wins_and_standings
     @latest = Pickchart.maximum(:week)
     @latest_charttees = Pickchart.where(week: @latest)
     @latest_charts = @latest_charttees.order('id')
@@ -254,3 +272,6 @@ class Admin::ChartsController < ApplicationController
     params.require(:pickchart).permit(:id,:week,:vteam,:vt_rec,:hteam,:ht_rec,:gametime)
   end
 end
+
+# originally in create         # format.js { render "create.js.erb", :locals => {:id => params[Pickchart], :pickchart => pickchart_params} }# render charts/create.js.erb
+   #originally in create           #format.html { render "create.html.erb" , :locals => {:pickchart => @pc } }

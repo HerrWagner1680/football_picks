@@ -43,7 +43,7 @@
 <br>
 
 	<section id="new_pc">
-		<%= form_for @pickchart, url: admin_charts_path, method: :post, remote: true do |f| %>
+		<%= form_for @pickchart, url: admin_charts_path, params: {id: @pickchart.id},method: :post do |f| %>
 		<div ng-controller="TypeaheadCtrl">
 		  <div class="chart wk"><%= f.text_field :week, :class => "t_field", :placeholder => '0'%></div>
 		  <!-- <div class="chart">xxxx</div> -->

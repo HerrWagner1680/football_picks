@@ -20,12 +20,14 @@
 
 		<tr>
 		<!-- remember remove pickchart id later -->
-			<td class="vis wins_team"><input type="radio" onclick="highLightt(this)" value="visit" name=<%="pickchart[]#{pickchart.id}"%>><%= mark_v_winner(pickchart.id) %></td>
+			<td class="vis wins_team"><input type="radio" onclick="highLightt(this)" value="visit" name=<%="pickchart[]#{pickchart.id}"%> ><%= mark_v_winner(pickchart.id) %></td>
 			<td>vs</td>
 			<td class="hom wins_team"><input type="radio" onclick="highLightt(this)" value="home" name=<%= "pickchart[]#{pickchart.id}"%>><%= mark_h_winner(pickchart.id) %></td>
 			<td class="wins_time"><%= pickchart.gametime %></td>
 			<td name=<%= "pickchart[]#{pickchart.winner}"%>  class="win"><%= vis_to_vistor(pickchart.winner) %></td>
 			<td class="clear"><input type="radio" onclick="highLightt(this)" value="clear" name=<%= "pickchart[]#{pickchart.id}"%>>REMOVE WIN</td>
+			<!-- pass old selection into params by default - hidden radio button -->
+			<td class="hidden"><input type="radio" value=<%="#{pickchart.winner}"%> name=<%= "pickchart[]#{pickchart.id}"%> checked=true ></td>
 		</tr>
 <% end %> <!-- end of pickcharts each loop -->
 		<td></td>

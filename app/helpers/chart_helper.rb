@@ -56,14 +56,14 @@ module ChartHelper
 		win_name
 	end
 
-	def update_standings(winner_hash, users_array)
-		p "sdfsdfsdfsdfsdfsdf -- winner hash in HELPERS"
-		p winner_hash
-		p users_array
-		@wins_tot = 0
-		@loss_tot = 0
-		@num_users = users_array.length
-		#@num_users.times do |yyy|
+	# def update_standings(winner_hash, users_array)
+	# 	p "sdfsdfsdfsdfsdfsdf -- winner hash in HELPERS"
+	# 	p winner_hash
+	# 	p users_array
+	# 	@wins_tot = 0
+	# 	@loss_tot = 0
+	# 	@num_users = users_array.length
+	# 	#@num_users.times do |yyy|
 
 			#@num_winners = winner_hash.keys.length
 			#@num_winners.times do |zzz|
@@ -77,11 +77,11 @@ module ChartHelper
 			#@latest = Pickchart.maximum(:week)
 		#	p "update standings stats"
 			#p yyy
-			p @wins_tot
-			p @loss_tot
+			#p @wins_tot
+			#p @loss_tot
 			#Standing.where(user_id: users_array[i-yyy], week: @latest).first_or_create
 			#Standing.find_by(user_id: users_array[i-yyy], week: @latest).update(wins: @wins_tot, losses: @loss_tot)
 		#end
-	end
+	#end
 
 end

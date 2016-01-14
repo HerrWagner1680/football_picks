@@ -152,11 +152,6 @@ class Admin::ChartsController < ApplicationController
     @latest_charttees = Pickchart.where(week: @latest)
     @latest_charts = @latest_charttees.order('id')
     #@pickcharts = Pickchart.all
-    #@latest = Pickchart.maximum(:week)
-    #@latest_charttees = Pickchart.where(week: @latest)
-    #@latest_chart = @latest_charttees.order('id')
-    #@latest_charts = @latest_chart.where(winner: nil)
-
 
     # Saving a win is actually updating a Pickchart
     p 'charts update'
@@ -164,28 +159,11 @@ class Admin::ChartsController < ApplicationController
     #p pickchart_params[:id]
     p "params"
     p params
-    if params[:pickchart][0].present?
+    if params.present?
       @number_of_wins = params[:pickchart][0].length
       @win_values = params[:pickchart][0].values
       @win_keys = params[:pickchart][0].keys
       p "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-
-      #pseudo code on saving standings as well
-      # as if in loop
-      # in @number_of_wins loop
-      # latest_picks for each User who submitted picks
-      # filter out the winner NILs before hand
-      # if Pick.user_pick === Pickchart.winner
-      # that's a win
-      # if not, that's a loss.
-
-      # tally up win numbers and loss numbers for each user
-
-      #get array of the users for whom you want standings
-      #find first pickchart submitted with winner value (not NIL)
-      #compare to Pick of first user with matching Pickchart ID
-      #if match then tally up a win number
-      # if no match then tally up a loss
 
       #make hash hash = {pickchart.id => pickchart.winner}
       @winner_hash = {}
@@ -234,27 +212,31 @@ class Admin::ChartsController < ApplicationController
      num_users.times do |i|
         @wins_tot = 0
         @loss_tot = 0
-      p "iterator i = #{i}"
+      #p "iterator i = #{i}"
 
       num_winners = winner_hash.keys.length
-      p num_winners
-      p winner_hash.keys
-      p winner_hash.values
+      #p num_winners
+      #p winner_hash.keys
+      #p winner_hash.values
       #p winner_hash[0]
       num_winners.times do |x|
          @user_pick = Pick.where(user_id: users_array[i], pickchart_id: winner_hash.keys[x])
-         if @user_pick.last.user_pick === winner_hash.values[x]
+         #p "@user_pick is #{@user_pick}"
+
+         if @user_pick.last.nil?
+            @loss_tot = @loss_tot + 1
+         elsif @user_pick.last.user_pick === winner_hash.values[x]
             @wins_tot = @wins_tot + 1 
          else 
             @loss_tot = @loss_tot + 1
          end
       end
         @latest = Pickchart.maximum(:week)
-        p "wins and losses"
-        p @wins_tot
-        p @loss_tot
+        #p "wins and losses"
+        #p @wins_tot
+        #p @loss_tot
 
-  #     Standing.where(user_id: users_array[i-1], week: @latest).first_or_create
+        Standing.where(user_id: users_array[i-1], week: @latest).first_or_create
         Standing.find_by(user_id: users_array[i], week: @latest).update(wins: @wins_tot, losses: @loss_tot)
      end
   end

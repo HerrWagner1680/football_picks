@@ -1,5 +1,3 @@
 console.log("hello")
-//$('#new_pc input[type="text"]').val('');
-//$('.new_chart').append("<%= j render 'save' %>")
-$j('#info').append("<%= escape_javascript(render :partial  => "save",
-        :locals   => {:pickchart => @pc, :id => @pc.id}) %>" );
+function($event){$event.preventDefault(); return false};
+//$("#new_pc").html("<%= escape_javascript(render partial: '/admin/charts/new_game', locals: {pickchart: @pickchart, pickcharts: @latest_charts} ) %>"); 

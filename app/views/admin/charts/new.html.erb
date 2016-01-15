@@ -3,7 +3,6 @@
 <h3>NOTE - Only the newest week (highest week number) is accessible to users.</h3>
 <h5>Week numbers 18, 19, and 20 should be used instead of Wild Card 1, Wild Card 2, and Championship -- since the program searches for a number</h5>
 
-<p>list of unique week numbers <%= Pickchart.uniq.pluck(:week) %></p>
 <%= link_to ("UPDATING WINS"), "/admin/wins", method: :get %>
 
 
@@ -23,17 +22,16 @@
 			<td>Game Time</td>
 		</tr>
 
-<%= form_for Pickchart.new, url: admin_charts_path, method: :post, remote: :true do |f| %>
+<!-- form_for Pickchart.new, url: admin_charts_path, method: :post, remote: :true do |f| -->
 		<% @latest_charts.each do |pickchart| %>
 
  
-
 <%= render partial: "save", locals: {pickchart: pickchart, pcfind: Pickchart.find(pickchart.id)} %>
 
 
 		<% end %> <!-- end of pickcharts each loop -->
 
-<% end %> <!-- end of the form -->	
+ <!-- end --> <!-- end of the form -->	
 
 
 	</table>
@@ -42,21 +40,16 @@
 
 <br>
 
-	<section id="new_pc">
-		<%= form_for @pickchart, url: admin_charts_path, params: {id: @pickchart.id},method: :post do |f| %>
-		<div ng-controller="TypeaheadCtrl">
-		  <div class="chart wk"><%= f.text_field :week, :class => "t_field", :placeholder => '0'%></div>
-		  <!-- <div class="chart">xxxx</div> -->
-		  <div class="chart teams"><%= f.text_field :vteam, :placeholder => 'Visitor' %><div/>
-		  <div class="chart rec"><%= f.text_field :vt_rec, :class => "t_field", :placeholder => '0-0' %><div/>
-		  <div class="chart teams"><%= f.text_field :hteam, :placeholder => 'Home' %><div/>
-		  <div class="chart rec"><%= f.text_field :ht_rec, :class => "t_field", :placeholder => '0-0' %><div/>
+<%= render partial: "new_game", locals: {pickchart: @pickchart, pickcharts: @latest_charts} %>
 
-		  <div class="chart gametime"><%= f.text_field :gametime, :placeholder => 'Time' %></div>
 
-		  <%= f.submit "Add Game Listing" %>
-		<% end %>
-	</section>
+<div class="hidden"><%= @latest_charts.last.id %>
+<%= @latest_charts.last.vteam %>
+<%= @latest_charts.last.vt_rec %>
+<%= @latest_charts.last.hteam %>
+<%= @latest_charts.last.ht_rec %>
+<%= @latest_charts.last.gametime %></div>
+
 <br>
 
 <select>

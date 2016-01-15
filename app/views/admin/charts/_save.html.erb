@@ -20,7 +20,7 @@
 	
 	</tr>
 
-<!--if false--> 
+<!--if false--> <!-- update_wins_and_standings -->
 	<tr class="tr_row_<%="#{pickchart.id}"%>" val=<%="#{pickchart.id}"%> >
 		<%= form_for(pcfind, url: admin_charts_path, method: :patch, remote: true) do |f| %>
 		<%= f.hidden_field :id, placeholder: pickchart.id, :input_html => { :value => pickchart.id } %>

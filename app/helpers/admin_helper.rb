@@ -15,7 +15,7 @@ module AdminHelper
 		@team = Pickchart.find(id).vteam
 		@win_col = Pickchart.find(id).winner
 		@team = @team.first(23)
-		if @win_col === "visit"
+		if @win_col === "visitor" || @win_col === "visit"
 			@team << " *"
 		end
 		@team

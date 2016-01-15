@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   root 'home#index' #get'/' => 'home#index'
 
   namespace :admin do  
-    resource :charts
+    resource :charts #, defaults: {format: 'js'}
+    #match '/wins', :to => 'wins#update_wins_and_standings', :via => :update
     resources :standing, only: [:index, :show, :create, :update, :new]
     resources :wins, only: [:index, :show]
+    match '/wins', :to => 'wins#update_wins_and_standings', :via => :patch
   end
   #below example of route
   #patch "admin/usersupdate" => "admin#usersupdate", :as => "admin/usersupdate"

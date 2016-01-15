@@ -31,9 +31,10 @@
 <!-- original location of class column -->
 		<tr>
 	<!-- change @current_user to @latest_picks_array[i] -->
+	<!-- @latest_ordered is a user id array -->
 		<% @latest_ordered.length.times do |i| %>
-		<% if @picks.where(pickchart_id: pickchart.id, user_id: @latest_ordered[i-1]).last %>
-			<% if @picks.where(pickchart_id: pickchart.id, user_id: @latest_ordered[i-1]).last.user_pick === "visit" %>
+		<% if @picks.where(pickchart_id: pickchart.id, user_id: @latest_ordered[i]).last %>
+			<% if @picks.where(pickchart_id: pickchart.id, user_id: @latest_ordered[i]).last.user_pick === "visit" %>
 				<td class="vis_admin index_pick"><%= mark_v_winner(pickchart.id) %></td>
 			<% else @picks.where(pickchart_id: pickchart.id, user_id: @latest_ordered[i-1]).last.user_pick === "home"  %>
 				<td class="hom_admin index_pick"><%= mark_h_winner(pickchart.id) %></td>

@@ -66,11 +66,17 @@ class AdminController < ApplicationController
   end
 
   def latest_picks
+    @latest = Pickchart.maximum(:week)
+    @latest_charttees = Pickchart.where(week: @latest)
+    @latest_chart = @latest_charttees.order('id')
+    @latest_charts = @latest_chart.where(winner: nil)
     @latest_pc_wk_created_at = @latest_charts.first.created_at
+
     @range = @latest_pc_wk_created_at .. Time.now
+    # @latest_picks are all of the picks for the current week
     @latest_picks = Pick.where(created_at: @range).all
     @latest_picks_array = @latest_picks.pluck(:user_id).uniq
-    @latest_picks_array.pop(1)
+    @latest_picks_array.pop(1) # intended to drop nil
     @latest_ordered = @latest_picks_array.sort_by{:pickchart_id}
     #@latest_ordered = @latest_ordered.reverse if sort_direction == 'DESC'
   end

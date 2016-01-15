@@ -88,7 +88,7 @@ oldchartPicks = function(){
     var current_pick = $(".hidden")[i].innerHTML
     // comment out oc_winner when user not admin
     var the_win = $('.oc_winner')[i].innerHTML
-
+    //console.log("oldmanchart - i:" + i);
     if (current_pick === the_win){
       total_wins = total_wins + 1;
     }

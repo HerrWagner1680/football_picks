@@ -28,7 +28,7 @@ ALREADY SUBMITTED PICKS
 			<td class="hidden">nil</td>
 		<% end %>
 			<td><%= pickchart.week %></td>
-			<td class="v_checkbox"> &#10003 </td>
+			<td class="v_checkbox"> ... </td>
 			<td class="v_pick"><%= pickchart.vteam %></td>
 			<td><%= pickchart.vt_rec %></td>
 			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -36,10 +36,16 @@ ALREADY SUBMITTED PICKS
 			<td><%= pickchart.ht_rec %></td>
 			<td class="h_checkbox"> ... </td>
 			<td><%= pickchart.gametime %></td>
-			<td class="oc_winner"><%= pickchart.winner %></td>
+			<td class="oc_winner"><%= vis_to_vistor(pickchart.winner) %></td>
 		<!-- </div> -->
 		</tr>
 
 		<% end %>
 	</table>
+
+<% else %>
+<br>
+<h3>NO WINNERS OR LOSERS SUBMITTED YET FOR THIS WEEK - CHECK BACK LATER</h3>
+<br>
+<br>
 <% end %>

@@ -1,7 +1,7 @@
 class Admin::ChartsController < ApplicationController
   #respond_to :json
   helper_method :latest_picks
-  helper_method :latest_text
+  #helper_method :latest_text
   #helper_method :update_standings
 
   def create
@@ -60,7 +60,7 @@ class Admin::ChartsController < ApplicationController
     @latest_charttees = Pickchart.where(week: @latest)
     @latest_chart = @latest_charttees.order('id')
     @latest_charts = @latest_chart.where(winner: nil)
-    latest_text
+    #latest_text
 
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
@@ -100,7 +100,7 @@ class Admin::ChartsController < ApplicationController
     @pickchart = Pickchart.new
     @pickcharts = Pickchart.all
     @latest = Pickchart.maximum(:week)
-    latest_text
+    #latest_text
     @latest_charttees = Pickchart.where(week: @latest)
     @latest_charts = @latest_charttees.order('id')
 
@@ -117,17 +117,17 @@ class Admin::ChartsController < ApplicationController
     # use require helper_method to invoke
   end
 
-  def latest_text
-    if @latest == 18
-      @latest_text == "18 - Wild Card 1"
-    elsif @latest == 19
-      @latest_text == "19 - Wild Card 2"
-    elsif @latest == 20
-      @latest_text == "20 - Championship"
-    else
-      @latest_text == @latest
-    end
-  end
+  # def latest_text
+  #   if @latest == 18
+  #     @latest_text == "18 - Wild Card 1"
+  #   elsif @latest == 19
+  #     @latest_text == "19 - Wild Card 2"
+  #   elsif @latest == 20
+  #     @latest_text == "20 - Championship"
+  #   else
+  #     @latest_text == @latest
+  #   end
+  # end
 
   def show
     p 'charts show'

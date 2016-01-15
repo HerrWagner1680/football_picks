@@ -9,8 +9,9 @@
 	  <div class="chart rec"><%= f.text_field :ht_rec, :class => "t_field", :placeholder => '0-0' %><div/>
 
 	  <div class="chart gametime"><%= f.text_field :gametime, :placeholder => 'Time' %></div>
+	  <%= f.submit "Add Game Listing" %>
 
-	  <%= f.submit "Add Game Listing", :onclick => "return function($event){$event.preventDefault(); return false};" %>
+	  <!-- f.submit "Add Game Listing", :onclick => "return function($event){$event.preventDefault(); return false};" -->
 	<% end %> 
 
 </section>

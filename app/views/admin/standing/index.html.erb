@@ -5,8 +5,6 @@
 	<%= link_to ("WINS"), "/admin/wins", method: :get %>
 
 	<h2>STANDING - INDEX - scroll on chart to see other weeks (or players)</h2>
-	
-	<br>
 
 	<% if @standings %>
 	<%= render partial: "chart", locals: {standings: @standings, standing_users: @standing_users} %>

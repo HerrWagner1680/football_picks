@@ -1,8 +1,6 @@
-This is the show page in the chart thingee
-
-<h1>Show existing picks somehow? or is main page fine</h1>
 <%= javascript_include_tag "charts" %>
 
+<% if false %>
 <div class="container-fluid" ng-app="app">
   	<div ng-controller="FirstCtrl">
 		<p>The ID is {{data.id}}</p>
@@ -11,9 +9,11 @@ This is the show page in the chart thingee
 
 	</div>
 
-</div><br>
+</div>
+<% end %>
+<br>
 
-<%= link_to ("BACK TO ADMIN"), "/admin", method: :get %>
+<%= link_to ("HOME"), "/admin", method: :get %>
 
 <br>
 <br>

@@ -78,3 +78,41 @@ function updateText(f) {
     $('.tr_row_' + f + ' .hr').eq(0).text(_hr)
     $('.tr_row_' + f + ' .gt').eq(0).text(_gt)
 };
+
+var selectTriggered
+
+selectTriggered = function(){
+  //$this = $(e.target);
+
+  console.log("hello, you triggered this message");
+  console.log(  $('#triggered').val()) //id number - wk number for chart
+  //console.log(  $('#triggered').html())
+
+
+}
+
+// $("select").change(function() {
+//   alert( "Handler called." ).change();
+// });
+
+// $( "select" )
+//   .change(function () {
+//     var str = "";
+//     $( "select option:selected" ).each(function() {
+//       str += $( this ).text() + " ";
+//     });
+//     $( "div" ).text( str );
+//   })
+//   .change();
+
+  // $('#countrylist').change(function(e){
+  //     $this = $(e.target);
+  //     $.ajax({
+  //         type: "POST",
+  //         url: "scriptname.asp", // Don't know asp/asp.net at all so you will have to do this bit
+  //         data: { country: $this.val() },
+  //         success:function(data){
+  //             $('#stateBoxHook').html(data);
+  //         }
+  //     });
+  // });

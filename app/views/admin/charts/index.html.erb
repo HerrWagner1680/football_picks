@@ -1,5 +1,7 @@
 <%= javascript_include_tag "charts" %>
-<%= link_to ("UPDATING WINS"), "/admin/wins", method: :get %>
+<%= link_to ("WINS"), "/admin/wins", method: :get %>
+
+
 <div class="container-fluid" ng-app="app">
   	<div ng-controller="FirstCtrl">
 		<p>The ID is {{data.id}}</p>
@@ -11,10 +13,11 @@
   			<td>{{user.id}}</td>
 		</tr>
 	</div>
+</div>
 
-</div><br>
+<br>
 
-<%= link_to ("BACK TO ADMIN"), "/admin", method: :get %>
+<%= link_to ("HOME"), "/admin", method: :get %>
 
 <br>
 <br>

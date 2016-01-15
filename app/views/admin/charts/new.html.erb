@@ -1,9 +1,10 @@
+<!-- OldCharts function throwing error on this page -->
+
 <%= javascript_include_tag "charts" %>
-<%= link_to ("BACK TO ADMIN HOME"), "/admin", method: :get %>
+<%= link_to ("HOME"), "/admin", method: :get %><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><%= link_to ("WINS"), "/admin/wins", method: :get %>
 <h3>NOTE - Only the newest week (highest week number) is accessible to users.</h3>
 <h5>Week numbers 18, 19, and 20 should be used instead of Wild Card 1, Wild Card 2, and Championship -- since the program searches for a number</h5>
 
-<%= link_to ("UPDATING WINS"), "/admin/wins", method: :get %>
 
 
 <p>List will shrink as winners are declared</p>
@@ -51,13 +52,14 @@
 <%= @latest_charts.last.gametime %></div>
 
 <br>
-
+<% if false %>
 <select>
   <option>Milk</option>
   <option>Coffee</option>
   <option>Tea</option>
 </select>
-<select>
+
+<select id="triggered" onchange = "selectTriggered()">
 <% cities_array = User.all.map { |user| [user.user_name, user.id] } %>
 <%= options_for_select(cities_array) %>
 </select>
@@ -66,6 +68,7 @@
 <%= options_for_select(weeks_array) %>
 </select> <!-- need submit button -->
 <%= collection_select(:user, :id, User.all, :user_name, :user_name, {:include_blank => true}) %>
+<% end %>
 <br>
 <br>
 <br>

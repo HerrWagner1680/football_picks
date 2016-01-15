@@ -82,9 +82,11 @@ oldchartPicks = function(){
   var old_ch_num = $(".hidden").length
   total_wins = 0
 
+  if (!$('.oc_winner')[0]) { return false } //if no oc_winner stop function
+
   for (var i=0; i < old_ch_num; i++){
     var current_pick = $(".hidden")[i].innerHTML
-    // comment out oc_winner when usser not admin
+    // comment out oc_winner when user not admin
     var the_win = $('.oc_winner')[i].innerHTML
 
     if (current_pick === the_win){

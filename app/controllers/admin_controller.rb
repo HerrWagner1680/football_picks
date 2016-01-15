@@ -47,22 +47,35 @@ class AdminController < ApplicationController
   end
 
   def index
+    latest_picks
+    current_user
     @user = User.all
     @picks = Pick.all
-    @current_user = User.find(session[:user_id])
-
-    if @current_user.admin == nil or @current_user.admin == false
-			  redirect_to "/users"
-    end
-
     @pickchart = Pickchart.new
     @pickcharts = Pickchart.all
-    # @latest can also serve as week number variable
     @latest = Pickchart.maximum(:week)
+    #latest_text
     @latest_charttees = Pickchart.where(week: @latest)
     @latest_charts = @latest_charttees.order('id')
     @earliest = Pickchart.minimum(:week)
-    latest_picks
+
+
+    #@current_user = User.find(session[:user_id])
+
+
+    #@pickchart = Pickchart.new
+    #@pickcharts = Pickchart.all
+    # @latest can also serve as week number variable
+    #@latest = Pickchart.maximum(:week)
+    #@latest_charttees = Pickchart.where(week: @latest)
+    #@latest_charts = @latest_charttees.order('id')
+    #@earliest = Pickchart.minimum(:week)
+    #latest_picks
+    if @current_user.admin == nil or @current_user.admin == false
+        redirect_to "/users"
+    end
+
+
   end
 
   def latest_picks

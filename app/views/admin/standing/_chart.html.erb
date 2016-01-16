@@ -9,7 +9,7 @@
 			<!-- first(15) limits name to 15 char -->
 
 				<div class="standing_winloss">
-					<span class="span_winloss">&nbsp;win&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; week &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loss&nbsp;</span>
+					<span class="span_winloss">&nbsp;win&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; week &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loss&nbsp;</span>
 				</div>
 			</article>
 		<% end %>
@@ -38,7 +38,7 @@
 		<footer>
 		<% standing_users.each do |standing_user| %>
 			<article class="standing_footer">
-					<span class="span_winloss"><%= tot_win(standing_user) %>&nbsp;&nbsp;... TOTAL ...&nbsp;&nbsp;<%= tot_loss(standing_user) %></span>
+					<span class="span_winloss"><%= tot_win(standing_user) %>&nbsp;&nbsp;&nbsp;&nbsp;..... TOTAL .....&nbsp;&nbsp;&nbsp;&nbsp;<%= tot_loss(standing_user) %></span>
 			</article>
 		<% end %>
 		</footer>

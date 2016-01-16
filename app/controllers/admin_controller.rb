@@ -23,7 +23,6 @@ class AdminController < ApplicationController
     redirect_to "/admin" + "#" + @archive_week
   end
 
-
   def current_user
     if session[:user_id]
       @current_user = User.find(session[:user_id])
@@ -34,10 +33,6 @@ class AdminController < ApplicationController
 
   def destroy
     Pickchart.find(params[:pickchart][:id]).destroy
-    #@pickcharts = Pickchart.all
-    #@latest = Pickchart.maximum(:week)
-    #@latest_charts = Pickchart.where(week: @latest)
-
 
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
@@ -49,33 +44,21 @@ class AdminController < ApplicationController
   def index
     latest_picks
     current_user
+
     @user = User.all
     @picks = Pick.all
     @pickchart = Pickchart.new
     @pickcharts = Pickchart.all
+
     @latest = Pickchart.maximum(:week)
-    #latest_text
     @latest_charttees = Pickchart.where(week: @latest)
     @latest_charts = @latest_charttees.order('id')
+
     @earliest = Pickchart.minimum(:week)
 
-
-    #@current_user = User.find(session[:user_id])
-
-
-    #@pickchart = Pickchart.new
-    #@pickcharts = Pickchart.all
-    # @latest can also serve as week number variable
-    #@latest = Pickchart.maximum(:week)
-    #@latest_charttees = Pickchart.where(week: @latest)
-    #@latest_charts = @latest_charttees.order('id')
-    #@earliest = Pickchart.minimum(:week)
-    #latest_picks
     if @current_user.admin == nil or @current_user.admin == false
         redirect_to "/users"
     end
-
-
   end
 
   def latest_picks
@@ -89,7 +72,7 @@ class AdminController < ApplicationController
     # @latest_picks are all of the picks for the current week
     @latest_picks = Pick.where(created_at: @range).all
     @latest_picks_array = @latest_picks.pluck(:user_id).uniq
-    @latest_picks_array.pop(1) # intended to drop nil
+    #@latest_picks_array.pop(1) # intended to drop nil
     @latest_ordered = @latest_picks_array.sort_by{:pickchart_id}
     #@latest_ordered = @latest_ordered.reverse if sort_direction == 'DESC'
   end
@@ -104,9 +87,6 @@ class AdminController < ApplicationController
     @pickcharts = Pickchart.all
     @latest = Pickchart.maximum(:week)
     @latest_charts = Pickchart.where(week: @latest)
-    #@latest_charts = @latest_charts.where(winner: nil)
-    #@user = User.all
-
   end
 
   def show

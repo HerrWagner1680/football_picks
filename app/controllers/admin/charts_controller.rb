@@ -123,18 +123,6 @@ class Admin::ChartsController < ApplicationController
     # use require helper_method to invoke
   end
 
-  # def latest_text
-  #   if @latest == 18
-  #     @latest_text == "18 - Wild Card 1"
-  #   elsif @latest == 19
-  #     @latest_text == "19 - Wild Card 2"
-  #   elsif @latest == 20
-  #     @latest_text == "20 - Championship"
-  #   else
-  #     @latest_text == @latest
-  #   end
-  # end
-
   def show
     p 'charts show'
     current_user

@@ -1,6 +1,8 @@
 <%= javascript_include_tag "charts" %>
 <%= link_to ("WINS"), "/admin/wins", method: :get %>
 
+THIS IS NOT NOT NOT THE CURRENT PICKS PAGE!!!!
+SEE SHOW PAGE FOR THAT
 
 <div class="container-fluid" ng-app="app">
   	<div ng-controller="FirstCtrl">
@@ -26,7 +28,7 @@
 <br>
 <h2 class="center">WEEK <%= latest_wk(@pickcharts) %> (LATEST)</h2>
 
-<%= render partial: "chart", locals: {pickcharts: @latest_charts} %>
+<%= render partial: "chart", locals: {pickcharts: @latest_charts, user: @current_user} %>
 
 <br>
 <br>

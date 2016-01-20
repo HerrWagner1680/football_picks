@@ -19,16 +19,27 @@
 		<div id="vert_overflow">		
 		<% standing_users.each do |standing_user| %>
 
-			<table class="standing_table">
-			<% standing_table(standing_user).each do |standing| %>
+			<table class="standing_table"><!-- print 22 weeks - 1 through 22 -->
+			<!-- standing_table(standing_user).each do |standing| -->
+			<% (1..22).each do |week_num| %>
 
+
+			<% if standing_cells(standing_user, week_num).exists? %>
+			
 					<tr class="standing_row">
-						<td class="green"><%= standing.wins %></td>
-						<td class="gray"><%= week_wo_week(standing.week) %></td>
-						<td class="red"><%= standing.losses %></td>
+						<td class="green"><%= standing_cells(standing_user, week_num).last.wins %></td>
+						<td class="gray"><%= week_wo_week(week_num) %></td>
+						<td class="red"><%= standing_cells(standing_user, week_num).last.losses %></td>
+					</tr>
+			<% else %>
+					<tr class="standing_row">
+						<td class="green pale">-</td>
+						<td class="gray pale">-- no score --</td>
+						<td class="red pale">-</td>
 					</tr>
 
 			<% end %> 
+			<% end %>
 			</table>
 
 		<% end %>

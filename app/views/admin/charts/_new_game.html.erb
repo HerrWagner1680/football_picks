@@ -1,25 +1,17 @@
 <section id="new_pc">
 	<%= form_for pickchart, url: admin_charts_path, params: {id: pickchart.id},method: :post do |f| %>
-	<div ng-controller="TypeaheadCtrl">
+
 	  <div class="chart wk"><%= f.text_field :week, :class => "t_field", :placeholder => '0'%></div>
-	  <!-- <div class="chart">xxxx</div> -->
-	  <div class="chart teams"><%= f.text_field :vteam, :placeholder => 'Visitor' %><div/>
-	  <div class="chart rec"><%= f.text_field :vt_rec, :class => "t_field", :placeholder => '0-0' %><div/>
-	  <div class="chart teams"><%= f.text_field :hteam, :placeholder => 'Home' %><div/>
-	  <div class="chart rec"><%= f.text_field :ht_rec, :class => "t_field", :placeholder => '0-0' %><div/>
+
+	  <div class="chart teams"><%= f.text_field :vteam, :placeholder => 'Visitor' %></div>
+	  <div class="chart rec"><%= f.text_field :vt_rec, :class => "t_field", :placeholder => '0-0' %></div>
+	  <div class="chart teams"><%= f.text_field :hteam, :placeholder => 'Home' %></div>
+	  <div class="chart rec"><%= f.text_field :ht_rec, :class => "t_field", :placeholder => '0-0' %></div>
 
 	  <div class="chart gametime"><%= f.text_field :gametime, :placeholder => 'Time' %></div>
 	  <%= f.submit "Add Game Listing" %>
-
-	  <!-- f.submit "Add Game Listing", :onclick => "return function($event){$event.preventDefault(); return false};" -->
 	<% end %> 
 
 </section>
 
 <br>
-<div class="hidden"><%= pickcharts.last.id %>
-<%= pickcharts.last.vteam %>
-<%= pickcharts.last.vt_rec %>
-<%= pickcharts.last.hteam %>
-<%= pickcharts.last.ht_rec %>
-<%= pickcharts.last.gametime %><h6>------end of new game partial-------</h6></div>

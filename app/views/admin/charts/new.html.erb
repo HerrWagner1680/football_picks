@@ -13,14 +13,13 @@
 <% if @latest_charts %>
 	<table class="new_chart">
 		<tr>
-		<!--	<td>USER ID</td>  -->
-			<td>Week</td>
-			<td>Visitor</td>
-			<td>Vis Record</td>
+			<td class="wk_header">Week</td>
+			<td class="team_header">Visitor</td>
+			<td class="rec_header">Vis Record</td>
 			<td class="pick_hide">............. </td>
-			<td>Home</td>
-			<td>H Record</td>
-			<td>Game Time</td>
+			<td class="team_header">Home</td>
+			<td class="rec_header">H Record</td>
+			<td class="gametime_header">Game Time</td>
 		</tr>
 
 <!-- form_for Pickchart.new, url: admin_charts_path, method: :post, remote: :true do |f| -->
@@ -43,14 +42,14 @@
 
 <%= render partial: "new_game", locals: {pickchart: @pickchart, pickcharts: @latest_charts} %>
 
-
+<% if false %>
 <div class="hidden"><%= @latest_charts.last.id %>
 <%= @latest_charts.last.vteam %>
 <%= @latest_charts.last.vt_rec %>
 <%= @latest_charts.last.hteam %>
 <%= @latest_charts.last.ht_rec %>
 <%= @latest_charts.last.gametime %></div>
-
+<% end %>
 <br>
 <% if false %>
 <select>

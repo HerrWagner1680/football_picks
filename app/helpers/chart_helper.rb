@@ -29,6 +29,12 @@ module ChartHelper
 
 	def standing_table(id_of_user)
 		Standing.where(user_id: id_of_user).order('week ASC')
+		p "THIS IS THE STANDING TABLE"
+		p Standing.where(user_id: id_of_user).order('week ASC')
+	end
+
+	def standing_cells(standing_user, week_num)
+		Standing.where(user_id: standing_user, week: week_num)
 	end
 
 	def tot_win(id_of_user)
@@ -55,33 +61,5 @@ module ChartHelper
 		end
 		win_name
 	end
-
-	# def update_standings(winner_hash, users_array)
-	# 	p "sdfsdfsdfsdfsdfsdf -- winner hash in HELPERS"
-	# 	p winner_hash
-	# 	p users_array
-	# 	@wins_tot = 0
-	# 	@loss_tot = 0
-	# 	@num_users = users_array.length
-	# 	#@num_users.times do |yyy|
-
-			#@num_winners = winner_hash.keys.length
-			#@num_winners.times do |zzz|
-			#	@user_pick = Pick.where(user_id: yyy, pickchart_id: winner_hash[zzz].keys)
-			#	if @user_pick.user_pick === winner_hash[zzz].values
-			#		@wins_tot = @wins_tot + 1	
-			#	else 
-			#		@loss_tot = @loss_tot + 1
-			#	end
-			#end
-			#@latest = Pickchart.maximum(:week)
-		#	p "update standings stats"
-			#p yyy
-			#p @wins_tot
-			#p @loss_tot
-			#Standing.where(user_id: users_array[i-yyy], week: @latest).first_or_create
-			#Standing.find_by(user_id: users_array[i-yyy], week: @latest).update(wins: @wins_tot, losses: @loss_tot)
-		#end
-	#end
 
 end

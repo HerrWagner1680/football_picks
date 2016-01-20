@@ -1,27 +1,21 @@
 <%= link_to ("STANDINGS"), "/users/standing", method: :get %>
 
-<% if false %>
-<h3 class="profile_name"><%= "#{@current_user.user_name}" %>'s Profile------link to edit account info goes to users/new ?--</h3>
 
-<%= "#{@current_user.email}" %>
-<br>
-<h2>Save or Update your picks for week <%= latest_wk(@pickcharts) %></h2>
-<!-- current_user.user_name -->
-<!-- current_user.id -->
-
-<h5>This user already saved picks for week <%= latest_wk(@pickcharts) %> ? ----
-<%= Pick.where(user_id: current_user.id, created_at: @range).exists? %></h5>
-<% end %>
 <!-- Pick.where(user_id: current_user.id, created_at: @range).last.pickchart_id -->
+
 <br>
+<br>
+<h3>click on circle next to the team to make your picks</h3>
+<h5>Hit SAVE before leaving, or else you will lose your new selections</h5>
+<h6>* marks any previous picks you saved. Feel free to overwrite them</h6>
 <br>
 <h2 class="center user_new_picks">WEEK <%= latest_wk(@pickcharts) %> (LATEST)</h2>
 
 	<%= render partial: "active_pickchart", locals: {pickcharts: @latest_charts, picks: @picks} %>
 <br>
 <br>
+<h4 class="dim">WINS AND LOSSES FROM LATEST WK - WEEK <%= latest_wk(@pickcharts) %></h4>
 	<%= render partial: "already_submitted_picks", locals: {pickcharts: @latest_charts_over, picks: @picks} %>
 
 
 <br>
-<h3 class="pick_hide">Hit SAVE before leaving, or else you will lose your picks</h3>

@@ -1,8 +1,6 @@
-<h1>USERS STANDING INDEX</h1>
 <%= link_to ("HOME"), "/users", method: :get %>
-
-<h3> rem users / standing /:id as possibility - SHOW</h3>
-<h4> index should list standings of all players</h4>
+<h2>USERS STANDING INDEX - scroll on chart to see other weeks (or players)</h2>
+<br>
 
 <% if @standings %>
 <%= render partial: "chart", locals: {standings: @standings, standing_users: @standing_users} %>

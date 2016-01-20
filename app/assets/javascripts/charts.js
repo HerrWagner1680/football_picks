@@ -91,28 +91,3 @@ selectTriggered = function(){
 
 }
 
-// $("select").change(function() {
-//   alert( "Handler called." ).change();
-// });
-
-// $( "select" )
-//   .change(function () {
-//     var str = "";
-//     $( "select option:selected" ).each(function() {
-//       str += $( this ).text() + " ";
-//     });
-//     $( "div" ).text( str );
-//   })
-//   .change();
-
-  // $('#countrylist').change(function(e){
-  //     $this = $(e.target);
-  //     $.ajax({
-  //         type: "POST",
-  //         url: "scriptname.asp", // Don't know asp/asp.net at all so you will have to do this bit
-  //         data: { country: $this.val() },
-  //         success:function(data){
-  //             $('#stateBoxHook').html(data);
-  //         }
-  //     });
-  // });

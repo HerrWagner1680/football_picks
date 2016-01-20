@@ -26,7 +26,6 @@ class Admin::WinsController < ApplicationController
     @range = @latest_pc_wk_created_at .. Time.now
     @latest_picks = Pick.where(created_at: @range).all
     @latest_picks_array = @latest_picks.pluck(:user_id).uniq
-    @latest_picks_array.pop(1)
     @latest_ordered = @latest_picks_array.sort_by{:pickchart_id}
     #@latest_ordered = @latest_ordered.reverse if sort_direction == 'DESC'
   end
@@ -35,35 +34,29 @@ class Admin::WinsController < ApplicationController
     @latest = Pickchart.maximum(:week)
     @latest_charttees = Pickchart.where(week: @latest)
     @latest_charts = @latest_charttees.order('id')
-    #@pickcharts = Pickchart.all
 
     # Saving a win is actually updating a Pickchart
     p 'XXXXX WINS CONTROLLER XXXXXX'
-    p 'charts update'
-    #p pickchart_params
-    #p pickchart_params[:id]
     p "params"
     p params
     if params.present?
-      @number_of_wins = params[:pickchart][0].length
+      @number_of_wins = params[:pickchart][0].keys.length
       @win_values = params[:pickchart][0].values
       @win_keys = params[:pickchart][0].keys
       p "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      p @win_values
+      p @win_values[0]
 
-      #make hash hash = {pickchart.id => pickchart.winner}
       @winner_hash = {}
+      p @number_of_wins
 
       @number_of_wins.times do |i|
-        #p @win_keys[i].to_i
-        #p @win_values[i]
         @winner = @win_values[i]
-        #p "WINNER below"
-        #p @winner
         @param_id = @win_keys[i].to_i
         @win_id = Pickchart.find(@param_id)
         if @winner === "clear"
           Pickchart.update(@param_id, {winner: nil})
-        elsif @winner === "visit" 
+        elsif @winner === "visit" || @winner === "visitor"
           Pickchart.update(@param_id, {winner: "visit"})
           @winner_hash[@param_id] = "visit"
         else @winner === "home"
@@ -74,7 +67,7 @@ class Admin::WinsController < ApplicationController
         p "WINNER HASH......"
         p @winner_hash
         p 'XXXXX WINS CONTROLLER XXXXXX'
-        #p @winner_hash.keys.length
+        # EVERYTHING GOOD SO FAR UP TO HERE
         latest_picks
         #create or update Standings using helper
         update_standings(@winner_hash, @latest_picks_array)
@@ -125,9 +118,6 @@ class Admin::WinsController < ApplicationController
 
   def show
   end
-
-
-
 
   private
 

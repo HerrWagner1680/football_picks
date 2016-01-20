@@ -1,10 +1,6 @@
-ALREADY SUBMITTED PICKS
-
-
 <%= stylesheet_link_tag  "chart" %>
-<!--<%= stylesheet_link_tag  "user" %> -->
 
-<% if pickcharts %>
+<% if pickcharts.first %>
 	<table class="old_chart asdf">
 		<tr>
 			<td>Week</td>
@@ -21,7 +17,6 @@ ALREADY SUBMITTED PICKS
 
 		<% pickcharts.each do |pickchart| %>
 		<tr>
-		<!-- <div class="pick_div"> -->
 		<% if picks.where(pickchart_id: pickchart.id, user_id: current_user.id).last %>
 			<td class="hidden"><%= picks.where(pickchart_id: pickchart.id).last.user_pick %></td>
 		<% else %>
@@ -37,15 +32,13 @@ ALREADY SUBMITTED PICKS
 			<td class="h_checkbox"> ... </td>
 			<td><%= pickchart.gametime %></td>
 			<td class="oc_winner"><%= vis_to_vistor(pickchart.winner) %></td>
-		<!-- </div> -->
 		</tr>
 
 		<% end %>
 	</table>
 
 <% else %>
-<br>
-<h3>NO WINNERS OR LOSERS SUBMITTED YET FOR THIS WEEK - CHECK BACK LATER</h3>
-<br>
-<br>
+	<br>
+	<h3>NO WINNERS OR LOSERS SUBMITTED YET FOR THIS WEEK - CHECK BACK LATER</h3>
+	<br>
 <% end %>

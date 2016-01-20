@@ -89,26 +89,26 @@ oldchartPicks = function(){
     // comment out oc_winner when user not admin
     var the_win = $('.oc_winner')[i].innerHTML
     //console.log("oldmanchart - i:" + i);
+
     if (current_pick === the_win){
       total_wins = total_wins + 1;
     }
 
     if ($(".v_checkbox").length){
 
-
-    if (current_pick === "visit" && the_win === "visit") {
+    if (current_pick === "visitor" && the_win === "visitor") {
       $(".v_checkbox").eq(i).html("&#10003");
       $(".h_checkbox").eq(i).html("...");
       $(".v_pick").eq(i).css('text-decoration', 'underline');
       $(".v_checkbox")[i].style.color = "#006633"; //green
       $(".v_pick")[i].style.color = "#006633"; //green
           // comment out oc_winner when usser not admin
-      $(".oc_winner").eq(i).html("visitor");
+      //$(".oc_winner").eq(i).html("visitor");
     
       $(".h_checkbox").eq(i).parent().css("background-color", "#b2d8b2");
 
   
-    } else if (current_pick === "visit" && the_win === "home") {
+    } else if (current_pick === "visitor" && the_win === "home") {
       $(".v_checkbox").eq(i).html("&#10003");
       $(".h_checkbox").eq(i).html("...");
       $(".v_pick").eq(i).css('text-decoration', 'underline');
@@ -117,7 +117,7 @@ oldchartPicks = function(){
 
       $(".h_checkbox").eq(i).parent().css("background-color", "#ffcccc");
 
-     } else if (current_pick === "visit" && the_win === "") {
+     } else if (current_pick === "visitor" && the_win === "") {
         $(".v_checkbox").eq(i).html("&#10003");
         $(".h_checkbox").eq(i).html("...");
         $(".v_pick").eq(i).css('text-decoration', 'underline');
@@ -127,7 +127,7 @@ oldchartPicks = function(){
         // REM adding the underline
 
 
-    } else if (current_pick === "home" && the_win === "visit") {
+    } else if (current_pick === "home" && the_win === "visitor" || the_win === "visitor") {
       //$(".oc_winner")[i].innerHTML = "sdfsdf";
       $(".v_checkbox").eq(i).html("...");
       $(".h_checkbox").eq(i).html("&#10003");
@@ -135,7 +135,7 @@ oldchartPicks = function(){
       $(".h_checkbox")[i].style.color = "red"; //red
       $(".h_pick")[i].style.color = "red"; //red
           // comment out oc_winner when usser not admin
-      $(".oc_winner").eq(i).html("visitor");
+      //$(".oc_winner").eq(i).html("visitor");
    
       $(".h_checkbox").eq(i).parent().css("background-color", "#ffcccc");
 
@@ -161,7 +161,9 @@ oldchartPicks = function(){
       $(".h_checkbox").eq(i).innerHTML = "...";
     }
 
-  } // end of if v_checkbox exists
+  } 
+    //console.log("current pick "+ current_pick);
+    //console.log("the win " + the_win);
 
   }
 

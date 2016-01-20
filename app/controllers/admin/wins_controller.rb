@@ -111,8 +111,8 @@ class Admin::WinsController < ApplicationController
         #p @wins_tot
         #p @loss_tot
 
-        Standing.where(user_id: users_array[i-1], week: @latest).first_or_create
-        Standing.find_by(user_id: users_array[i-1], week: @latest).update(wins: @wins_tot, losses: @loss_tot)
+        Standing.where(user_id: users_array[i], week: @latest).first_or_create
+        Standing.find_by(user_id: users_array[i], week: @latest).update(wins: @wins_tot, losses: @loss_tot)
      end
   end
 

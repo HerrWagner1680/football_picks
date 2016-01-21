@@ -127,7 +127,7 @@ oldchartPicks = function(){
         // REM adding the underline
 
 
-    } else if (current_pick === "home" && the_win === "visitor" || the_win === "visitor") {
+    } else if (current_pick === "home" && the_win === "visitor") {
       //$(".oc_winner")[i].innerHTML = "sdfsdf";
       $(".v_checkbox").eq(i).html("...");
       $(".h_checkbox").eq(i).html("&#10003");
@@ -159,6 +159,7 @@ oldchartPicks = function(){
     } else {
       $(".v_checkbox").eq(i).innerHTML = "...";
       $(".h_checkbox").eq(i).innerHTML = "...";
+      $(".h_checkbox").eq(i).parent().css("color", "#ff6666");
     }
 
   } 

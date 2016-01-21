@@ -2,18 +2,26 @@
 	<br>
 	<div id="horiz_overflow_standing">
 
-		<section>
+		<header>
 		<% standing_users.each do |standing_user| %>
-			<article class="standing_header">
-				<div class="standing_name"><h3><%= name_of_user(standing_user).first(15) %></h3></div>
+			<table class="header_table">
+			<!-- article class="standing_header"> -->
+				<tr class="header_row">
+				<th></th>
+				<th><%= name_of_user(standing_user).first(9) %></th>
+				<th></th>
+				</tr>
 			<!-- first(15) limits name to 15 char -->
 
-				<div class="standing_winloss">
-					<span class="span_winloss">win&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; week &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loss</span>
-				</div>
-			</article>
+				<tr class="header_row">
+					<td class="win_loss">win</td>
+					<td class="win_loss_wk">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; week &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td class="win_loss">loss</td>
+				</tr>
+			<!-- article> -->
+			</table>
 		<% end %>
-		</section>
+		</header>
 
 		<section>
 		<div id="vert_overflow">		
@@ -48,9 +56,13 @@
 
 		<footer>
 		<% standing_users.each do |standing_user| %>
-			<article class="standing_footer">
-					<span class="span_winloss"><%= tot_win(standing_user) %>&nbsp;&nbsp;&nbsp;&nbsp;..... TOTAL .....&nbsp;&nbsp;&nbsp;&nbsp;<%= tot_loss(standing_user) %></span>
-			</article>
+			<table class="standing_table">
+				<tr class="standing_row">
+					<td class="green pale"><%= tot_win(standing_user) %></td>
+					<td class="gray pale">&nbsp;&nbsp;&nbsp;&nbsp;TOTAL&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td class="red pale"><%= tot_loss(standing_user) %></td>
+				</tr>
+			</table>
 		<% end %>
 		</footer>
 

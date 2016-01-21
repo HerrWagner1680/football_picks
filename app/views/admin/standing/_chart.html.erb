@@ -2,7 +2,7 @@
 	<br>
 	<div id="horiz_overflow_standing">
 
-		<!-- header -->
+		<header class="scrolly">
 		<% standing_users.each do |standing_user| %>
 			<table class="header_table">
 			<!-- article class="standing_header"> -->
@@ -21,9 +21,9 @@
 			<!-- article> -->
 			</table>
 		<% end %>
-		<!-- header -->
+		</header>
 
-		<!-- section -->
+		<section class="scrolly">
 		<div id="vert_overflow">		
 		<% standing_users.each do |standing_user| %>
 
@@ -52,9 +52,9 @@
 
 		<% end %>
 		</div> <!-- end of vertical div -->
-		<!-- section -->
+		</section>
 
-		<!-- footer -->
+		<footer class="scrolly">
 		<% standing_users.each do |standing_user| %>
 			<table class="standing_table">
 				<tr class="standing_row">
@@ -64,7 +64,7 @@
 				</tr>
 			</table>
 		<% end %>
-		<!-- footer -->
+		</footer>
 
 	</div>  <!-- end tag for horiz overflow -->
 

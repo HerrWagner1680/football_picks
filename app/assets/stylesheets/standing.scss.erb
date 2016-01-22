@@ -21,6 +21,7 @@
 
 #horiz_overflow_standing {
 	/* border: 3px solid #444; */
+	max-width: 90%;
 	overflow-x: scroll;
 	overflow-y: hidden;
 	white-space: nowrap;
@@ -32,7 +33,8 @@
 
 	max-height: 200px;
 	/* margin-bottom: -5px; raises placement of TOTAL */
-
+	/* width: 150%;  this needs to be flexible - via JS */
+	/* based on the width of the header and footer*/
 	overflow-y: scroll;
 	/* overflow-x: hidden; */
 	white-space: nowrap;
@@ -49,7 +51,7 @@
 .standing_header{
 	display: inline-block;
 	/* text-align: center; */
-	margin-left: 11px;
+	margin-left: 10px;
 	margin-right: 10px;
 }
 
@@ -82,6 +84,24 @@
 	width: 22px;
 }
 
+.gray_tot {
+	color: #333;
+	background: #ddd;
+	text-align: center;
+	font-style: italic;
+	width: 117px;
+}
+
+.green_tot {
+	background: #cce5cc;
+	width: 22px;
+}
+
+.red_tot {
+	background: #ffcccc;
+	width: 22px;
+}
+
 .win {
 	color: #4cb7b7;
 }
@@ -101,6 +121,7 @@
 .header_row th{
 	/*text-align: center;*/
 	font-size: 15pt;
+	padding-bottom: 4px;
 }
 
 .header_row {
@@ -111,22 +132,23 @@
 
 .header_table{
 	display: inline-block;
-	margin-left: 5px;
-	margin-right: 5px;
+	margin-left: 9px;
+	margin-right: 9px;
+    border: 3px solid #444;
 }
 
 td.win_loss_wk {
-	border: 2px solid #222;	
+	/*border: 2px solid #222; */	
 	padding: 0px 0px 0px 0px; /* top right bottom left */
 	width: 104px;
 }
 
 td.win_loss{
-	border: 2px solid #222;
+	/* border: 2px solid #222; */
 	padding: 0px 0px 0px 0px; /* top right bottom left */
 	width: 35px;
 }
 
-.scrolly{
-	
+footer.scrolly{
+    margin-bottom: 20px;
 }

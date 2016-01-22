@@ -58,14 +58,14 @@
 		<% standing_users.each do |standing_user| %>
 			<table class="standing_table">
 				<tr class="standing_row">
-					<td class="green pale"><%= tot_win(standing_user) %></td>
-					<td class="gray pale">&nbsp;&nbsp;&nbsp;&nbsp;TOTAL&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td class="red pale"><%= tot_loss(standing_user) %></td>
+					<td class="green_tot"><%= tot_win(standing_user) %></td>
+					<td class="gray_tot">&nbsp;&nbsp;&nbsp;&nbsp;TOTAL&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td class="red_tot"><%= tot_loss(standing_user) %></td>
 				</tr>
 			</table>
 		<% end %>
 		</footer>
-
+		<div class="hidden done_loading"></div>
 	</div>  <!-- end tag for horiz overflow -->
 
 <% end %>

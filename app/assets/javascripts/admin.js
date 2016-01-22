@@ -14,9 +14,9 @@ hideCOF = function(bool) {
 
 // note - can not use highLight because old files not getting cleared
 // had to create new function of hightLightt
-var highLightt;
+var highLight;
 
-highLightt = function(obj){
+highLight = function(obj){
   obj.parentNode.style.backgroundColor = "#A1EFB4";
       // line below highlights the rec
   //obj.parentNode.nextSibling.nextSibling.style.backgroundColor = "#A1EFB4"

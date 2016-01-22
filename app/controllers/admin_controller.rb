@@ -45,6 +45,9 @@ class AdminController < ApplicationController
     latest_picks
     current_user
 
+    cookies[:wk] = @latest
+    @cookie_wk = cookies[:wk]
+
     @user = User.all
     @picks = Pick.all
     @pickchart = Pickchart.new
@@ -58,6 +61,9 @@ class AdminController < ApplicationController
   end
 
   def latest_picks
+    # if there is a cookie week value then
+    # @ latest is cookies[:wk]
+    # else
     @latest = Pickchart.maximum(:week)
     @latest_charttees = Pickchart.where(week: @latest)
     @latest_charts = @latest_charttees.order('id')

@@ -77,21 +77,9 @@ selectTriggered = function(){
   $('#triggered').blur();
   console.log("hello, you triggered this message");
   console.log(selected) //id number - wk number for chart
-
-  var now = new Date();
-  var time = now.getTime();
-  var expireTime = time + 10000;
-  now.setTime(expireTime);
-
-  document.cookie = 'wk=' + selected + ';expires='+now.toGMTString()+';path=/';
-
+  document.cookie = "wk=" + selected + ";"
   //console.log(document.cookie)
-  //$('#latest_wk').load(location.href + ' #latest_wk'); //this works but nests
-  $('#latest_wk').load(location.href + ' #latest_wk');
-  //$('#latest_wk p').unwrap()
-  setTimeout(function(){$('#latest_wk p').unwrap()}, 1000)
   //$('#latest_wk').html(selected);
-  //$('.dynamic').load('/admin/cookie_rerun #grrr');
-  //$('#latest_wk2').load(location.href + " #latest_wk2>*","");
+  //$('#latest_wk').load(location.href + " #latest_wk");
   console.log(document.cookie)
 }

@@ -6,7 +6,10 @@
 <%= link_to ("Standings"), "/admin/standing", method: :get, class: "admin_link_button" %>
 <%= link_to ("Create New User"), "/admin/new",method: :get, class: "admin_link_button" %>
 <br>
-<div id="latest_wk"><%= @latest %></div>
+<p id="latest_wk"><%= cookies[:wk] %></p>
+
+<!--render partial: 'cookie', locals: {latest: @latest, cook: cookie_wk} -->
+
 <br>
 <h1>MASTER PICK LIST FOR <%= name_wk(latest_wk(@pickcharts)).upcase %></h1>
 <div class="vis_admin boxxy"></div><div class="texty">VISITING</div>

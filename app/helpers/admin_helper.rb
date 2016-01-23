@@ -67,4 +67,8 @@ module AdminHelper
 		week_names[week_num][index]
 	end
 
+	def cookie_wk
+		cookies[:wk]
+	end
+
 end

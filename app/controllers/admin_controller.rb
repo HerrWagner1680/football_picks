@@ -5,6 +5,10 @@ class AdminController < ApplicationController
   helper_method :current_user
   helper_method :latest_picks
 
+  def cookie_rerun
+      render :partial => "admin/cookie"
+  end
+
   def create
     @archive_week = params[:pickchart]
     p @archive_week.values[0]
@@ -45,8 +49,9 @@ class AdminController < ApplicationController
     latest_picks
     current_user
 
-    cookies[:wk] = @latest
-    @cookie_wk = cookies[:wk]
+    if cookies[:wk] === nil
+      cookies[:wk] = @latest
+    end
 
     @user = User.all
     @picks = Pick.all

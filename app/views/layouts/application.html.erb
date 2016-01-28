@@ -2,7 +2,8 @@
 <html>
 
 <head>
-	  <title>FantasySports</title>
+	  <title>Football Picks</title>
+	  <%= favicon_link_tag 'ft222.ico' %>
 	  <%= stylesheet_link_tag    'application', media: 'all'%>
 	      <%= javascript_include_tag 'application' %>
 
@@ -11,7 +12,8 @@
 	  <!-- #javascript_include_tag 'application', 'data-turbolinks-track' => true -->
 	  <%= csrf_meta_tags %>
 	</head>  
-		<body>
+		<body class="ctr">
+			<div id="background">
 
 		    <% if flash[:notice] %>
 		      <em class="notice">
@@ -24,27 +26,34 @@
 		        <%= flash[:alert] %>
 		      </strong>
 		    <% end %>
-
-		    <h3 class="header"> FOOTBALL PICKS </h3>
+		    <br>
 
 	 	<% if @current_user %>
-	           <div class="loginout header center">
-	        <%= link_to ("LOGOUT"), "/sessions",method: :delete %>
-	      		</div>
-		     <h3 class="header right">Welcome, <%= @current_user.user_name %>!</h3>
 
+	 		<h3 class="header left">Welcome, <%= @current_user.user_name %>!</h3>
+			<h1 class="header"> FOOTBALL PICKS </h1> 		
+	        <div class="loginout header right">
+	        	<%= link_to ("LOGOUT"), "/sessions",method: :delete %>
+	      	</div>
+	      	
 		<section>
 			<%= yield %>
 		</section> 
 
+			</div>
+
 		<% else %>
+
+			<h1 class="header"> FOOTBALL PICKS </h1>
 		      <br>
 		      <br>
 		      <h5>PLEASE LOGIN</h5>
-		      <div class="form">
+		    <div class="form">
 		      <%= form_tag('/sessions', method: "POST") do %>
 		        <%= email_field_tag(:email, "",:placeholder => "EMAIL", :class => 'login_email') %>
+		        <br>
 		        <%= password_field_tag(:password, "", :placeholder => "PASSWORD", :class => 'login_password') %>
+		        <br>
 		        <%= submit_tag("LOGIN", :class => 'login_button') %>
 		      <% end %>
 		    </div> 

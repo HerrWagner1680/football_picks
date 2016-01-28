@@ -6,7 +6,7 @@
 <%= link_to ("Standings"), "/admin/standing", method: :get, class: "admin_link_button" %>
 <%= link_to ("Create New User"), "/admin/new",method: :get, class: "admin_link_button" %>
 <br>
-<p id="latest_wk"><%= cookies[:wk] %></p>
+<p id="latest_wk"><%= cookie_wk %></p>
 
 <!--render partial: 'cookie', locals: {latest: @latest, cook: cookie_wk} -->
 

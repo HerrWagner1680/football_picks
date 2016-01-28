@@ -15,7 +15,7 @@
 	<%= render partial: "active_pickchart", locals: {pickcharts: @latest_charts, picks: @picks} %>
 <br>
 <br>
-<h4 class="dim">WINS AND LOSSES FROM LATEST WK - WEEK <%= latest_wk(@pickcharts) %></h4>
+<h4 class="center dim">WINS AND LOSSES FROM LATEST WK - WEEK <%= latest_wk(@pickcharts) %></h4>
 	<%= render partial: "already_submitted_picks", locals: {pickcharts: @latest_charts_over, picks: @picks} %>
 
 

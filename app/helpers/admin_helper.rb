@@ -69,6 +69,21 @@ module AdminHelper
 
 	def cookie_wk
 		cookies[:wk]
+		#NEED HELPER WHERE CAN PASS IN CURRENT COOKIE AS ARGUMENT
+       # ==============
+
+		#have a helper designed to be used AFTER page is loaded
+		#implemented when making a cookie change
+
+		#this will rewrite the definition of@latest
+		#and domino / cascade rewriting of all the index picks
+		# for "latest" picks
+
+		# catch is -- it must be a VALID week number
+		#maybe throw a flash message "invalid week"
+
+		#that's a back up of course
+		# ideally, your achive dropdown would only list valid weeks
 	end
 
 end

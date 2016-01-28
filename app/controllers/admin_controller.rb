@@ -46,12 +46,15 @@ class AdminController < ApplicationController
   end
 
   def index
-    latest_picks
+    #@latest = Pickchart.maximum(:week) #this changed by cookie
     current_user
 
     if cookies[:wk] === nil
-      cookies[:wk] = @latest
+      cookies[:wk] = Pickchart.maximum(:week) # aka @latest
     end
+    #@latest = cookies[:wk]
+
+    latest_picks
 
     @user = User.all
     @picks = Pick.all

@@ -11,7 +11,7 @@
 <!--render partial: 'cookie', locals: {latest: @latest, cook: cookie_wk} -->
 
 <br>
-<h1 id="master_wk">MASTER PICK LIST FOR <%= select_week(cookie_wk, 0).upcase %></h1>
+<h1 id="master_wk">MASTER PICK LIST FOR <%= name_wk(cookie_wk).upcase %></h1>
 <h1>MASTER PICK LIST FOR <%= name_wk(latest_wk(@pickcharts)).upcase %></h1>
 <div class="vis_admin boxxy"></div><div class="texty">VISITING</div>
 <div class="hom_admin boxxy"></div><div class="texty">HOME</div>

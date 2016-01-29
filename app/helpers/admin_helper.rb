@@ -64,7 +64,7 @@ module AdminHelper
 		 ["Week 5", 5], ["Week 6", 6], ["Week 7", 7], ["Week 8", 8], ["Week 9", 9], ["Week 10", 10], ["Week 11", 11], 
 		 ["Week 12", 12], ["Week 13", 13], ["Week 14", 14], ["Week 15", 15], ["Week 16", 16], ["Week 17", 17], 
 		 ["Wild Card 1", 18], ["Wild Card 2", 19], ["Championship", 20], ["Playoff", 21], ["Playoff", 22], ["Playoff", 23]]	
-		return week_names[week_num][index]
+		week_names[week_num][index]
 	end
 
 	def uniq_week_array
@@ -98,7 +98,8 @@ module AdminHelper
 	# what of limits of week number below 0 above 23 --ignore
 
 	def cookie_wk
-		cookies[:wk]
+		@cook_num = cookies[:wk]
+		return @cook_num.to_i
 		#NEED HELPER WHERE CAN PASS IN CURRENT COOKIE AS ARGUMENT
        # ==============
 

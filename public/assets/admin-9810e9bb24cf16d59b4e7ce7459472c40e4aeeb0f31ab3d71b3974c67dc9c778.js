@@ -1,1 +1,0 @@
-var hideCOF;hideCOF=function(e){e===!0?alert("hidden PC!"):alert("HIDE YOUR PICKS")};

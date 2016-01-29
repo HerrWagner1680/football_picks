@@ -91,9 +91,8 @@ selectTriggered = function(){
   //$('#latest_wk p').unwrap()
     setTimeout(function(){$('#latest_wk p').unwrap()}, 1000)
 
- // $('#master_wk').load(location.href + ' #master_wk');
-     //setTimeout(function(){$('#master_wk h1').unwrap()}, 1000)
-     
+  $('#master_wk').load(location.href + ' #master_wk');
+     setTimeout(function(){$('#master_wk h1').unwrap()}, 1000)
   //$('#latest_wk').html(selected);
   //$('.dynamic').load('/admin/cookie_rerun #grrr');
   //$('#latest_wk2').load(location.href + " #latest_wk2>*","");

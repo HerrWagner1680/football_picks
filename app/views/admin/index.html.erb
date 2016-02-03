@@ -6,109 +6,79 @@
 <%= link_to ("Standings"), "/admin/standing", method: :get, class: "admin_link_button" %>
 <%= link_to ("Create New User"), "/admin/new",method: :get, class: "admin_link_button" %>
 <br>
-<p id="latest_wk"><%= cookie_wk %></p>
+<p id="latest_wk" class="hidden"><%= cookie_wk %></p>
 
 <!--render partial: 'cookie', locals: {latest: @latest, cook: cookie_wk} -->
 
 <br>
 <h1 id="master_wk">MASTER PICK LIST FOR <%= name_wk(cookie_wk).upcase %></h1>
-<h1>MASTER PICK LIST FOR <%= name_wk(latest_wk(@pickcharts)).upcase %></h1>
+<!-- MASTER PICK LIST FOR  name_wk(latest_wk(@pickcharts)).upcase -->
+
+
+
 <div class="vis_admin boxxy"></div><div class="texty">VISITING</div>
 <div class="hom_admin boxxy"></div><div class="texty">HOME</div>
 
 <div id="horiz_overflow">
-
 <% if @picks %>
 
 <table>
 
 	<tr>
-
-<% if @latest_picks_array %>
-	<% @latest_picks_array.each do |i| %>
+<!-- @latest_licks_array is the list of users with picks for current week -->
+<% if latest_picks(cookie_wk).any? %>
+	<% latest_picks(cookie_wk).each do |i| %>
 		<!-- loops through array of users who submitted picks -->
-		<td class="index_pick zedpick"><%= User.where(id: i).first.user_name.first(15) %>'s PICKS</td>
+		<td class="index_pick zedpick"><%= User.where(id: i).first.user_name.first(15) %>'s Picks</td>
 	<% end %>
 <% else %>
 		<td class="index_pick zedpick">NO PICKS</td>
 <% end %>
 
 	</tr>
-<% if @latest_picks_array %>
-	<% @latest_charts.each do |pickchart| %>
 
-<!-- original location of class column -->
+<% if this_weeks_charts(cookie_wk).any? %>
+	<% this_weeks_charts(cookie_wk).each do |pc| %>
+
 	<tr>
-	<!-- change @current_user to @latest_picks_array[i] -->
-	<!-- @latest_ordered is a user id array -->
-		<% @latest_ordered.length.times do |i| %>
-			<% if @picks.where(pickchart_id: pickchart.id, user_id: @latest_ordered[i]).last %>
-				<% if @picks.where(pickchart_id: pickchart.id, user_id: @latest_ordered[i]).last.user_pick === "visit" %>
-					<td class="vis_admin index_pick"><%= mark_v_winner(pickchart.id) %></td>
-				<% else @picks.where(pickchart_id: pickchart.id, user_id: @latest_ordered[i]).last.user_pick === "home"  %>
-					<td class="hom_admin index_pick"><%= mark_h_winner(pickchart.id) %></td>
-				<% end %>
 
+		<% latest_picks(cookie_wk).each do |user| %>
+			<% if Pick.where(pickchart_id: pc.id, user_id: user).last %>
+
+				<% if Pick.where(pickchart_id: pc.id, user_id: user).last.user_pick === "visit" %>
+					<td class="vis_admin index_pick"><%= mark_v_winner(pc) %></td>
+				<!-- User.find(user).user_name -->
+				<!-- Pick.where(pickchart_id: pc.id, user_id: user).last.user_pick -->
+				<% else Pick.where(pickchart_id: pc.id, user_id: user).last.user_pick === "home" %>
+					<td class="hom_admin index_pick"><%= mark_h_winner(pc) %></td>
+				<% end %>
 			<% else %>
 				<td class="nil_admin index_pick"> --- no pick --- </td>
-
 			<% end %>
-		
 		<% end %>
-	</tr>
 
+	</tr>	
 	<% end %>
-<% end %>		
+<% end %>
+
 </table>	
-
-<% if false %> <!-- block comment out -->
-	<%= link_to ("#{@current_user.user_name} make your picks"), "/admin/charts", method: :get, class: "admin_link_button" %>
-	<%= link_to ("Create / Edit weekly chart"), "/admin/charts/new", method: :get, class: "admin_link_button" %> 
-	<br>
-	<br>
-	<br>
-
-	<h4>EDIT USER SETTINGS</h4>
-	<h4>CREATE / DELETE USERS</h4>
-
-	<select name="post[category]">
-	  <option>ARCHIVE</option>
-	  <option>LATEST WEEK <%= @latest %></option>
-	  <option>WEEK <%= @latest-1 %></option>
-	</select>
-
-<h2>LIST ALL VALID WEEKS</h2>
-	<h1> earliest <%= @earliest %> </h1>
-
-	<p>ARCHIVE WEEK <%= @archive_work %> ...... </p>
-
-	 <%= form_for @pickchart , :url => { :action => "create" }  do |f|  %>
-		<%= f.select :week, (@earliest..@latest).to_a.reverse %>
-		<!-- if nil, then message "no data to display" -->
-	    <%= f.text_field  :week %> 
-	    <%= f.submit "Add todo", class: "btn btn-primary" %>
-
-	<% end %>
-
-<% end %> <!-- block comment out with line 60 if false -->
-
-	<% end %>
+	<% end %> <!-- end of if picks -->
 </div> <!-- end of #horiz_overflow div -->
+
 
 <% if false %>
 <select id="triggered" onchange = "selectTriggered()">
 <% cities_array = User.all.map { |user| [user.user_name, user.id] } %>
 <%= options_for_select(cities_array) %>
 </select>
-<% end %>
+<% end %> <!-- end of if false -->
 
 <select id="triggered" onchange = "selectTriggered()">
-<%= options_for_select(select_week_array) %>
-</select>
-<select>
-<!-- weeks_array = @latest_charttees.map { |pc| [pc.hteam, pc.id]} -->
+<!-- options_for_select(select_week_array) -->
 <%= options_for_select(uniq_week_array) %>
-</select> <!-- need submit button -->
+</select>
+
+<!-- need submit button -->
 
 
 <h4>&nbsp;&nbsp;&nbsp;+ Confirmed winner&nbsp;&nbsp;&nbsp;- Confirmed loser</h4>

@@ -72,9 +72,9 @@ module AdminHelper
 		@weeks_uniq = Pickchart.pluck(:week).uniq
 		@weeks_uniq.each do |week|
 			if week === nil || week <= 0 || week >= 23
-				@weeks_array = @weeks_array << ["Week " + week.to_s + " invalid", 0]
+				@weeks_array = @weeks_array.unshift(["Week " + week.to_s + " invalid", 0])
 			else
-				@weeks_array = @weeks_array << select_week(week, 0)
+				@weeks_array = @weeks_array << [select_week(week, 0) , week]
 			end
 		end
 		return @weeks_array

@@ -11,7 +11,7 @@
 <!--render partial: 'cookie', locals: {latest: @latest, cook: cookie_wk} -->
 
 <br>
-<h1 id="master_wk">MASTER PICK LIST FOR <%= name_wk(cookie_wk).upcase %></h1>
+<p id="master_wk">MASTER &nbsp;PICK &nbsp;LIST &nbsp;FOR &nbsp;<%= name_wk(cookie_wk).upcase %></p>
 <!-- MASTER PICK LIST FOR  name_wk(latest_wk(@pickcharts)).upcase -->
 
 
@@ -19,6 +19,7 @@
 <div class="vis_admin boxxy"></div><div class="texty">VISITING</div>
 <div class="hom_admin boxxy"></div><div class="texty">HOME</div>
 
+<div id="loading_gif">
 <div id="horiz_overflow">
 <% if @picks %>
 
@@ -64,7 +65,7 @@
 </table>	
 	<% end %> <!-- end of if picks -->
 </div> <!-- end of #horiz_overflow div -->
-
+</div>
 
 <% if false %>
 <select id="triggered" onchange = "selectTriggered()">

@@ -50,13 +50,12 @@ class AdminController < ApplicationController
   end
 
   def index
-    #@latest = Pickchart.maximum(:week) #this changed by cookie
     current_user
 
     if cookies[:wk] === nil
       cookies[:wk] = Pickchart.maximum(:week) # aka @latest
     end
-    #@latest = cookies[:wk]
+
     @latest = Pickchart.maximum(:week)
     latest_picks(@latest)
 
@@ -90,14 +89,6 @@ class AdminController < ApplicationController
     # of who made first picks first
   end
 
- #latest_picks(latest) is completely wrong
- # want Pickchart.where(week: cookies[:id])
- # order it by id  by Pickchart ID that is
-
- # IS THERE A REASON TO PUT IT IN TIME ORDER???
- # most likely have to create a new array with a loop
- # loop through the pickchart ids
-
   def this_weeks_charts(cookie)
     @this_weeks_charts = Pickchart.where(week: cookie)
     @this_weeks_charts_ordered = @this_weeks_charts.order('id')
@@ -106,17 +97,6 @@ class AdminController < ApplicationController
     p @this_weeks_charts_ordered
     return @this_weeks_charts_ordered
   end
-
-  # def pickchart_id_array
-  #   pc_array = []
-  #   p"************"
-  #   p this_weeks_charts(cookies[:id])
-  #   this_weeks_charts(cookies[:id]).length.times do |i|
-  #     pc_array = pc_array << i.id
-  #   end
-  #   return pc_array
-  # end
-
 
   def latest_ordered
     latest_picks(cookies[:wk])

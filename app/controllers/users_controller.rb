@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   helper_method :current_user
+  helper_method :latest_picks
 
   def current_user
     if session[:user_id]
@@ -10,14 +11,36 @@ class UsersController < ApplicationController
   end
 
   def index
-    @current_user = User.find(session[:user_id])
-    #@userrr = User.find(params[:id]) 
+    current_user
 
-    @user = User.new
+    if cookies[:wk] === nil
+      cookies[:wk] = Pickchart.maximum(:week) # aka @latest
+    end
+
+    @latest = Pickchart.maximum(:week)
+    latest_picks(@latest)
+
+    #@current_user = User.find(session[:user_id])
+
+    #@user = User.new
     if @current_user.admin == true
         redirect_to "/admin"
     end
-    current_user
+    #current_user
+
+    #UPDATED UP TO HERE
+    #     @user = User.all
+    # @picks = Pick.all
+    # @pickchart = Pickchart.new
+    # @pickcharts = Pickchart.all
+
+    # @earliest = Pickchart.minimum(:week)
+
+    # if @current_user.admin == nil or @current_user.admin == false
+    #     redirect_to "/users"
+    # end
+
+
     @user = User.all
     @picks = Pick.all
     @pickchart = Pickchart.new
@@ -27,6 +50,7 @@ class UsersController < ApplicationController
     @latest_chart = @latest_charttees.order('id')
     @latest_charts = @latest_chart.where(winner: nil)
     @latest_charts_over = @latest_chart.where.not(winner: nil)
+
     @earliest = Pickchart.minimum(:week)
 
     @pc_time = Pickchart.where(week: @latest).first.created_at
@@ -48,6 +72,24 @@ class UsersController < ApplicationController
       flash[:alert] = @user.errors.full_messages
     end
     redirect_to "/users"
+  end
+
+  def latest_picks(latest)
+    # Getting week = latest and put it in order by id
+    @latest_charttees = Pickchart.where(week: latest)
+    @latest_charts = @latest_charttees.order('id')
+
+    @latest_pc_wk_created_at = @latest_charts.first.created_at
+    @range = @latest_pc_wk_created_at .. Time.now
+    @latest_picks = Pick.where(created_at: @range).all
+    @latest_picks_array = @latest_picks.pluck(:user_id).uniq
+
+    @latest_ordered = @latest_picks_array.sort_by{:pickchart_id}
+    #this helper actually spits out a users array in chron order
+    # of who made first picks first
+
+    #adding this item below
+    @latest_charts_over = @latest_charts.where.not(winner: nil)
   end
 
   def new

@@ -5,18 +5,29 @@
 <!-- Pick.where(user_id: current_user.id, created_at: @range).last.pickchart_id -->
 
 <br>
+<p id="latest_wk" class="hidden"><%= cookie_wk %></p><!-- make class hidden -->
+
 <br>
 <h3>click on circle next to the team to make your picks</h3>
 <h5>Hit SAVE before leaving, or else you will lose your new selections</h5>
 <h6>* marks any previous picks you saved. Feel free to overwrite them</h6>
 <br>
-<h2 class="center user_new_picks">WEEK <%= latest_wk(@pickcharts) %> (LATEST)</h2>
+<h2 class="center user_new_picks"><%= name_wk(cookie_wk).upcase %> (LATEST)</h2>
+<!-- the LATEST note should only show if it is the latest -->
 
 	<%= render partial: "active_pickchart", locals: {pickcharts: @latest_charts, picks: @picks} %>
 <br>
 <br>
-<h4 class="center dimm">WINS AND LOSSES FROM LATEST WK - WEEK <%= latest_wk(@pickcharts) %></h4>
-	<%= render partial: "already_submitted_picks", locals: {pickcharts: @latest_charts_over, picks: @picks} %>
+<section id="submitted_picks">
+<h4 class="center dimm">WINS AND LOSSES FROM <%= name_wk(cookie_wk).upcase %></h4>
+	<%= render partial: "already_submitted_picks", locals: {pickcharts: latest_picks(cookie_wk), picks: @picks} %>
+</section>
 
-
+<br>
+<select id="triggered" onchange = "selectTriggered()">
+<!-- options_for_select(select_week_array) -->
+<%= options_for_select(uniq_week_array) %>
+</select>
+<br>
+<h6>No check mark in wins and losses chart means no team was selected</h6>
 <br>

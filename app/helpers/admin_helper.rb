@@ -74,7 +74,7 @@ module AdminHelper
 			if week === nil || week <= 0 || week >= 23
 				@weeks_array = @weeks_array.unshift(["Week " + week.to_s + " invalid", 0])
 			else
-				@weeks_array = @weeks_array << [select_week(week, 0) , week]
+				@weeks_array = @weeks_array << ["Results --- " + select_week(week, 0) , week]
 			end
 		end
 		return @weeks_array

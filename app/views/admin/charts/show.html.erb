@@ -16,6 +16,7 @@
 <%= link_to ("HOME"), "/admin", method: :get %>
 
 <br>
+<p id="latest_wk" class="hidden"><%= cookie_wk %></p><!-- make class hidden -->
 <br>
 <h3>click on circle next to the team to make your picks</h3>
 <h5>Hit SAVE before leaving, or else you will lose your new selections</h5>
@@ -30,11 +31,24 @@
 <br>
 <br>
 <br>
-
+<section id="submitted_picks">
 <!--<h3>SHOW HTML ERB</h3> -->
 <!--<h4 class="dim">PREVIOUS WEEK - WEEK <%= prev_wk(@pickcharts) %></h4> -->
-<h4 class="dim">WINS AND LOSSES FROM LATEST WK - WEEK <%= latest_wk(@pickcharts) %></h4>
-
+<h4 class="dimm">WINS AND LOSSES FROM <%= name_wk(cookie_wk).upcase %></h4>
+<!-- dim class = center dimm -->   <!-- name_wk(cookie_wk).upcase -->
 <!-- IF prevwk exists, then render -->
-	<%= render partial: "oldchart", locals: {pickcharts: @latest_charts_over, current_user: current_user, picks: Pick.where(user_id: current_user)} %>
+<!-- @latest_charts_over -->
+	<%= render partial: "oldchart", locals: {pickcharts: latest_picks(cookie_wk), current_user: current_user, picks: Pick.where(user_id: current_user)} %>
 <!--- end of if prevwk exists -->
+</section>
+<!-- class="center dimm">WINS AND LOSSES FROM <%= name_wk(cookie_wk).upcase %></h4>
+	 render partial: "already_submitted_picks", locals: {pickcharts: latest_picks(cookie_wk), picks: @picks} %> -->
+
+<br>
+<select id="triggered" onchange = "selectTriggered()">
+<!-- options_for_select(select_week_array) -->
+<%= options_for_select(uniq_week_array) %>
+</select>
+<br>
+<h6>No check mark in wins and losses chart means no team was selected</h6>
+<br>

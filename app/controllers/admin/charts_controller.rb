@@ -3,6 +3,15 @@ class Admin::ChartsController < ApplicationController
   helper_method :latest_picks
   #helper_method :latest_text
   #helper_method :update_standings
+  helper_method :current_user
+
+  def current_user
+    if session[:user_id]
+      @current_user = User.find(session[:user_id])
+    else
+      @current_user = nil
+    end
+  end
 
   def create
     p 'charts create zzzzzzzzzzzz'
@@ -27,22 +36,18 @@ class Admin::ChartsController < ApplicationController
     #redirect_to "/admin/charts/new"
   end
 
-  def latest_picks
-    @latest = Pickchart.maximum(:week)
-    @latest_charttees = Pickchart.where(week: @latest)
+  def latest_picks(latest)
+    # if there is a cookie week value then
+    # @ latest is cookies[:wk]
+    # else
+    #@latest = Pickchart.maximum(:week)
+    @latest_charttees = Pickchart.where(week: latest)
     @latest_chart = @latest_charttees.order('id')
+    #PREV  @latest_charts = @latest_charttees.order('id')
     @latest_charts = @latest_chart.where(winner: nil)
-
-
-    #@latest_pc_wk_created_at = @latest_charts.first.created_at
-
-    #@range = @latest_pc_wk_created_at .. Time.now
-    ##### @latest_picks are all of the picks for the current week
-    #@latest_picks = Pick.where(created_at: @range).all
-    #@latest_picks_array = @latest_picks.pluck(:user_id).uniq
-    ####@latest_picks_array.pop(1) # intended to drop nil
-    #@latest_ordered = @latest_picks_array.sort_by{:pickchart_id}
-    ####@latest_ordered = @latest_ordered.reverse if sort_direction == 'DESC'
+    @latest_charts_over = @latest_chart.where.not(winner: nil)
+    #THIS RETURNS PICKHART ARRAY -- a little diff from similarly named helpers
+    #in other controllers
   end
 
 #http://stackoverflow.com/questions/25582878/angularjs-post-data-to-rails-server-by-service
@@ -54,11 +59,8 @@ class Admin::ChartsController < ApplicationController
     @pick = Pick.new
 
     @pickcharts = Pickchart.all
-    # @latest = Pickchart.maximum(:week)
-    # @latest_charttees = Pickchart.where(week: @latest)
-    # @latest_chart = @latest_charttees.order('id')
-    # @latest_charts = @latest_chart.where(winner: nil)
-    latest_picks
+    @latest = Pickchart.maximum(:week)
+    latest_picks(@latest)
 
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
@@ -77,9 +79,6 @@ class Admin::ChartsController < ApplicationController
     else 
       flash[:alert] = @pc.errors.full_messages    
     end
-    #@pickcharts = Pickchart.all
-    #@latest = Pickchart.maximum(:week)
-    #@latest_charts = Pickchart.where(week: @latest)
 
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
@@ -111,8 +110,17 @@ class Admin::ChartsController < ApplicationController
   end
 
   def show
-    p 'charts show'
     current_user
+
+    if cookies[:wk] === nil
+      cookies[:wk] = Pickchart.maximum(:week) # aka @latest
+    end
+
+    # @latest = Pickchart.maximum(:week)
+    # latest_picks(@latest)
+    # # p 'charts show'
+    # # current_user
+
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
         redirect_to "/users"
@@ -124,11 +132,16 @@ class Admin::ChartsController < ApplicationController
     @pickcharts = Pickchart.all
     @latest = Pickchart.maximum(:week)
     #latest_text
-    @latest_charttees = Pickchart.where(week: @latest)
-    @latest_chart = @latest_charttees.order('id')
-    @latest_charts = @latest_chart.where(winner: nil)
-    @latest_charts_over = @latest_chart.where.not(winner: nil)
-    @earliest = Pickchart.minimum(:week)
+    latest_picks(@latest)
+
+    @latest_pc_wk_created_at = @latest_chart.first.created_at
+    #PREV  @latest_pc_wk_created_at = @latest_charts.first.created_at
+    @range = @latest_pc_wk_created_at .. Time.now
+    @latest_picks = Pick.where(created_at: @range).all
+    @latest_picks_array = @latest_picks.pluck(:user_id).uniq
+
+    @latest_ordered = @latest_picks_array.sort_by{:pickchart_id}
+
   end
 
   def standing

@@ -87,5 +87,86 @@ input.login_button{
 	left: 50px;
 }
 
+
+
 #loading_gif {
+	width: 90%;
+	height: 150px;
+	background: #ffa7ff;
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+	/* display: none; */
+}
+
+.pulse {
+    margin: 30px;
+    width: 10px;
+    height: 10px;
+    background-color: #749a02;
+    border-radius: 5px;
+    display: inline-block;
+}
+@-webkit-keyframes greenPulse {
+    0% {
+        background-color: #749a02;
+        -webkit-box-shadow: 0 0 9px #333;
+    }
+    20% {
+        background-color: #91bd09;
+        -webkit-box-shadow: 0 0 18px #91bd09;
+    }
+    30% {
+        background-color: #91bd09;
+        -webkit-box-shadow: 0 0 18px #91bd09;
+    }
+    100% {
+        background-color: #749a02;
+        -webkit-box-shadow: 0 0 9px #333;
+    }
+}
+div.pulse.green {
+	top: 25px;
+	left: 50px;
+    -webkit-animation-name: greenPulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+}
+@-webkit-keyframes yellowPulse {
+    0% {
+        background-color: #333;
+    }
+    40% {
+        background-color: #333;
+    }
+    60% {
+        background-color: #ccc;
+    }
+    to {
+        background-color: #333;
+    }
+}
+div.pulse.yellow {
+    -webkit-animation-name: yellowPulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+}
+@-webkit-keyframes redPulse {
+    0%, 100% {
+        background-color: #ccc;
+        color: #777;
+    }
+    20% {
+        background-color: #333;
+        color: #eee;
+    }
+    40% {
+        background-color: #ccc;
+        color: #777;
+    }
+}
+div.pulse.red {
+    -webkit-animation-name: redPulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
 }

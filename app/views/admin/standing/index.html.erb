@@ -6,11 +6,79 @@
 
 	<h2>STANDING - INDEX - scroll on chart to see other weeks (or players)</h2>
 
+<% if false %>
 	<% if @standings %>
 	<%= render partial: "chart", locals: {standings: @standings, standing_users: @standing_users} %>
 	<% end %>
+<% end %>
+<br>
+<br>
+	<div id="horiz_overflow_standing">
+	<% @standing_users.each do |standing_user| %>
+	
+	<div class="vertical_wrapper">
+		<div class="fixed">
+			<!-- @standing_users.each do |standing_user| -->
+				<table class="header_table">
+				<!-- article class="standing_header"> -->
+					<tr class="header_row">
+					<th></th>
+					<th><%= name_of_user(standing_user).first(9) %></th>
+					<th></th>
+					</tr>
+				<!-- first(15) limits name to 15 char -->
 
-	<br>
+					<tr class="header_row">
+						<td class="win_loss">win</td>
+						<td class="win_loss_wk">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; week &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td class="win_loss">loss</td>
+					</tr>
+				<!-- article> -->
+				</table>
+			<!-- end -->
+
+		</div>
+		<div class="vertical">
+			<table class="standing_table"><!-- print 22 weeks - 1 through 22 -->
+			<!-- standing_table(standing_user).each do |standing| -->
+			<% (1..22).each do |week_num| %>
+
+
+			<% if standing_cells(standing_user, week_num).exists? %>
+			
+					<tr class="standing_row">
+						<td class="green"><%= standing_cells(standing_user, week_num).last.wins %></td>
+						<td class="gray"><%= week_wo_week(week_num) %></td>
+						<td class="red"><%= standing_cells(standing_user, week_num).last.losses %></td>
+					</tr>
+			<% else %>
+					<tr class="standing_row">
+						<td class="green pale">-</td>
+						<td class="gray pale">-- no score --</td>
+						<td class="red pale">-</td>
+					</tr>
+
+			<% end %> 
+			<% end %>
+			</table>
+		</div>
+		<div class="fixed2">
+			<!-- @standing_users.each do |standing_user| -->
+				<table class="standing_table">
+					<tr class="standing_row">
+						<td class="green_tot"><%= tot_win(standing_user) %></td>
+						<td class="gray_tot">&nbsp;&nbsp;&nbsp;&nbsp;TOTAL&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td class="red_tot"><%= tot_loss(standing_user) %></td>
+					</tr>
+				</table>
+			<!-- end -->
+		</div>
+	</div>
+	<div class="a_blank"></div>
+	<% end %>
+	</div>
+
+<% if false %>
 	<div class="vertical_wrapper">
 		<div class="fixed"> sdfsdf</div>
 		<div class="vertical">
@@ -24,6 +92,32 @@
 		</div>
 		<div class="fixed2"> sdfsdf</div>
 	</div>
+
+	<div class="vertical_wrapper">
+		<div class="fixed"> sdfsdf</div>
+		<div class="vertical">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!
+			<br>
+			Ad dolore dignissimos asperiores dicta facere optio quod commodi nam tempore recusandae. Rerum sed nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam!
+			<br>
+			Tenetur quod quidem in voluptatem corporis dolorum dicta sit pariatur porro quaerat autem ipsam odit quam beatae tempora quibusdam illum! Modi velit odio nam nulla unde amet odit pariatur at!
+			<br>
+			Consequatur rerum amet fuga expedita sunt et tempora saepe? Iusto nihil explicabo perferendis quos provident delectus ducimus necessitatibus reiciendis optio tempora unde earum doloremque commodi laudantium ad nulla vel odio?
+		</div>
+		<div class="fixed2">
+			<% @standing_users.each do |standing_user| %>
+				<table class="standing_table">
+					<tr class="standing_row">
+						<td class="green_tot"><%= tot_win(standing_user) %></td>
+						<td class="gray_tot">&nbsp;&nbsp;&nbsp;&nbsp;TOTAL&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td class="red_tot"><%= tot_loss(standing_user) %></td>
+					</tr>
+				</table>
+			<% end %>
+		</div>
+	</div>
+<% end %>
+
 	<br>
 	<br>
 	<br>

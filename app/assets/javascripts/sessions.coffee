@@ -15,3 +15,5 @@ extendVertScroll = ->
   ht_tot = ht.toString() + 'px'
   $('#vert_overflow').css 'width', ht_tot
   return
+
+

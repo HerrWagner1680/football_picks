@@ -194,3 +194,6 @@ hidePC = function(bool) {
   }
 };
 
+$('.vertical').scroll(function(){
+$('.vertical').scrollTop($(this).scrollTop());
+});

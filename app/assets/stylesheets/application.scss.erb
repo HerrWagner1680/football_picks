@@ -87,20 +87,41 @@ input.login_button{
 	left: 50px;
 }
 
-
+#shaded_background {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: rgba(0,0,0,0.5);
+}
 
 #loading_gif {
 	width: 90%;
-	height: 150px;
-	background: #ffa7ff;
+	height: 75%;
+	background: #D2E0E4;
 	position: fixed;
-	right: 0px;
-	bottom: 0px;
+	right: 5%;
+	bottom: 5%;
 	/* display: none; */
+	border-radius: 15px;
+}
+
+.loading {
+	display: block;
+	text-align: center;
+	margin-top: 10%;
+}
+
+.gray_link {
+	color: #777;
+	font-weight: light;
 }
 
 .pulse {
-    margin: 30px;
+	margin-top: 10px;
+    margin-right: 3%;
+    margin-left: 3%;
     width: 10px;
     height: 10px;
     background-color: #749a02;
@@ -135,120 +156,152 @@ div.pulse.green {
 @-webkit-keyframes yellowPulse1 {
     0% {
         background-color: #333;
-        -webkit-box-shadow: 0 0 9px #444;
+        -webkit-box-shadow: 0 0 3px #444;
     }
     10% {
         background-color: #ccc;
-        -webkit-box-shadow: 0 0 18px #aaa;
+        -webkit-box-shadow: 0 0 6px #aaa;
     }
     20% {
         background-color: #ccc;
-        -webkit-box-shadow: 0 0 18px #aaa;
+        -webkit-box-shadow: 0 0 6px #aaa;
+    }
+    30% {
+        background-color: #333;
+        -webkit-box-shadow: 0 0 3px #444;
     }
     to {
         background-color: #333;
-        -webkit-box-shadow: 0 0 9px #444;
+        -webkit-box-shadow: 0 0 3px #444;
     }
 }
 div.pulse.yellow1 {
     -webkit-animation-name: yellowPulse1;
-    -webkit-animation-duration: 2s;
+    -webkit-animation-duration: 1.8s;
     -webkit-animation-iteration-count: infinite;
 }
 @-webkit-keyframes yellowPulse2 {
     0% {
         background-color: #333;
-        -webkit-box-shadow: 0 0 9px #444;
+        -webkit-box-shadow: 0 0 3px #444;
+    }
+    20% {
+        background-color: #333;
+        -webkit-box-shadow: 0 0 3px #444;
     }
     30% {
         background-color: #ccc;
-        -webkit-box-shadow: 0 0 18px #aaa;
+        -webkit-box-shadow: 0 0 6px #aaa;
     }
     40% {
         background-color: #ccc;
-        -webkit-box-shadow: 0 0 18px #aaa;
+        -webkit-box-shadow: 0 0 6px #aaa;
+    }
+    50% {
+        background-color: #333;
+        -webkit-box-shadow: 0 0 6px #aaa;
     }
     to {
         background-color: #333;
-        -webkit-box-shadow: 0 0 9px #444;
+        -webkit-box-shadow: 0 0 3px #444;
     }
 }
 div.pulse.yellow2 {
     -webkit-animation-name: yellowPulse2;
-    -webkit-animation-duration: 2s;
+    -webkit-animation-duration: 1.8s;
     -webkit-animation-iteration-count: infinite;
 }
 @-webkit-keyframes yellowPulse3 {
     0% {
         background-color: #333;
-        -webkit-box-shadow: 0 0 9px #444;
+        -webkit-box-shadow: 0 0 3px #444;
+    }
+    40% {
+	    background-color: #333;
+	    -webkit-box-shadow: 0 0 3px #444;
     }
     50% {
         background-color: #ccc;
-        -webkit-box-shadow: 0 0 18px #aaa;
+        -webkit-box-shadow: 0 0 6px #aaa;
     }
     60% {
         background-color: #ccc;
-        -webkit-box-shadow: 0 0 18px #aaa;
+        -webkit-box-shadow: 0 0 6px #aaa;
+    }
+    70% {
+        background-color: #333;
+        -webkit-box-shadow: 0 0 3px #444;
     }
     to {
         background-color: #333;
-        -webkit-box-shadow: 0 0 9px #444;
+        -webkit-box-shadow: 0 0 3px #444;
     }
 }
 div.pulse.yellow3 {
     -webkit-animation-name: yellowPulse3;
-    -webkit-animation-duration: 2s;
+    -webkit-animation-duration: 1.8s;
     -webkit-animation-iteration-count: infinite;
 }
 @-webkit-keyframes yellowPulse4 {
     0% {
         background-color: #333;
-        -webkit-box-shadow: 0 0 9px #444;
+        -webkit-box-shadow: 0 0 3px #444;
+    }
+    60% {
+        background-color: #333;
+        -webkit-box-shadow: 0 0 3px #444;
     }
     70% {
         background-color: #ccc;
-        -webkit-box-shadow: 0 0 18px #aaa;
+        -webkit-box-shadow: 0 0 6px #aaa;
     }
     80% {
         background-color: #ccc;
-        -webkit-box-shadow: 0 0 18px #aaa;
+        -webkit-box-shadow: 0 0 6px #aaa;
+    }
+    90% {
+        background-color: #333;
+        -webkit-box-shadow: 0 0 3px #444;
     }
     to {
         background-color: #333;
-        -webkit-box-shadow: 0 0 9px #444;
+        -webkit-box-shadow: 0 0 3px #444;
     }
 }
 div.pulse.yellow4 {
     -webkit-animation-name: yellowPulse4;
-    -webkit-animation-duration: 2s;
+    -webkit-animation-duration: 1.8s;
     -webkit-animation-iteration-count: infinite;
 }
 @-webkit-keyframes yellowPulse5 {
     0% {
         background-color: #ccc;
-        -webkit-box-shadow: 0 0 18px #aaa;
+        -webkit-box-shadow: 0 0 6px #aaa;
     }
     10% {
         background-color: #333;
-        -webkit-box-shadow: 0 0 9px #444;
+        -webkit-box-shadow: 0 0 3px #444;
+    }
+    80% {
+        background-color: #333;
+        -webkit-box-shadow: 0 0 3px #444;
     }
     90% {
         background-color: #ccc;
-        -webkit-box-shadow: 0 0 18px #aaa;
+        -webkit-box-shadow: 0 0 6px #aaa;
     }
     100% {
         background-color: #ccc;
-        -webkit-box-shadow: 0 0 18px #aaa;
+        -webkit-box-shadow: 0 0 6px #aaa;
     }
     to {
         background-color: #ccc;
-        -webkit-box-shadow: 0 0 18px #aaa;
+        -webkit-box-shadow: 0 0 6px #aaa;
     }
 }
 div.pulse.yellow5 {
     -webkit-animation-name: yellowPulse5;
-    -webkit-animation-duration: 2s;
+    -webkit-animation-duration: 1.8s;
     -webkit-animation-iteration-count: infinite;
 }
 @-webkit-keyframes redPulse {

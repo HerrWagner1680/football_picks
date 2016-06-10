@@ -79,8 +79,4 @@ function updateText(f) {
     $('.tr_row_' + f + ' .gt').eq(0).text(_gt)
 };
 
-//STANDINGS PAGE - SCROLL IN UNISON
-$('.vertical').scroll(function(){
-$('.vertical').scrollTop($(this).scrollTop());
-});
 

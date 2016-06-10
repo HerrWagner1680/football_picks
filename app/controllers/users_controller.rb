@@ -89,7 +89,7 @@ class UsersController < ApplicationController
     # of who made first picks first
 
     #adding this item below
-    @latest_charts_over = @latest_charts.where.not(winner: nil)
+    @latest_charts_over = @latest_chart.where.not(winner: nil)
   end
 
   def new

@@ -1,14 +1,14 @@
-/* line 5, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 5, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 table::after {
   color: pink;
 }
 
-/* line 9, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 9, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 table::before {
   color: blue;
 }
 
-/* line 13, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 13, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 #create_user_form {
   padding: 20px;
   background: #66a1ff;
@@ -18,12 +18,12 @@ table::before {
   text-shadow: black 0.1em 0.1em 0.2em;
 }
 
-/* line 22, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 22, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 span.user_form {
   margin: 10px;
 }
 
-/* line 26, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 26, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 #horiz_overflow {
   border: 3px solid #444;
   background: #aaa;
@@ -31,12 +31,13 @@ span.user_form {
   width: 95%;
   overflow-x: scroll;
   overflow-y: hidden;
+  /* -webkit-overflow-scrolling: touch; */
   white-space: nowrap;
   display: inline-block;
   margin-bottom: 10px;
 }
 
-/* line 37, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 38, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 .admin_link_button {
   margin-left: 25px;
   font-size: 20px;
@@ -46,7 +47,7 @@ span.user_form {
   display: inline-block;
 }
 
-/* line 46, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 47, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 #link_button {
   background-color: #1a72ff;
   width: 150px;
@@ -61,34 +62,34 @@ span.user_form {
   cursor: pointer;
 }
 
-/* line 60, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 61, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 .vis_admin {
   background-color: #d8e7ff;
 }
 
-/* line 64, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 65, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 .hom_admin {
   background-color: pink;
 }
 
-/* line 68, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 69, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 .nil_admin {
   /* text-align: center; */
   background-color: #BBB;
 }
 
-/* line 73, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 74, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 section.column {
   display: inline;
   background-color: green;
 }
 
-/* line 78, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 79, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 form#new_pick {
   display: inline-block;
 }
 
-/* line 82, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 83, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 .index_pick {
   margin: 3px 30px 3px 3px;
   border: 2px solid #444;
@@ -96,7 +97,7 @@ form#new_pick {
   width: 180px;
 }
 
-/* line 89, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 90, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 .zedpick {
   border: 2px solid white;
   background: #fff;
@@ -107,7 +108,7 @@ form#new_pick {
 	background-color: green;
 	display: block;
 } */
-/* line 101, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 102, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 div.boxxy {
   margin-top: 15px;
   margin-bottom: 45px;
@@ -119,7 +120,7 @@ div.boxxy {
   border: 2px solid #333;
 }
 
-/* line 112, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 113, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 div.texty {
   margin-bottom: 45px;
   padding-top: 20px;
@@ -129,7 +130,7 @@ div.texty {
   vertical-align: top;
 }
 
-/* line 124, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
+/* line 125, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/admin.scss.erb */
 #master_wk {
   font-size: 20pt;
   letter-spacing: 0.7pt;
@@ -515,18 +516,18 @@ h4.dimm {
 /*input:checked{
 	background-color: #A1EFB4
 };*/
-/* line 1, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 1, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 #no_scroll {
   height: 100%;
   overflow: hidden;
 }
 
-/* line 4, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 4, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .standing_row {
   color: black;
 }
 
-/* line 8, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 8, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .standing_row td {
   border: 2px solid #222;
   padding: 2px 3px 2px 2px;
@@ -534,7 +535,7 @@ h4.dimm {
   text-align: center;
 }
 
-/* line 14, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 14, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .gray {
   color: #777;
   background: #e5e5ff;
@@ -543,17 +544,18 @@ h4.dimm {
   width: 117px;
 }
 
-/* line 22, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 22, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 #horiz_overflow_standing {
   /* border: 3px solid #444; */
   max-width: 90%;
   overflow-x: scroll;
   overflow-y: hidden;
+  /* -webkit-overflow-scrolling: touch; */
   white-space: nowrap;
   display: inline-block;
 }
 
-/* line 31, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 32, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .vertical_wrapper {
   margin-right: 10px;
   height: 350px;
@@ -564,7 +566,7 @@ h4.dimm {
   /* border-right: 5px solid white; */
 }
 
-/* line 40, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 41, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .vertical {
   /* margin-right: 10px; */
   /* margin-left: 10px; */
@@ -574,6 +576,7 @@ h4.dimm {
   /* even number necessary for smooth edge */
   max-height: 250px;
   overflow-y: scroll;
+  /* -webkit-overflow-scrolling: touch; */
   display: inline-block;
   background: #eee;
   position: absolute;
@@ -581,7 +584,7 @@ h4.dimm {
   /* border: 10px solid white; */
 }
 
-/* line 55, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 57, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .fixed {
   /*margin-top: -430px;*/
   /* position: fixed; */
@@ -597,7 +600,7 @@ h4.dimm {
   z-index: 99;
 }
 
-/* line 68, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 70, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .fixed2 {
   /* margin-top: -430px; */
   /* margin-left: -50px; */
@@ -613,7 +616,7 @@ h4.dimm {
   z-index: 99;
 }
 
-/* line 82, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 84, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .a_blank {
   height: 300px;
   width: 10px;
@@ -624,7 +627,7 @@ h4.dimm {
   /* position: absolute; */
 }
 
-/* line 92, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 94, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 #vert_overflow {
   /* border: 3px solid #444; */
   max-height: 200px;
@@ -632,19 +635,20 @@ h4.dimm {
   /* width: 150%;  this needs to be flexible - via JS */
   /* based on the width of the header and footer*/
   overflow-y: scroll;
+  /* -webkit-overflow-scrolling: touch; */
   white-space: nowrap;
   display: inline-block;
   /* margin-bottom: 10px;*/
 }
 
-/* line 104, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 107, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .standing_table {
   display: inline-block;
   margin-left: 5px;
   margin-right: 7px;
 }
 
-/* line 110, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 113, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .standing_header {
   display: inline-block;
   /* text-align: center; */
@@ -652,12 +656,12 @@ h4.dimm {
   margin-right: 10px;
 }
 
-/* line 117, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 120, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .standing_name {
   text-align: center;
 }
 
-/* line 121, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 124, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .standing_footer {
   display: inline-block;
   margin-left: 13px;
@@ -667,26 +671,26 @@ h4.dimm {
   text-align: center;
 }
 
-/* line 130, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 133, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .standing_winloss {
   display: block;
   padding-left: 1px;
   padding-right: 1px;
 }
 
-/* line 136, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 139, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .green {
   background: #b2e8b2;
   width: 22px;
 }
 
-/* line 141, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 144, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .red {
   background: #ffb2b2;
   width: 22px;
 }
 
-/* line 146, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 149, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .gray_tot {
   color: #333;
   background: #ddd;
@@ -695,36 +699,36 @@ h4.dimm {
   width: 117px;
 }
 
-/* line 154, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 157, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .green_tot {
   background: #cce5cc;
   width: 22px;
 }
 
-/* line 159, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 162, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .red_tot {
   background: #ffcccc;
   width: 22px;
 }
 
-/* line 164, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 167, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .win {
   color: #4cb7b7;
 }
 
-/* line 176, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 179, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .pale {
   opacity: .3;
 }
 
-/* line 180, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 183, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .header_row th {
   /*text-align: center;*/
   font-size: 15pt;
   padding-bottom: 4px;
 }
 
-/* line 186, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 189, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .header_row {
   border: 2px solid #222;
   padding: 2px 3px 2px 2px;
@@ -732,7 +736,7 @@ h4.dimm {
   text-align: center;
 }
 
-/* line 192, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 195, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 .header_table {
   display: inline-block;
   /* margin-left: 9px; */
@@ -740,7 +744,7 @@ h4.dimm {
   /* border: 5px solid #999; */
 }
 
-/* line 199, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 202, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 td.win_loss_wk {
   /*border: 2px solid #222; */
   padding: 0px 0px 0px 0px;
@@ -748,7 +752,7 @@ td.win_loss_wk {
   width: 104px;
 }
 
-/* line 205, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 208, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 td.win_loss {
   /* border: 2px solid #222; */
   padding: 0px 0px 0px 0px;
@@ -756,7 +760,7 @@ td.win_loss {
   width: 35px;
 }
 
-/* line 211, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
+/* line 214, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/standing.scss.erb */
 footer.scrolly {
   margin-bottom: 20px;
 }
@@ -805,30 +809,30 @@ footer.scrolly {
 
 
  */
-/* line 18, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 18, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 body {
   background-color: #eee;
   color: #222;
   font-family: sans-serif;
 }
 
-/* line 28, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 28, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 td {
   padding: 15px;
 }
 
 /* hidden is for visit home nil values for existing pick chart */
-/* line 33, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 33, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 .hidden {
   display: none;
 }
 
-/* line 37, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 37, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 .hide {
   display: none;
 }
 
-/* line 41, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 41, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 input.login_email {
   height: 40px;
   font-size: 20px;
@@ -836,7 +840,7 @@ input.login_email {
   margin-bottom: 15px;
 }
 
-/* line 48, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 48, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 input.login_password {
   height: 40px;
   font-size: 20px;
@@ -844,7 +848,7 @@ input.login_password {
   margin-bottom: 15px;
 }
 
-/* line 55, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 55, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 input.login_button {
   height: 40px;
   width: 100px;
@@ -856,50 +860,88 @@ input.login_button {
   text-shadow: #333 0.1em 0.1em 0.1em;
 }
 
-/* line 66, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 66, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 .header {
   /* display: inline-block; */
 }
 
-/* line 70, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 70, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 .ctr {
   text-align: center;
 }
 
-/* line 74, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 74, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 .center {
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 79, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 79, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 .right {
   position: absolute;
   top: 55px;
   right: 50px;
 }
 
-/* line 85, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 85, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 .left {
   position: absolute;
   top: 40px;
   left: 50px;
 }
 
-/* line 93, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
-#loading_gif {
-  width: 90%;
-  height: 150px;
-  background: #ffa7ff;
-  position: fixed;
-  right: 0px;
-  bottom: 0px;
-  /* display: none; */
+/* line 91, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+#horiz_overflow .gray_link {
+  margin: 90px;
+  /* NOTE: week with two picks has 182px height -- 90 is half */
 }
 
-/* line 103, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 95, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+#shaded_background {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+/* line 105, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+#loading_gif {
+  width: 90%;
+  height: 75%;
+  background: #D2E0E4;
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  /* display: none; */
+  border-radius: 15px;
+}
+
+/* line 116, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+.loading {
+  display: block;
+  text-align: center;
+  margin-top: 10%;
+}
+
+/* line 122, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+.gray_link {
+  color: #777;
+  font-weight: light;
+}
+
+/* line 127, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+.gray_link u {
+  cursor: default;
+}
+
+/* line 131, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 .pulse {
-  margin: 30px;
+  margin-top: 10px;
+  margin-right: 3%;
+  margin-left: 3%;
   width: 10px;
   height: 10px;
   background-color: #749a02;
@@ -925,7 +967,7 @@ input.login_button {
     -webkit-box-shadow: 0 0 9px #333;
   }
 }
-/* line 129, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 159, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 div.pulse.green {
   top: 25px;
   left: 50px;
@@ -937,129 +979,161 @@ div.pulse.green {
 @-webkit-keyframes yellowPulse1 {
   0% {
     background-color: #333;
-    -webkit-box-shadow: 0 0 9px #444;
+    -webkit-box-shadow: 0 0 3px #444;
   }
   10% {
     background-color: #ccc;
-    -webkit-box-shadow: 0 0 18px #aaa;
+    -webkit-box-shadow: 0 0 6px #aaa;
   }
   20% {
     background-color: #ccc;
-    -webkit-box-shadow: 0 0 18px #aaa;
+    -webkit-box-shadow: 0 0 6px #aaa;
+  }
+  30% {
+    background-color: #333;
+    -webkit-box-shadow: 0 0 3px #444;
   }
   to {
     background-color: #333;
-    -webkit-box-shadow: 0 0 9px #444;
+    -webkit-box-shadow: 0 0 3px #444;
   }
 }
-/* line 154, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 188, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 div.pulse.yellow1 {
   -webkit-animation-name: yellowPulse1;
-  -webkit-animation-duration: 2s;
+  -webkit-animation-duration: 1.8s;
   -webkit-animation-iteration-count: infinite;
 }
 
 @-webkit-keyframes yellowPulse2 {
   0% {
     background-color: #333;
-    -webkit-box-shadow: 0 0 9px #444;
+    -webkit-box-shadow: 0 0 3px #444;
+  }
+  20% {
+    background-color: #333;
+    -webkit-box-shadow: 0 0 3px #444;
   }
   30% {
     background-color: #ccc;
-    -webkit-box-shadow: 0 0 18px #aaa;
+    -webkit-box-shadow: 0 0 6px #aaa;
   }
   40% {
     background-color: #ccc;
-    -webkit-box-shadow: 0 0 18px #aaa;
+    -webkit-box-shadow: 0 0 6px #aaa;
+  }
+  50% {
+    background-color: #333;
+    -webkit-box-shadow: 0 0 6px #aaa;
   }
   to {
     background-color: #333;
-    -webkit-box-shadow: 0 0 9px #444;
+    -webkit-box-shadow: 0 0 3px #444;
   }
 }
-/* line 177, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 219, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 div.pulse.yellow2 {
   -webkit-animation-name: yellowPulse2;
-  -webkit-animation-duration: 2s;
+  -webkit-animation-duration: 1.8s;
   -webkit-animation-iteration-count: infinite;
 }
 
 @-webkit-keyframes yellowPulse3 {
   0% {
     background-color: #333;
-    -webkit-box-shadow: 0 0 9px #444;
+    -webkit-box-shadow: 0 0 3px #444;
+  }
+  40% {
+    background-color: #333;
+    -webkit-box-shadow: 0 0 3px #444;
   }
   50% {
     background-color: #ccc;
-    -webkit-box-shadow: 0 0 18px #aaa;
+    -webkit-box-shadow: 0 0 6px #aaa;
   }
   60% {
     background-color: #ccc;
-    -webkit-box-shadow: 0 0 18px #aaa;
+    -webkit-box-shadow: 0 0 6px #aaa;
+  }
+  70% {
+    background-color: #333;
+    -webkit-box-shadow: 0 0 3px #444;
   }
   to {
     background-color: #333;
-    -webkit-box-shadow: 0 0 9px #444;
+    -webkit-box-shadow: 0 0 3px #444;
   }
 }
-/* line 200, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 250, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 div.pulse.yellow3 {
   -webkit-animation-name: yellowPulse3;
-  -webkit-animation-duration: 2s;
+  -webkit-animation-duration: 1.8s;
   -webkit-animation-iteration-count: infinite;
 }
 
 @-webkit-keyframes yellowPulse4 {
   0% {
     background-color: #333;
-    -webkit-box-shadow: 0 0 9px #444;
+    -webkit-box-shadow: 0 0 3px #444;
+  }
+  60% {
+    background-color: #333;
+    -webkit-box-shadow: 0 0 3px #444;
   }
   70% {
     background-color: #ccc;
-    -webkit-box-shadow: 0 0 18px #aaa;
+    -webkit-box-shadow: 0 0 6px #aaa;
   }
   80% {
     background-color: #ccc;
-    -webkit-box-shadow: 0 0 18px #aaa;
+    -webkit-box-shadow: 0 0 6px #aaa;
+  }
+  90% {
+    background-color: #333;
+    -webkit-box-shadow: 0 0 3px #444;
   }
   to {
     background-color: #333;
-    -webkit-box-shadow: 0 0 9px #444;
+    -webkit-box-shadow: 0 0 3px #444;
   }
 }
-/* line 223, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 281, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 div.pulse.yellow4 {
   -webkit-animation-name: yellowPulse4;
-  -webkit-animation-duration: 2s;
+  -webkit-animation-duration: 1.8s;
   -webkit-animation-iteration-count: infinite;
 }
 
 @-webkit-keyframes yellowPulse5 {
   0% {
     background-color: #ccc;
-    -webkit-box-shadow: 0 0 18px #aaa;
+    -webkit-box-shadow: 0 0 6px #aaa;
   }
   10% {
     background-color: #333;
-    -webkit-box-shadow: 0 0 9px #444;
+    -webkit-box-shadow: 0 0 3px #444;
+  }
+  80% {
+    background-color: #333;
+    -webkit-box-shadow: 0 0 3px #444;
   }
   90% {
     background-color: #ccc;
-    -webkit-box-shadow: 0 0 18px #aaa;
+    -webkit-box-shadow: 0 0 6px #aaa;
   }
   100% {
     background-color: #ccc;
-    -webkit-box-shadow: 0 0 18px #aaa;
+    -webkit-box-shadow: 0 0 6px #aaa;
   }
   to {
     background-color: #ccc;
-    -webkit-box-shadow: 0 0 18px #aaa;
+    -webkit-box-shadow: 0 0 6px #aaa;
   }
 }
-/* line 250, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 312, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 div.pulse.yellow5 {
   -webkit-animation-name: yellowPulse5;
-  -webkit-animation-duration: 2s;
+  -webkit-animation-duration: 1.8s;
   -webkit-animation-iteration-count: infinite;
 }
 
@@ -1077,7 +1151,7 @@ div.pulse.yellow5 {
     color: #777;
   }
 }
-/* line 269, /Users/gorey/Desktop/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
+/* line 331, /Users/gorey/Desktop/May_2016/April_2016/12_Nov_2015/fant_sports/football_picks/app/assets/stylesheets/application.scss.erb */
 div.pulse.red {
   -webkit-animation-name: redPulse;
   -webkit-animation-duration: 2s;

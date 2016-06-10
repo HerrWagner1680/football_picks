@@ -53865,10 +53865,10 @@ var selectTriggered
 
 selectTriggered = function(){
   //$this = $(e.target);
+
+  $('#shaded_background').hide()
   var selected = $('#triggered').val().toString()
   $('#triggered').blur();
-  //console.log("hello, you triggered this message");
-  //console.log(selected) //id number - wk number for chart
 
   var now = new Date();
   var time = now.getTime();
@@ -53877,34 +53877,66 @@ selectTriggered = function(){
 
   document.cookie = 'wk=' + selected + ';expires='+now.toGMTString()+';path=/';
 
-  //console.log(document.cookie)
-  //$('#latest_wk').load(location.href + ' #latest_wk'); //this works but nests
   $('#latest_wk').load(location.href + ' #latest_wk');
-    $('#latest_wk').promise().done(function(){ setTimeout(function(){$('#latest_wk p').unwrap()}, 1500) });
-
+    $('#latest_wk').promise().done(function(){ setTimeout(function(){$('#latest_wk p').unwrap()}, 1500) })
+                             .fail(function(){ console.log("#latest_wk FAIL")});
 
   $('#master_wk').load(location.href + ' #master_wk');
-    $('#master_wk').promise().done(function(){ setTimeout(function(){$('#master_wk p').unwrap()}, 1500) });
-    $('#master_wk').fadeTo("fast", 0)
+    $('#master_wk').promise().done(function(){ setTimeout(function(){$('#master_wk p').unwrap()}, 1500) })
+                             .fail(function(){ console.log("#master_wk FAIL")});
+    $('#master_wk').fadeTo("slow", 0)
     //$('#master_wk').hide();
+
+  $('#shaded_background').fadeTo("fast", 1)
 
    //$('#horiz_overflow div').fadeTo("fast", 0)
   $('#horiz_overflow').load(location.href + ' #horiz_overflow')
   //console.log("LINE 105: " + $('#horiz_overflow').css('height'));
-    $('#horiz_overflow').promise().done(function(){ setTimeout(function(){ $('#horiz_overflow div').unwrap()}, 3000); $('#loading_gif').fadeTo("fast", 1);});
-    $('#horiz_overflow').fadeTo("slow", 0)
+    $('#horiz_overflow').promise().done(function(){ setTimeout(function(){ $('#horiz_overflow div').unwrap()}, 3000); $('#loading_gif').fadeTo("fast", 1);})
+                                  .fail(function(){ console.log("#horiz_overflow FAIL")});
+   // $('#horiz_overflow').fadeTo("slow", 0).then(function(){
+    //       alert("HELLO!");
+    //       $('#horiz_overflow').css('background-color', '#eee')
+    //       $('#horiz_overflow').css('border', '3px solid #eee')
+    //       $('#horiz_overflow').html('<a class="loading gray_link">Taking too long? <u onclick="selectTriggered()">Click here to reload.</u></a>')         
+    //       $('#horiz_overflow').fadeTo("fast", 1)
+    // });
    //NOTE -- time of 1000 shows the previous height. 2000 shows new height. 
-  setTimeout(function(){ console.log( "LINE 108: " + $('#horiz_overflow').css('height')); }, 2000);
-  setTimeout(function(){ $('#loading_gif').fadeTo("fast", 0);  }, 3300);
-  //if ($('#loading_gif').css('opacity', 0)){ $('#loading_gif').hide(); }
-  setTimeout(function(){ $('#loading_gif').hide();  }, 3700);
+
+  // $('#horiz_overflow').css('background-color', '#eee')
+  // $('#horiz_overflow').css('border', '3px solid #eee')
+  // $('#horiz_overflow').html('<a class="loading gray_link">Taking too long? <u onclick="selectTriggered()">Click here to reload.</u></a>')
+  setTimeout(function(){ $('#shaded_background').fadeTo("fast", 0);  }, 3300);
+ 
+  setTimeout(function(){ $('#shaded_background').hide();  }, 3700);
 
   $('#submitted_picks').load(location.href + ' #submitted_picks')
-     $('#submitted_picks').promise().done(function(){ setTimeout(function(){ $('#submitted_picks section').unwrap();  oldchartPicks();}, 1500)}); 
+     $('#submitted_picks').promise().done(function(){ setTimeout(function(){ $('#submitted_picks section').unwrap();  oldchartPicks();}, 1500)})
+                          .fail(function(){ console.log("#submitted_picks FAIL")});
      $('#submitted_picks').fadeTo("slow", 0)
 
 
+          $('#horiz_overflow').css('background-color', '#eee')
+          $('#horiz_overflow').css('border', '3px solid #eee')
+          $('#horiz_overflow').html('<a class="loading gray_link">Taking too long? <u onclick="selectTriggered()">Click here to reload.</u></a>')         
+          $('#horiz_overflow').fadeTo("fast", 1)
+
+     // jQuery error handling with promises
+     // http://stackoverflow.com/questions/23744612/problems-inherent-to-jquery-deferred-jquery-1-x-2-x
+  
+     //USE CATCH TO DESCRIBE WHAT TO DO IF ERROR
+
+
+
 }
+
+//STANDINGS PAGE - SCROLL IN UNISON
+$('.vertical').ready(function(){
+  $('.vertical').scroll(function(){
+    $('.vertical').scrollTop($(this).scrollTop());
+  });
+})
+
 ;
 // # Place all the behaviors and hooks related to the matching controller here.
 // # All this logic will automatically be available in application.js.
@@ -53987,10 +54019,6 @@ function updateText(f) {
     $('.tr_row_' + f + ' .gt').eq(0).text(_gt)
 };
 
-//STANDINGS PAGE - SCROLL IN UNISON
-$('.vertical').scroll(function(){
-$('.vertical').scrollTop($(this).scrollTop());
-});
 
 (function() {
   var receta;
@@ -54221,3 +54249,58 @@ hidePC = function(bool) {
   }
 };
 
+// code below from http://stackoverflow.com/questions/1517924/javascript-mapping-touch-events-to-mouse-events
+
+//alert("running app");
+
+function touchHandler(event)
+{
+    var touches = event.changedTouches,
+        first = touches[0],
+        type = "";
+    switch(event.type)
+    {
+        case "touchstart": type = "mousedown"; break;
+        case "touchmove":  type = "mousemove"; break;        
+        case "touchend":   type = "mouseup";   break;
+        default:           return;
+    }
+
+    // initMouseEvent(type, canBubble, cancelable, view, clickCount, 
+    //                screenX, screenY, clientX, clientY, ctrlKey, 
+    //                altKey, shiftKey, metaKey, button, relatedTarget);
+
+    var simulatedEvent = document.createEvent("MouseEvent");
+    simulatedEvent.initMouseEvent(type, true, true, window, 1, 
+                                  first.screenX, first.screenY, 
+                                  first.clientX, first.clientY, false, 
+                                  false, false, false, 0/*left*/, null);
+
+    first.target.dispatchEvent(simulatedEvent);
+    event.preventDefault();
+}
+
+function init() {
+    document.getElementById('horiz_overflow_standing').addEventListener("touchstart", touchHandler, true);
+    document.getElementById('horiz_overflow_standing').addEventListener("touchmove", touchHandler, true);
+    document.getElementById('horiz_overflow_standing').addEventListener("touchend", touchHandler, true);
+    document.getElementById('horiz_overflow_standing').addEventListener("touchcancel", touchHandler, true);
+}
+
+document.addEventListener("mousemove", function(){
+    event.preventDefault() ;
+    //showCoords();
+    document.getElementById('testing_stuff').innerHTML = "touchmove";
+});
+
+document.addEventListener("touchmove", function(){
+    event.preventDefault() ;
+    //showCoords();
+    document.getElementById('testing_stuff').innerHTML = "move move move";
+});
+
+document.addEventListener("click", function(){
+    event.preventDefault() ;
+    //showCoords();
+    document.getElementById('testing_stuff').innerHTML = "sdhjksdfkhjsfkhjdfskjh";
+});

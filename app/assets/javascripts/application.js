@@ -228,3 +228,11 @@ document.addEventListener("click", function(){
     document.getElementById('testing_stuff').innerHTML = "sdhjksdfkhjsfkhjdfskjh";
     }
 }); 
+
+document.addEventListener("touchend", function(){
+    event.preventDefault() ;
+    //showCoords();
+    if ($('#testing_stuff').length) {
+    document.getElementById('testing_stuff').innerHTML = "sdhjksdtouchendfskjh";
+    }
+}); 

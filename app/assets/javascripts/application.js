@@ -206,7 +206,7 @@ hidePC = function(bool) {
 
 //STANDINGS PAGE LOADED
 $('#testing_stuff').ready(function(){
-    if ($('#horiz_overflow_standing').length) {
+    //if ($('#horiz_overflow_standing').length) {
           document.addEventListener("mousemove", function(){
               event.preventDefault() ;
               //showCoords();
@@ -238,5 +238,5 @@ $('#testing_stuff').ready(function(){
               document.getElementById('testing_stuff').innerHTML = "sdhjksdtouchendfskjh";
               //}
           }); 
-    };
-};
+   // };
+});

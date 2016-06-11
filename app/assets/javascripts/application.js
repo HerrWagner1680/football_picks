@@ -239,7 +239,7 @@ $('#testing_stuff').ready(function(){
               //}
           }); 
     };
-/});
+});
 
 // document.getElementById('horiz_overflow_standing').addEventListener("click", function(){ event.preventDefault(); console.log("clicky on horiz"); }); 
 

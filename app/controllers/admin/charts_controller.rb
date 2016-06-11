@@ -72,6 +72,8 @@ class Admin::ChartsController < ApplicationController
     @pc = Pickchart.find(params[:id])
 
     if @pc.destroy
+      # the 'latest' cookie must be reset
+      cookies[:wk] = Pickchart.maximum(:week) # aka @latest
       respond_to do |format|
         format.html { redirect_to "/admin/charts/new" }
         format.js { render "destroy.js.erb", :locals => {:id => @pc.id} }# render charts/create.js.erb

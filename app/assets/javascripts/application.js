@@ -196,42 +196,15 @@ hidePC = function(bool) {
 
 // code below from http://stackoverflow.com/questions/1517924/javascript-mapping-touch-events-to-mouse-events
 
-//alert("running app");
 
-function touchHandler(event)
-{
-    var touches = event.changedTouches,
-        first = touches[0],
-        type = "";
-    switch(event.type)
-    {
-        case "touchstart": type = "mousedown"; break;
-        case "touchmove":  type = "mousemove"; break;        
-        case "touchend":   type = "mouseup";   break;
-        default:           return;
-    }
-
-    // initMouseEvent(type, canBubble, cancelable, view, clickCount, 
-    //                screenX, screenY, clientX, clientY, ctrlKey, 
-    //                altKey, shiftKey, metaKey, button, relatedTarget);
-
-    var simulatedEvent = document.createEvent("MouseEvent");
-    simulatedEvent.initMouseEvent(type, true, true, window, 1, 
-                                  first.screenX, first.screenY, 
-                                  first.clientX, first.clientY, false, 
-                                  false, false, false, 0/*left*/, null);
-
-    first.target.dispatchEvent(simulatedEvent);
-    event.preventDefault();
-}
-
-function init() {
+/*function init() {
     document.getElementById('horiz_overflow_standing').addEventListener("touchstart", touchHandler, true);
     document.getElementById('horiz_overflow_standing').addEventListener("touchmove", touchHandler, true);
     document.getElementById('horiz_overflow_standing').addEventListener("touchend", touchHandler, true);
     document.getElementById('horiz_overflow_standing').addEventListener("touchcancel", touchHandler, true);
-}
+} */
 
+/*
 document.addEventListener("mousemove", function(){
     event.preventDefault() ;
     //showCoords();
@@ -248,4 +221,4 @@ document.addEventListener("click", function(){
     event.preventDefault() ;
     //showCoords();
     document.getElementById('testing_stuff').innerHTML = "sdhjksdfkhjsfkhjdfskjh";
-});
+}); */

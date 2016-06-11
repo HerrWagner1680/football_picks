@@ -204,36 +204,36 @@ hidePC = function(bool) {
     document.getElementById('horiz_overflow_standing').addEventListener("touchcancel", touchHandler, true);
 } */
 
-if ($('#horiz_overflow_standing').length) {
+if (document.getElementById('horiz_overflow_standing').length) {
       document.addEventListener("mousemove", function(){
           event.preventDefault() ;
           //showCoords();
-          if ($('#horiz_overflow_standing').length) {
+          //if ($('#horiz_overflow_standing').length) {
           document.getElementById('testing_stuff').innerHTML = "touchmove";
-          }
+          //}
       });
 
       document.addEventListener("touchmove", function(){
           event.preventDefault() ;
           //showCoords();
-          if ($('#horiz_overflow_standing').length) {
+          //if ($('#horiz_overflow_standing').length) {
           document.getElementById('testing_stuff').innerHTML = "move move move";
-          }
+          //}
       });
 
       document.addEventListener("click", function(){
           event.preventDefault() ;
           //showCoords();
-          if ($('#horiz_overflow_standing').length) {
+          //if ($('#horiz_overflow_standing').length) {
           document.getElementById('testing_stuff').innerHTML = "sdhjksdfkhjsfkhjdfskjh";
-          }
+          //}
       }); 
 
       document.addEventListener("touchend", function(){
           event.preventDefault() ;
           //showCoords();
-          if ($('#horiz_overflow_standing').length) {
+          //if ($('#horiz_overflow_standing').length) {
           document.getElementById('testing_stuff').innerHTML = "sdhjksdtouchendfskjh";
-          }
+          //}
       }); 
 };

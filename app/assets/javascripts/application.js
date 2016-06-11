@@ -204,7 +204,7 @@ hidePC = function(bool) {
     document.getElementById('horiz_overflow_standing').addEventListener("touchcancel", touchHandler, true);
 } */
 
-if (document.getElementById('horiz_overflow_standing').length) {
+if ($('#horiz_overflow_standing').length) {
       document.addEventListener("mousemove", function(){
           event.preventDefault() ;
           //showCoords();

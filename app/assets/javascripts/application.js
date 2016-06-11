@@ -209,7 +209,7 @@ if ($('#horiz_overflow_standing').length) {
           event.preventDefault() ;
           //showCoords();
           if ($('#horiz_overflow_standing').length) {
-          document.getElementById('horiz_overflow_standing').innerHTML = "touchmove";
+          document.getElementById('testing_stuff').innerHTML = "touchmove";
           }
       });
 
@@ -217,7 +217,7 @@ if ($('#horiz_overflow_standing').length) {
           event.preventDefault() ;
           //showCoords();
           if ($('#horiz_overflow_standing').length) {
-          document.getElementById('horiz_overflow_standing').innerHTML = "move move move";
+          document.getElementById('testing_stuff').innerHTML = "move move move";
           }
       });
 
@@ -225,7 +225,7 @@ if ($('#horiz_overflow_standing').length) {
           event.preventDefault() ;
           //showCoords();
           if ($('#horiz_overflow_standing').length) {
-          document.getElementById('horiz_overflow_standing').innerHTML = "sdhjksdfkhjsfkhjdfskjh";
+          document.getElementById('testing_stuff').innerHTML = "sdhjksdfkhjsfkhjdfskjh";
           }
       }); 
 
@@ -233,7 +233,7 @@ if ($('#horiz_overflow_standing').length) {
           event.preventDefault() ;
           //showCoords();
           if ($('#horiz_overflow_standing').length) {
-          document.getElementById('horiz_overflow_standing').innerHTML = "sdhjksdtouchendfskjh";
+          document.getElementById('testing_stuff').innerHTML = "sdhjksdtouchendfskjh";
           }
       }); 
 };

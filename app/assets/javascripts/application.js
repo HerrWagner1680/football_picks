@@ -204,7 +204,7 @@ hidePC = function(bool) {
     document.getElementById('horiz_overflow_standing').addEventListener("touchcancel", touchHandler, true);
 } */
 
-
+/*
 document.addEventListener("mousemove", function(){
     event.preventDefault() ;
     //showCoords();
@@ -227,4 +227,4 @@ document.addEventListener("click", function(){
     if ($('#testing_stuff').length) {
     document.getElementById('testing_stuff').innerHTML = "sdhjksdfkhjsfkhjdfskjh";
     }
-}); 
+}); */

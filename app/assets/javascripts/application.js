@@ -204,21 +204,27 @@ hidePC = function(bool) {
     document.getElementById('horiz_overflow_standing').addEventListener("touchcancel", touchHandler, true);
 } */
 
-/*
+
 document.addEventListener("mousemove", function(){
     event.preventDefault() ;
     //showCoords();
+    if ($('#testing_stuff').length) {
     document.getElementById('testing_stuff').innerHTML = "touchmove";
+    }
 });
 
 document.addEventListener("touchmove", function(){
     event.preventDefault() ;
     //showCoords();
+    if ($('#testing_stuff').length) {
     document.getElementById('testing_stuff').innerHTML = "move move move";
+    }
 });
 
 document.addEventListener("click", function(){
     event.preventDefault() ;
     //showCoords();
+    if ($('#testing_stuff').length) {
     document.getElementById('testing_stuff').innerHTML = "sdhjksdfkhjsfkhjdfskjh";
-}); */
+    }
+}); 

@@ -215,11 +215,13 @@ $('#testing_stuff').ready(function(){
               //}
           });
 
-          document.addEventListener("touchmove", function(){
+          document.addEventListener("touchmove", function(e){
               event.preventDefault() ;
               //showCoords();
               //if ($('#horiz_overflow_standing').length) {
-              document.getElementById('testing_stuff').innerHTML = "move move move";
+              var xxx = e.pageX - offset.left
+              var yyy = e.pageY - offset.top
+              document.getElementById('testing_stuff').innerHTML = "move move move " + "X POS: " + xxx + "Y POS: " + yyy;
               //}
           });
 

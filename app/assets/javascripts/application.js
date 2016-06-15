@@ -211,8 +211,8 @@ $('#testing_stuff').ready(function(){
               event.preventDefault() ;
               //showCoords();
               //if ($('#horiz_overflow_standing').length) {
-              var xxx = e.pageX - offset.left
-              var yyy = e.pageY - offset.top
+              var xxx = e.pageX // - offset.left
+              var yyy = e.pageY // - offset.top
               document.getElementById('testing_stuff').innerHTML = "mousemove" + "X POS: " + xxx + "Y POS: " + yyy;
               //}
           });
@@ -221,8 +221,8 @@ $('#testing_stuff').ready(function(){
               event.preventDefault() ;
               //showCoords();
               //if ($('#horiz_overflow_standing').length) {
-              var xxx = e.pageX - offset.left
-              var yyy = e.pageY - offset.top
+              var xxx = e.pageX // - offset.left
+              var yyy = e.pageY // - offset.top
               document.getElementById('testing_stuff').innerHTML = "touch move " + "X POS: " + xxx + "Y POS: " + yyy;
               //}
           });

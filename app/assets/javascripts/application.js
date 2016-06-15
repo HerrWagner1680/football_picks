@@ -207,7 +207,7 @@ hidePC = function(bool) {
 //STANDINGS PAGE LOADED
 $('#testing_stuff').ready(function(){
     if ($('#horiz_overflow_standing').length) {
-          document.addEventListener("mousemove", function(){
+          document.addEventListener("mousemove", function(e){
               event.preventDefault() ;
               //showCoords();
               //if ($('#horiz_overflow_standing').length) {

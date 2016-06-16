@@ -229,12 +229,21 @@ $('#testing_stuff').ready(function(){
 
           document.addEventListener("touchmove", function(e){
               event.preventDefault() ;
+              var origin_x = e.pageX
+              var origin_y = e.pageY
+              //Object.freeze(origin_x);
+              //Object.freeze(origin_y);
+              if (typeof running_mousemove === 'undefined' || running_mousemove === false ) { 
+                    document.getElementById('origin_x').innerHTML = origin_x;
+                    document.getElementById('origin_y').innerHTML = origin_y;
+                     };
               //showCoords();
               //if ($('#horiz_overflow_standing').length) {
               var xxx = e.pageX // - offset.left
               var yyy = e.pageY // - offset.top
               document.getElementById('testing_stuff').innerHTML = "touch move " + "X POS: " + xxx + "Y POS: " + yyy;
               //}
+              running_mousemove = true;
           });
 
           document.addEventListener("click", function(){
@@ -254,6 +263,9 @@ $('#testing_stuff').ready(function(){
               //if ($('#horiz_overflow_standing').length) {
               document.getElementById('testing_stuff').innerHTML = "sdhjksdtouchendENDENDNEND";
               //}
+              document.getElementById('origin_x').innerHTML = " RESET "; 
+              document.getElementById('origin_y').innerHTML = " RESET "; 
+              running_mousemove = false
           }); 
     };
 });

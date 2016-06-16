@@ -5,12 +5,12 @@
 	
 			<td class="week_table game_text wk" pc=<%= "#{pickchart.id}"%>><%= pickchart.week %></td>
 		<!-- remember remove pickchart id later -->
-			<td class="vis team_table game_text vt" pc=<%= "#{pickchart.id}"%>><input type="radio" onclick="highLight(this)" value="visit" name=<%="picks[]#{pickchart.id}"%> disabled="true" ><%= pickchart.vteam %></td>
-			<td class="record game_text vr" pc=<%= "#{pickchart.id}"%>><%= pickchart.vt_rec %></td>
+			<td class="vis team_table game_text vt" pc=<%= "#{pickchart.id}"%>><input type="radio" onclick="highLight(this)" value="visit" name=<%="picks[]#{pickchart.id}"%> disabled="true" ><%= pickchart.vteam.first(25) %></td>
+			<td class="record game_text vr" pc=<%= "#{pickchart.id}"%>><%= pickchart.vt_rec.first(7) %></td>
 			<td class="pick_hide">.... at ....</td>
-			<td class="hom team_table game_text ht" pc=<%= "#{pickchart.id}"%>><input type="radio" onclick="highLight(this)" value="home" name=<%= "picks[]#{pickchart.id}"%> disabled="true"><%= pickchart.hteam %></td>
-			<td class="record game_text hr" pc=<%= "#{pickchart.id}"%>><%= pickchart.ht_rec %></td>
-			<td class="gtime_table game_text gt" pc=<%= "#{pickchart.id}"%>><%= pickchart.gametime %></td>
+			<td class="hom team_table game_text ht" pc=<%= "#{pickchart.id}"%>><input type="radio" onclick="highLight(this)" value="home" name=<%= "picks[]#{pickchart.id}"%> disabled="true"><%= pickchart.hteam.first(25) %></td>
+			<td class="record game_text hr" pc=<%= "#{pickchart.id}"%>><%= pickchart.ht_rec.first(7) %></td>
+			<td class="gtime_table game_text gt" pc=<%= "#{pickchart.id}"%>><%= pickchart.gametime.first(18) %></td>
 
 	        <td class="game_text" pc=<%= "#{pickchart.id}"%>><button class="buttonGrey" pc=<%= "#{pickchart.id}"%> onclick=<%= "asdfasdf(#{ pickchart.id })"%> type="button">&nbsp;&nbsp;&nbsp;&nbsp;edit&nbsp;&nbsp;&nbsp;&nbsp;</button></td>
 			<td class="game_text" pc=<%= "#{pickchart.id}"%> onclick=<%= "$('#pc_2b_deleted').html(#{ pickchart.id })"%> ><%= link_to(("delete"),
@@ -24,15 +24,15 @@
 	<tr class="tr_row_<%="#{pickchart.id}"%>" val=<%="#{pickchart.id}"%> >
 		<%= form_for(pcfind, url: admin_charts_path, method: :patch, remote: true) do |f| %>
 		<%= f.hidden_field :id, placeholder: pickchart.id, :input_html => { :value => pickchart.id } %>
-		<td class="game_form EDchart wk" pc=<%= "#{pickchart.id}"%> ><%= f.text_field :week, placeholder: pickchart.week, :input_html => { :value => pickchart.week } %></td>
+		<td class="game_form EDchart wk" pc=<%= "#{pickchart.id}"%> ><%= f.text_field :week, placeholder: pickchart.week, :maxlength => 2, :input_html => { :value => pickchart.week } %></td>
 	
-		<td class="game_form EDchart EDteams vt" pc=<%= "#{pickchart.id}"%>><%= f.text_field :vteam, placeholder: pickchart.vteam, :input_html => { :value => pickchart.vteam } %></td>
-		<td class="game_form EDchart rec vr" pc=<%= "#{pickchart.id}"%>><%= f.text_field :vt_rec, placeholder: pickchart.vt_rec, :input_html => { :value => pickchart.vt_rec } %></td>
+		<td class="game_form EDchart EDteams vt" pc=<%= "#{pickchart.id}"%>><%= f.text_field :vteam, placeholder: pickchart.vteam, :maxlength => 25, :input_html => { :value => pickchart.vteam } %></td>
+		<td class="game_form EDchart rec vr" pc=<%= "#{pickchart.id}"%>><%= f.text_field :vt_rec, placeholder: pickchart.vt_rec, :maxlength => 7, :input_html => { :value => pickchart.vt_rec } %></td>
 		<td class="pick_hide">.... at ....</td>
-		<td class="game_form EDchart EDteams ht" pc=<%= "#{pickchart.id}"%>><%= f.text_field :hteam, placeholder: pickchart.hteam, :input_html => { :value => pickchart.hteam } %></td>
-		<td class="game_form EDchart rec hr" pc=<%= "#{pickchart.id}"%>><%= f.text_field :ht_rec, placeholder: pickchart.ht_rec, :input_html => { :value => pickchart.ht_rec } %></td>
+		<td class="game_form EDchart EDteams ht" pc=<%= "#{pickchart.id}"%>><%= f.text_field :hteam, placeholder: pickchart.hteam, :maxlength => 25, :input_html => { :value => pickchart.hteam } %></td>
+		<td class="game_form EDchart rec hr" pc=<%= "#{pickchart.id}"%>><%= f.text_field :ht_rec, placeholder: pickchart.ht_rec, :maxlength => 7, :input_html => { :value => pickchart.ht_rec } %></td>
 		<td class="pick_hide"  >edit / delete</td>
-		<td class="game_form EDchart EDgametime gt" pc=<%= "#{pickchart.id}"%>><%= f.text_field :gametime, placeholder: pickchart.gametime, :input_html => { :value => pickchart.gametime } %></td>
+		<td class="game_form EDchart EDgametime gt" pc=<%= "#{pickchart.id}"%>><%= f.text_field :gametime, placeholder: pickchart.gametime, :maxlength => 18, :input_html => { :value => pickchart.gametime } %></td>
 		<td class="game_form"><%= f.submit "Update Game Listing" %></td>
 		<td class="game_form" pc=<%= "#{pickchart.id}"%> onclick=<%= "$('#pc_2b_deleted').html(#{ pickchart.id })"%> ><%= button_to(("update"), url: admin_charts_path, method: :patch, remote: true, class: "buttonGrey", type: 'button') %></td>
 		<td class="game_form" pc=<%= "#{pickchart.id}"%> onclick=<%= "$('#pc_2b_deleted').html(#{ pickchart.id })"%> ><%= link_to(("delete"),

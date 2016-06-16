@@ -2,6 +2,7 @@
 
 <%= javascript_include_tag "charts" %>
 <%= link_to ("HOME"), "/admin", method: :get %><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><%= link_to ("WINS"), "/admin/wins", method: :get %>
+
 <h3>NOTE - Only the newest week (highest week number) is accessible to users.</h3>
 <h5>Week numbers 18, 19, and 20 should be used instead of Wild Card 1, Wild Card 2, and Championship -- since the program searches for a number</h5>
 
@@ -9,7 +10,8 @@
 
 <p>List will shrink as winners are declared</p>
 <br>
-<h1> ADD TO TEMPLATE CHART FOR WEEK <%= latest_wk(@pickcharts) %> </h1>
+<div id="minimum_width">
+<h1> ADD TO TEMPLATE CHART FOR WEEK <%= latest_wk(@pickcharts) %></h1>
 <% if @latest_charts %>
 	<table class="new_chart">
 		<tr>
@@ -20,6 +22,8 @@
 			<td class="team_header">Home</td>
 			<td class="rec_header">H Record</td>
 			<td class="gametime_header">Game Time</td>
+			<td class="blank_header"></td>
+			<td class="blank_header"></td>
 		</tr>
 
 <!-- form_for Pickchart.new, url: admin_charts_path, method: :post, remote: :true do |f| -->
@@ -41,6 +45,22 @@
 <br>
 
 <%= render partial: "new_game", locals: {pickchart: @pickchart, pickcharts: @latest_charts} %>
+
+<br>
+<br>
+<br>
+<br>
+<h3>View Past Week Games Here</h3>
+<h5>select week number you wish to view</h5>
+<select id="triggered" onchange = "selectTriggered()">
+<%= options_for_select(uniq_week_array) %>
+</select>
+<br>
+<!-- <%= render partial: "chart", locals: {pickcharts: @latest_charts} %> -->
+
+<%= render partial: "already_submitted_picks", locals: {pickcharts: latest_picks(cookie_wk), picks: @picks} %>
+<br>
+
 
 <% if false %>
 <div class="hidden"><%= @latest_charts.last.id %>
@@ -68,7 +88,10 @@
 </select> <!-- need submit button -->
 <%= collection_select(:user, :id, User.all, :user_name, :user_name, {:include_blank => true}) %>
 <% end %>
+
+
 <br>
 <br>
 <br>
 <div id="pc_2b_deleted" class="hide"></div> <!-- destroy js reads pickchart deletion info here -->
+</div> <!--- end of minimum_width div -->

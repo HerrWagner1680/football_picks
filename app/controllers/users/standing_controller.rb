@@ -15,7 +15,8 @@ class Users::StandingController < ApplicationController
     @standings = Standing.order('week').all
     @standings = @standings.order('user_id')
     @standing_users = @standings.pluck(:user_id).uniq
-    @standing_users.pop(1)
+    # @standing_users.pop(1)
+    # commented out pop(1) since it was removing last added player!
 
     @current_user = User.find(session[:user_id])
   end

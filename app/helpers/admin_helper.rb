@@ -59,7 +59,11 @@ module AdminHelper
 		return week_names
 	end
 
+# you want an index of 0 in order to get the text
 	def select_week(week_num, index)
+		if week_num >= 22 
+			week_num = 22
+		end
 		week_names = [["Week 0", 0], ["Week 1", 1], ["Week 2", 2], ["Week 3", 3], ["Week 4", 4],
 		 ["Week 5", 5], ["Week 6", 6], ["Week 7", 7], ["Week 8", 8], ["Week 9", 9], ["Week 10", 10], ["Week 11", 11], 
 		 ["Week 12", 12], ["Week 13", 13], ["Week 14", 14], ["Week 15", 15], ["Week 16", 16], ["Week 17", 17], 

@@ -1,0 +1,44 @@
+<%= stylesheet_link_tag  "chart" %>
+
+<% if pickcharts.first %>
+	<table class="old_chart asdf">
+		<tr>
+			<td>Week</td>
+			<td> </td>
+			<td>Visitor</td>
+			<td>Rec</td>
+			<td> </td>
+			<td>Home</td>
+			<td>Rec</td>
+			<td> </td>
+			<td>Game Time</td>
+			<td>Winner</td>
+		</tr>
+
+		<% pickcharts.each do |pickchart| %>
+		<tr>
+		<% if picks.where(pickchart_id: pickchart.id, user_id: current_user.id).last %>
+			<td class="hidden"><%= picks.where(pickchart_id: pickchart.id).last.user_pick %></td>
+		<% else %>
+			<td class="hidden">nil</td>
+		<% end %>
+			<td><%= pickchart.week %></td>
+			<td class="v_checkbox"> ... </td>
+			<td class="v_pick"><%= pickchart.vteam %></td>
+			<td><%= pickchart.vt_rec %></td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td class="h_pick"><%= pickchart.hteam %></td>
+			<td><%= pickchart.ht_rec %></td>
+			<td class="h_checkbox"> ... </td>
+			<td><%= pickchart.gametime %></td>
+			<td class="oc_winner"><%= vis_to_vistor(pickchart.winner) %></td>
+		</tr>
+
+		<% end %>
+	</table>
+
+<% else %>
+	<br>
+	<h3>NO WINNERS OR LOSERS SUBMITTED YET FOR THIS WEEK - CHECK BACK LATER</h3>
+	<br>
+<% end %>

@@ -88,6 +88,8 @@ class UsersController < ApplicationController
     #this helper actually spits out a users array in chron order
     # of who made first picks first
 
+    #line 92 added on June 16 after getting undefined error
+    @latest_chart = @latest_charttees.order('id')
     #adding this item below
     @latest_charts_over = @latest_chart.where.not(winner: nil)
   end

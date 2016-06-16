@@ -26,7 +26,7 @@
 					<th><%= name_of_user(standing_user).first(9) %></th>
 					<th></th>
 					</tr>
-				<!-- first(15) limits name to 15 char -->
+				<!-- first(9) limits name to 9 char -->
 
 					<tr class="header_row">
 						<td class="win_loss">win</td>
@@ -54,7 +54,7 @@
 			<% else %>
 					<tr class="standing_row">
 						<td class="green pale">-</td>
-						<td class="gray"><%= week_wo_week(week_num) %></td>
+						<td class="gray pale"><%= week_wo_week(week_num) %></td>
 						<!-- td class="gray pale">- - no score - -</td -->
 						<td class="red pale">-</td>
 					</tr>
@@ -90,6 +90,8 @@
 </div> <!-- end of no_scroll -->
 
 <div id="testing_stuff">sdhjksdfkhjsfkhjdfskjh</div>
+<div id="origin_x">frozen origin X</div>
+<div id="origin_y">frozen origin Y</div>
 <br>
 <br>
 <br>

@@ -1,14 +1,14 @@
 <section id="new_pc">
 	<%= form_for pickchart, url: admin_charts_path, params: {id: pickchart.id},method: :post do |f| %>
 
-	  <div class="chart wk"><%= f.text_field :week, :class => "t_field", :placeholder => '0'%></div>
+	  <div class="chart wk"><%= f.text_field :week, :maxlength => 2, :class => "t_field", :placeholder => '0'%></div>
 
-	  <div class="chart teams"><%= f.text_field :vteam, :placeholder => 'Visitor' %></div>
-	  <div class="chart rec"><%= f.text_field :vt_rec, :class => "t_field", :placeholder => '0-0' %></div>
-	  <div class="chart teams"><%= f.text_field :hteam, :placeholder => 'Home' %></div>
-	  <div class="chart rec"><%= f.text_field :ht_rec, :class => "t_field", :placeholder => '0-0' %></div>
+	  <div class="chart teams"><%= f.text_field :vteam, :maxlength => 25, :placeholder => 'Visitor' %></div>
+	  <div class="chart rec"><%= f.text_field :vt_rec, :maxlength => 7, :class => "t_field", :placeholder => '0-0' %></div>
+	  <div class="chart teams"><%= f.text_field :hteam, :maxlength => 25, :placeholder => 'Home' %></div>
+	  <div class="chart rec"><%= f.text_field :ht_rec, :maxlength => 7, :class => "t_field", :placeholder => '0-0' %></div>
 
-	  <div class="chart gametime"><%= f.text_field :gametime, :placeholder => 'Time' %></div>
+	  <div class="chart gametime"><%= f.text_field :gametime, :maxlength => 18, :placeholder => 'Time' %></div>
 	  <%= f.submit "Add Game Listing" %>
 	<% end %> 
 

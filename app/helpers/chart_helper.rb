@@ -8,6 +8,9 @@ module ChartHelper
 	end
 
 	def name_wk(week_num)
+		if week_num >= 22 
+			week_num = 22
+		end
 		week_names = ["Week 0", "Week 1", "Week 2", "Week 3", "Week 4",
 		 "Week 5", "Week 6", "Week 7", "Week 8", "Week 9", "Week 10", "Week 11", 
 		 "Week 12", "Week 13", "Week 14", "Week 15", "Week 16", "Week 17", 
@@ -16,6 +19,9 @@ module ChartHelper
 	end
 
 	def week_wo_week(week_num)
+		if week_num >= 22 
+			week_num = 22
+		end
 		week_names = ["zero", "one", "two", "three", "four",
 		 "five", "six", "seven", "eight", "nine", "ten", "eleven", 
 		 "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", 

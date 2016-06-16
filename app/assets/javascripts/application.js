@@ -207,7 +207,7 @@ hidePC = function(bool) {
 //STANDINGS PAGE LOADED
 $('#testing_stuff').ready(function(){
     if ($('#horiz_overflow_standing').length) {
-          document.addEventListener("mousemove", function(e){
+          document.getElementById('horiz_overflow_standing').addEventListener("mousemove", function(e){
               event.preventDefault() ;
               var origin_x = e.pageX
               var origin_y = e.pageY
@@ -227,7 +227,7 @@ $('#testing_stuff').ready(function(){
               running_mousemove = true;
           });
 
-          document.addEventListener("touchmove", function(e){
+          document.getElementById('horiz_overflow_standing').addEventListener("touchmove", function(e){
               event.preventDefault() ;
               var origin_x = e.pageX
               var origin_y = e.pageY
@@ -246,7 +246,7 @@ $('#testing_stuff').ready(function(){
               running_mousemove = true;
           });
 
-          document.addEventListener("click", function(){
+          document.getElementById('horiz_overflow_standing').addEventListener("click", function(){
               event.preventDefault() ;
               //showCoords();
               //if ($('#horiz_overflow_standing').length) {
@@ -257,7 +257,7 @@ $('#testing_stuff').ready(function(){
               running_mousemove = false
           }); 
 
-          document.addEventListener("touchend", function(){
+          document.getElementById('horiz_overflow_standing').addEventListener("touchend", function(){
               event.preventDefault() ;
               //showCoords();
               //if ($('#horiz_overflow_standing').length) {

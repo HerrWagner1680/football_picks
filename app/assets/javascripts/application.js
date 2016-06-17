@@ -207,7 +207,7 @@ hidePC = function(bool) {
 //STANDINGS PAGE LOADED
 $('#testing_stuff').ready(function(){
     if ($('#horiz_overflow_standing').length) {
-          document.getElementById('horiz_overflow_standing').addEventListener("mousemove", function(e){
+          /* document.getElementById('horiz_overflow_standing').addEventListener("mousemove", function(e){
               event.preventDefault() ;
               var origin_x = e.pageX
               var origin_y = e.pageY
@@ -254,7 +254,7 @@ $('#testing_stuff').ready(function(){
               xxx = e.pageX // - offset.left
               yyy = e.pageY // - offset.top
               //document.getElementById('testing_stuff').innerHTML = "mousemove" + "Y POS: " + yyy + " ----- X and Y ";
-          });
+          }); */
 
           document.getElementById('horiz_overflow_standing').addEventListener("touchmove", function(e){
               event.preventDefault() ;
@@ -305,29 +305,15 @@ $('#testing_stuff').ready(function(){
               //document.getElementById('horiz_overflow_standing').scrollLeft = parseInt(origin_x_frozen) - xxx;
           });
 
-          document.getElementById('horiz_overflow_standing').addEventListener("click", function(){
+          /* document.getElementById('horiz_overflow_standing').addEventListener("click", function(){
               event.preventDefault() ;
-              //showCoords();
-              //if ($('#horiz_overflow_standing').length) {
-              //document.getElementById('testing_stuff').innerHTML = "sdhjksdfkhjsfkhjdfskjh";
-              //}
-              //document.getElementById('origin_x').innerHTML = " RESET "; 
-              //document.getElementById('origin_y').innerHTML = " RESET "; 
-              //running_mousemove = false
               xxx = null;
               yyy = null;
               horiz_sl = null;
-          }); 
+          }); */
 
           document.getElementById('horiz_overflow_standing').addEventListener("touchend", function(){
               event.preventDefault() ;
-              //showCoords();
-              //if ($('#horiz_overflow_standing').length) {
-              //document.getElementById('testing_stuff').innerHTML = "sdhjksdtouchendENDENDNEND";
-              //}
-              //document.getElementById('origin_x').innerHTML = " RESET "; 
-              //document.getElementById('origin_y').innerHTML = " RESET "; 
-              //running_mousemove = false
               xxx = null;
               yyy = null;
               horiz_sl = null;

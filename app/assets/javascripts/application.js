@@ -212,6 +212,7 @@ $('#testing_stuff').ready(function(){
               var origin_x = e.pageX
               var origin_y = e.pageY
               if ( typeof xxx === 'undefined' || typeof xxx === 'object'){ xxx = origin_x; };
+              if ( typeof yyy === 'undefined' || typeof yyy === 'object'){ yyy = origin_y; };
               //console.log("origin_x " + origin_x + "xxx" + xxx)
 
               //running_mousemove = true;
@@ -224,7 +225,7 @@ $('#testing_stuff').ready(function(){
               var hhh = 'horiz_overflow_standing';
               
               if ( horiz_sl > 0 || horiz_sl <= scroll_left_max) {
-                  horiz_sl = horiz_sl + xxx - origin_x; 
+                  horiz_sl = horiz_sl + (xxx - origin_x) * 1.2; 
 
                   document.getElementById(hhh).scrollLeft = horiz_sl;                
               } else if ( horiz_sl <= 0) {
@@ -234,10 +235,25 @@ $('#testing_stuff').ready(function(){
                   horiz_sl = scroll_left_max;
                   document.getElementById(hhh).scrollLeft = horiz_sl; 
               };
+
+              var vert_scroll_max = 372;
+              var current_vert_scroll_top = $('.vertical').scrollTop();
+
+              if ( current_vert_scroll_top > 0 || current_vert_scroll_top <= vert_scroll_max ) {
+                  current_vert_scroll_top = current_vert_scroll_top + (yyy - origin_y) * 1.4;
+                  $('.vertical').scrollTop(current_vert_scroll_top);
+              } else if ( current_vert_scroll_top <= 0 ) {
+                  current_vert_scroll_top = 0;
+                  $('.vertical').scrollTop(current_vert_scroll_top);
+              } else {
+                  current_vert_scroll_top = vert_scroll_max;
+                  $('.vertical').scrollTop(current_vert_scroll_top);
+              };
+
               //console.log(" horiz_sl " + horiz_sl + "....scroll left max " + scroll_left_max);
               xxx = e.pageX // - offset.left
               yyy = e.pageY // - offset.top
-              document.getElementById('testing_stuff').innerHTML = "mousemove" + "X POS: " + xxx + "Y POS: " + yyy + " ----- X and Y ";
+              //document.getElementById('testing_stuff').innerHTML = "mousemove" + "Y POS: " + yyy + " ----- X and Y ";
           });
 
           document.getElementById('horiz_overflow_standing').addEventListener("touchmove", function(e){
@@ -245,6 +261,7 @@ $('#testing_stuff').ready(function(){
               var origin_x = e.pageX
               var origin_y = e.pageY
               if ( typeof xxx === 'undefined' || typeof xxx === 'object'){ xxx = origin_x; }; 
+              if ( typeof yyy === 'undefined' || typeof yyy === 'object'){ yyy = origin_y; };
               //console.log("origin_x " + origin_x + "xxx" + xxx)
 
               //running_mousemove = true;
@@ -257,7 +274,7 @@ $('#testing_stuff').ready(function(){
               var hhh = 'horiz_overflow_standing';
               
               if ( horiz_sl > 0 || horiz_sl <= scroll_left_max) {
-                  horiz_sl = horiz_sl + xxx - origin_x; 
+                  horiz_sl = horiz_sl + (xxx - origin_x) * 1.2; 
 
                   document.getElementById(hhh).scrollLeft = horiz_sl;                
               } else if ( horiz_sl <= 0) {
@@ -267,10 +284,24 @@ $('#testing_stuff').ready(function(){
                   horiz_sl = scroll_left_max;
                   document.getElementById(hhh).scrollLeft = horiz_sl; 
               };
+
+              var vert_scroll_max = 372;
+              var current_vert_scroll_top = $('.vertical').scrollTop();
+
+              if ( current_vert_scroll_top > 0 || current_vert_scroll_top <= vert_scroll_max ) {
+                  current_vert_scroll_top = current_vert_scroll_top + (yyy - origin_y) * 1.4;
+                  $('.vertical').scrollTop(current_vert_scroll_top);
+              } else if ( current_vert_scroll_top <= 0 ) {
+                  current_vert_scroll_top = 0;
+                  $('.vertical').scrollTop(current_vert_scroll_top);
+              } else {
+                  current_vert_scroll_top = vert_scroll_max;
+                  $('.vertical').scrollTop(current_vert_scroll_top);
+              };
               //console.log(" horiz_sl " + horiz_sl + "....scroll left max " + scroll_left_max);
               xxx = e.pageX // - offset.left
               yyy = e.pageY // - offset.top
-              document.getElementById('testing_stuff').innerHTML = "TOUCHmove" + "X POS: " + xxx + "Y POS: " + yyy;
+              //document.getElementById('testing_stuff').innerHTML = "TOUCHmove" + "Y POS: " + yyy;
               //document.getElementById('horiz_overflow_standing').scrollLeft = parseInt(origin_x_frozen) - xxx;
           });
 
@@ -278,10 +309,10 @@ $('#testing_stuff').ready(function(){
               event.preventDefault() ;
               //showCoords();
               //if ($('#horiz_overflow_standing').length) {
-              document.getElementById('testing_stuff').innerHTML = "sdhjksdfkhjsfkhjdfskjh";
+              //document.getElementById('testing_stuff').innerHTML = "sdhjksdfkhjsfkhjdfskjh";
               //}
-              document.getElementById('origin_x').innerHTML = " RESET "; 
-              document.getElementById('origin_y').innerHTML = " RESET "; 
+              //document.getElementById('origin_x').innerHTML = " RESET "; 
+              //document.getElementById('origin_y').innerHTML = " RESET "; 
               //running_mousemove = false
               xxx = null;
               yyy = null;
@@ -292,10 +323,10 @@ $('#testing_stuff').ready(function(){
               event.preventDefault() ;
               //showCoords();
               //if ($('#horiz_overflow_standing').length) {
-              document.getElementById('testing_stuff').innerHTML = "sdhjksdtouchendENDENDNEND";
+              //document.getElementById('testing_stuff').innerHTML = "sdhjksdtouchendENDENDNEND";
               //}
-              document.getElementById('origin_x').innerHTML = " RESET "; 
-              document.getElementById('origin_y').innerHTML = " RESET "; 
+              //document.getElementById('origin_x').innerHTML = " RESET "; 
+              //document.getElementById('origin_y').innerHTML = " RESET "; 
               //running_mousemove = false
               xxx = null;
               yyy = null;

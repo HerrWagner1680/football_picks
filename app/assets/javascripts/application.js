@@ -211,7 +211,7 @@ $('#testing_stuff').ready(function(){
               event.preventDefault() ;
               var origin_x = e.pageX
               var origin_y = e.pageY
-              if ( typeof xxx === 'undefined'){ xxx = origin_x }
+              if ( typeof xxx === 'undefined' || typeof xxx === 'object'){ xxx = origin_x; };
               //console.log("origin_x " + origin_x + "xxx" + xxx)
 
               //running_mousemove = true;
@@ -244,7 +244,7 @@ $('#testing_stuff').ready(function(){
               event.preventDefault() ;
               var origin_x = e.pageX
               var origin_y = e.pageY
-              if ( typeof xxx === 'undefined'){ xxx = origin_x }
+              if ( typeof xxx === 'undefined' || typeof xxx === 'object'){ xxx = origin_x; }; 
               //console.log("origin_x " + origin_x + "xxx" + xxx)
 
               //running_mousemove = true;
@@ -284,6 +284,7 @@ $('#testing_stuff').ready(function(){
               document.getElementById('origin_y').innerHTML = " RESET "; 
               //running_mousemove = false
               xxx = null;
+              yyy = null;
               horiz_sl = null;
           }); 
 
@@ -297,6 +298,7 @@ $('#testing_stuff').ready(function(){
               document.getElementById('origin_y').innerHTML = " RESET "; 
               //running_mousemove = false
               xxx = null;
+              yyy = null;
               horiz_sl = null;
           }); 
     };

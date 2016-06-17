@@ -270,7 +270,7 @@ $('#testing_stuff').ready(function(){
               //console.log(" horiz_sl " + horiz_sl + "....scroll left max " + scroll_left_max);
               xxx = e.pageX // - offset.left
               yyy = e.pageY // - offset.top
-document.getElementById('testing_stuff').innerHTML = "touchmove" + "X POS: " + xxx + "Y POS: " + yyy + "
+              document.getElementById('testing_stuff').innerHTML = "TOUCHmove" + "X POS: " + xxx + "Y POS: " + yyy;
               //document.getElementById('horiz_overflow_standing').scrollLeft = parseInt(origin_x_frozen) - xxx;
           });
 

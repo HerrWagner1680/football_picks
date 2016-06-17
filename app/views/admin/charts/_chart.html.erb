@@ -19,11 +19,11 @@
 
 		<tr>
 			<td><%= pickchart.week %></td>
-			<td class="vis"><input type="radio" onclick="highLight(this)" value="visit" name=<%="picks[]#{pickchart.id}"%>><%= mark_v_pick(pickchart.id, current_user) %></td>
+			<td class="vis"><input type="radio" onclick="highlightPicks(this)" value="visit" name=<%="picks[]#{pickchart.id}"%>><%= mark_v_pick(pickchart.id, current_user) %></td>
 			<!-- pickchart.vteam -->
 			<td><%= pickchart.vt_rec %></td>
 			<td>.... at ....</td>
-			<td class="hom"><input type="radio" onclick="highLight(this)" value="home" name=<%= "picks[]#{pickchart.id}"%>><%= mark_h_pick(pickchart.id, current_user) %></td>
+			<td class="hom"><input type="radio" onclick="highlightPicks(this)" value="home" name=<%= "picks[]#{pickchart.id}"%>><%= mark_h_pick(pickchart.id, current_user) %></td>
 			<!-- pickchart.hteam -->
 			<td><%= pickchart.ht_rec %></td>
 			<td><%= pickchart.gametime %></td>

@@ -46,6 +46,8 @@
 
 <%= render partial: "new_game", locals: {pickchart: @pickchart, pickcharts: @latest_charts} %>
 
+<!-- Archive of old game listings -->
+<% if false %>
 <br>
 <br>
 <br>
@@ -60,6 +62,8 @@
 
 <%= render partial: "already_submitted_picks", locals: {pickcharts: latest_picks(cookie_wk), picks: @picks} %>
 <br>
+<% end %>
+<!-- END of ARCHIVE of OLD GAME LISTINGS -->
 
 
 <% if false %>

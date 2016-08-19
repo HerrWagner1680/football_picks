@@ -159,7 +159,7 @@ oldchartPicks = function(){
     } else {
       $(".v_checkbox").eq(i).innerHTML = "...";
       $(".h_checkbox").eq(i).innerHTML = "...";
-      $(".h_checkbox").eq(i).parent().css("color", "#ff6666");
+      $(".h_checkbox").eq(i).parent().css("color", "#777");
     }
 
   } 

@@ -40,7 +40,15 @@ class Admin::StandingController < ApplicationController
     @standings = Standing.order('week').all
     @standings = @standings.order('user_id')
     @standing_users = @standings.pluck(:user_id).uniq
-    #@standing_users.pop(1)
+    #the leftmost player is FIRSTLY earliest week number in STANDING
+    #  and secondly, the lowest user id.
+    #ANY PLAYER WITHOUT STANDINGS IS NOT LISTED
+
+    #  if you wish to add a user to run test on live site:
+    #@standing_users.shift(0)
+    #shift removes the first listed player (which you can use as admin)
+    #@standing_users.pop(0)
+    #pop removes the last listed player
 
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil

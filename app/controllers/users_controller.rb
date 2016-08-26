@@ -66,6 +66,13 @@ class UsersController < ApplicationController
    p @user.admin
    p params[:admin]
 
+    if @user.valid? == false
+      p "user errors are as follows..."
+      p @user.errors.full_messages
+      user_record_invalid
+      return
+    end
+
     if @user.save!
       flash[:notice] = "User Created"
     else
@@ -133,5 +140,10 @@ class UsersController < ApplicationController
       params.require(:user).permit(:admin,:user_name,:email,:password,:password_digest)
     end
 
+    def user_record_invalid
+      p "you are running user_record_invalid"
+      flash[:alert] = "User Name or Email already taken."
+      redirect_to "/admin/new"
+    end  
 
 end

@@ -12,7 +12,7 @@ module ChartHelper
 
 	def name_wk(week_num)
 		p "XXXXXXX name_wk HELPER XXXXXX"
-		if week_num >= 22 
+		if week_num > 22 
 			week_num = 22
 		end
 		if week_num < 1
@@ -27,7 +27,7 @@ module ChartHelper
 
 	def week_wo_week(week_num)
 		p "XXXXXX week_wo_week HELPER XXXXXX"
-		if week_num >= 22 
+		if week_num > 22 
 			week_num = 22
 		end
 		week_names = ["zero", "one", "two", "three", "four",

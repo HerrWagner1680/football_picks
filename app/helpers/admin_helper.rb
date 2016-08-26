@@ -61,6 +61,7 @@ module AdminHelper
 
 # you want an index of 0 in order to get the text
 	def select_week(week_num, index)
+		p "XXXXXXX select_week HELPER XXXX"
 		if week_num >= 22 
 			week_num = 22
 		end
@@ -72,6 +73,7 @@ module AdminHelper
 	end
 
 	def uniq_week_array
+		p "XXXXXXXX uniq_week_array HELPER XXXXX"
 		@weeks_array = []
 		@weeks_uniq = Pickchart.pluck(:week).uniq
 

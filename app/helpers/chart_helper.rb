@@ -11,6 +11,7 @@ module ChartHelper
 	end
 
 	def name_wk(week_num)
+		p "XXXXXXX name_wk HELPER XXXXXX"
 		if week_num >= 22 
 			week_num = 22
 		end
@@ -25,6 +26,7 @@ module ChartHelper
 	end
 
 	def week_wo_week(week_num)
+		p "XXXXXX week_wo_week HELPER XXXXXX"
 		if week_num >= 22 
 			week_num = 22
 		end

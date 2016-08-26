@@ -14,6 +14,15 @@
 			<td>clear win from database</td>
 		</tr>
 
+<% if @latest_charts.last.nil? %>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>		
+		<td></td>
+<% else %>
+
 <%= form_for Pickchart.new, url: admin_wins_path, method: :patch do |f| %>
 		<% pickcharts.each do |pickchart| %>
 
@@ -37,7 +46,12 @@
 		<td><%= f.submit "SAVE", id: 'link_button'%></td>
 		<!-- this pulls up the Pickchart ID and updates Winner Column in db -->
 <% end %> <!-- end of the form -->	
-
+<% end %> <!-- end of if nil? -->
 	</table>
+
+<% if @latest_charts.last.nil? %>
+	<br>
+	<p>No games added for this week</p>
+<% end %>
 
 <% end %> <!-- end of the if pickcharts -->

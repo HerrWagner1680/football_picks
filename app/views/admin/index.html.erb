@@ -86,13 +86,15 @@
 </select>
 <% end %> <!-- end of if false -->
 
+
+<% if cookie_wk > 0 %> <!-- this disappears if no data -->
 <select id="triggered" onchange = "selectTriggered()">
 <!-- options_for_select(select_week_array) -->
 <%= options_for_select(uniq_week_array) %>
 </select>
+<% end %>
 
 <!-- need submit button -->
-
 
 <h4>&nbsp;&nbsp;&nbsp;+ Confirmed winner&nbsp;&nbsp;&nbsp;- Confirmed loser</h4>
 <h5>&nbsp;&nbsp;&nbsp;&nbsp;The further right a person's pick column, the later they submitted their picks</h5>

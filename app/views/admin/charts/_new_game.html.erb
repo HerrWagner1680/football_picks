@@ -1,7 +1,11 @@
 <section id="new_pc">
 	<%= form_for pickchart, url: admin_charts_path, params: {id: pickchart.id},method: :post do |f| %>
 
-	  <div class="chart wk"><%= f.text_field :week, :maxlength => 2, :class => "t_field", :placeholder => '0'%></div>
+	  <div class="chart wk"><%= f.select :week, options_for_select(current_week_and_next) %></div>
+
+	  <!-- f.select :week, options_for_select([["Select One", ""], "0", "1", "2", "3"]), :id => "wk_chart_select" -->
+
+	  <!-- f.text_field :week, :maxlength => 2, :class => "t_field", :placeholder => '0'%></div> current_week_and_next.collect{ |u| [u.name, u.id] } -->
 
 	  <div class="chart teams"><%= f.text_field :vteam, :maxlength => 25, :placeholder => 'Visitor' %></div>
 	  <div class="chart rec"><%= f.text_field :vt_rec, :maxlength => 7, :class => "t_field", :placeholder => '0-0' %></div>

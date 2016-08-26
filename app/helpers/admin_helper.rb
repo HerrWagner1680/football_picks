@@ -74,14 +74,35 @@ module AdminHelper
 	def uniq_week_array
 		@weeks_array = []
 		@weeks_uniq = Pickchart.pluck(:week).uniq
-		@weeks_uniq.each do |week|
-			if week === nil || week <= 0 || week >= 23
-				@weeks_array = @weeks_array.unshift(["Week " + week.to_s + " invalid", 0])
-			else
-				@weeks_array = @weeks_array << ["Results --- " + select_week(week, 0) , week]
-			end
+
+		if @weeks_uniq.nil?
+			@weeks_array = ["Week 0 - DEMO TEST"]
+		else	
+			@weeks_uniq.each do |week|
+				if week === nil || week <= 0 || week >= 23
+					@weeks_array = @weeks_array.unshift(["Week " + week.to_s + " invalid", 0])
+				else
+					@weeks_array = @weeks_array << ["Results --- " + select_week(week, 0) , week]
+				end
+			end		
 		end
 		return @weeks_array
+	end
+
+	def current_week_and_next
+		@week_current = Pickchart.pluck(:week).uniq
+		p @week_current[0]
+		if @week_current[0].nil?
+			@array_for_current_week = [1, 2]
+			return @array_for_current_week
+		else
+			@week_current = Pickchart.pluck(:week).uniq.max
+			@next_week = @week_current + 1
+			@array_for_current_week = []
+			@array_for_current_week.push(@week_current)
+			@array_for_current_week.push(@next_week)		
+			return @array_for_current_week
+		end
 	end
 	# create an array of ONLY the weeks for which Picks exist
 	# pick - id -- user_id --- pickchart_id

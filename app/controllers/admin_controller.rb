@@ -54,9 +54,18 @@ class AdminController < ApplicationController
 
     if cookies[:wk] === nil
       cookies[:wk] = Pickchart.maximum(:week) # aka @latest
+      if Pickchart.maximum(:week).nil?
+        cookies[:wk] = 1
+      end
     end
 
-    @latest = Pickchart.maximum(:week)
+    @latest = cookies[:wk]
+    #@latest = Pickchart.maximum(:week)
+    p "the @latest line 60"
+    p @latest
+
+    # if @latest.nil?
+
     latest_picks(@latest)
 
     @user = User.all
@@ -77,16 +86,24 @@ class AdminController < ApplicationController
     # else
     #@latest = Pickchart.maximum(:week)
     @latest_charttees = Pickchart.where(week: latest)
-    @latest_charts = @latest_charttees.order('id')
+    #p "latest charttees"
+    #p @latest_charttees[0]
+    if @latest_charttees[0].nil?
+      @latest_ordered = []
+      return @latest_ordered
+    else
+      @latest_charts = @latest_charttees.order('id')
 
-    @latest_pc_wk_created_at = @latest_charts.first.created_at
-    @range = @latest_pc_wk_created_at .. Time.now
-    @latest_picks = Pick.where(created_at: @range).all
-    @latest_picks_array = @latest_picks.pluck(:user_id).uniq
+      @latest_pc_wk_created_at = @latest_charts.first.created_at
+      @range = @latest_pc_wk_created_at .. Time.now
+      @latest_picks = Pick.where(created_at: @range).all
+      @latest_picks_array = @latest_picks.pluck(:user_id).uniq
 
-    @latest_ordered = @latest_picks_array.sort_by{:pickchart_id}
-    #this helper actually spits out a users array in chron order
-    # of who made first picks first
+      @latest_ordered = @latest_picks_array.sort_by{:pickchart_id}
+      #this helper actually spits out a users array in chron order
+      # of who made first picks first
+    end
+
   end
 
   def this_weeks_charts(cookie)

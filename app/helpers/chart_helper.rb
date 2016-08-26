@@ -1,13 +1,20 @@
 module ChartHelper
 	def latest_wk(pickchart)
-		Pickchart.maximum(:week)
 		if Pickchart.maximum(:week).nil?
 			return 1
+		else
+			return Pickchart.maximum(:week)
 		end
 	end
 
 	def prev_wk(pickchart)
-		Pickchart.maximum(:week) - 1
+		if Pickchart.maximum(:week).nil?
+			return 1
+		elsif Pickchart.maximum(:week) === 1
+			return 1
+		else
+			return Pickchart.maximum(:week) -1			
+		end
 	end
 
 	def name_wk(week_num)
@@ -35,6 +42,9 @@ module ChartHelper
 		end
 		if week_num >= 22 
 			week_num = 22
+		end
+		if week_num < 1
+			week_num = 1
 		end
 		week_names = ["zero", "one", "two", "three", "four",
 		 "five", "six", "seven", "eight", "nine", "ten", "eleven", 

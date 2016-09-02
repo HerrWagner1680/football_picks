@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   namespace :admin do  
     resource :charts #, defaults: {format: 'js'}
+    resources :password, only: [:index, :show, :update]
+    #match '/password', :to => 'password#updating_password', :via => :patch
+    patch '/password', :to => 'password#updating_password'
     #match '/wins', :to => 'wins#update_wins_and_standings', :via => :update
     resources :standing, only: [:index, :show, :create, :update, :new]
     resources :wins, only: [:index, :show]
@@ -20,6 +23,7 @@ Rails.application.routes.draw do
   #get 'admin/wins', :to => 'admin/#wins'
 
   namespace :users do
+    resources :password, only: [:index, :show, :update]
     resources :standing, only: [:index, :show]
   end
 

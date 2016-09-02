@@ -1,0 +1,34 @@
+<br>
+<br>
+<br>
+If you don't want to change your email or password, leave it blank.
+<br>
+<br>
+<br>
+	<%= form_for(@current_user, url: "/admin/password", method: :patch, action: "/admin" ) do |f| %>
+	<label>New Email : </label>
+	<br>
+	<label><%= f.email_field :email %></label>
+	<br><br><br>
+	<label>New Password :</label>
+	<span class="confirm_password_space1"></span>
+	<label class="confirm_pass">Confirm New Password :</label>
+	<br>
+  	<%= f.password_field :password %>
+  	<span class="confirm_password_space2"></span>
+  	<%= f.password_field :password_confirmation %>
+  	<span class="confirm_password_space2"></span>
+	<%= f.submit "Update Email / Password", class: "submit_new_password" %>
+	<% end %>
+
+<br>
+<% if flash[:error] %>
+<div id="big_error"><%= flash[:error] %></div>
+<% end %>
+
+<br /><br /><br /><br /><br /><br />
+<%= link_to ("HOME"), "/admin" %>
+
+<script language='javascript' type='text/javascript'>
+    $('#user_email').val("")
+</script>

@@ -1,17 +1,36 @@
 class SessionsController < ApplicationController
 
   def create
+
+    if cookies[:pass]
+      @pass = cookies[:pass]
+    else
+      @pass = "none"
+    end
+
     @user = User.where(email: params[:email]).first
     if @user && @user.authenticate(params[:password]) 
       session[:user_id] = @user.id
       cookies[:user_id] = @user.id
 
-		if @user.admin == true
-			  redirect_to "/admin"
-		else
-		  flash[:notice] = "You are now logged in"
-		  redirect_to "/users"
-		end
+  		if @user.admin == true && @pass === "none" || @user.admin == true && @pass === "no"
+        #@asdfghjkl = "/admin"
+        cookies.delete :pass 
+  			redirect_to "/admin"
+        #redirect_to @asdfghjkl
+  		elsif @user.admin == true && @pass === "yes"
+        cookies.delete :pass 
+        redirect_to "/admin/password" 
+      elsif @user.admin == false && @pass === "none" || @user.admin == false && @pass === "no"
+  		  flash[:notice] = "You are now logged in"
+        #@asdfghjkl = "/users"
+        cookies.delete :pass 
+        redirect_to "/users"
+  		  #redirect_to @asdfghjkl
+      elsif @user.admin == false && @pass === "yes"
+        cookies.delete :pass 
+        redirect_to "/users/password"
+  		end
 
     else
       flash[:alert] = ["Incorrect values"]

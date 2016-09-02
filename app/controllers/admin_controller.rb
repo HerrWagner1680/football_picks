@@ -146,6 +146,20 @@ class AdminController < ApplicationController
   def standing
   end
 
+  def update
+    current_user
+    p "ADMIN CONTROLLER UPDATE XXXXXXXXX"
+
+    @current_user = User.find(session[:user_id])
+    if @current_user.admin == false or @current_user.admin == nil
+        redirect_to "/users"
+    end
+  end
+
+  def updating_password
+    p "XXXXXX Updating the password, Lad XXXXX"
+  end
+
   def wins
   end
 

@@ -93,8 +93,12 @@ class AdminController < ApplicationController
       return @latest_ordered
     else
       @latest_charts = @latest_charttees.order('id')
+      p "ADMIN CONTROLLER - LATEST_PICKS - @latest_charts"
+      p @latest_charts
 
       @latest_pc_wk_created_at = @latest_charts.first.created_at
+      p @latest_pc_wk_created_at
+
       @range = @latest_pc_wk_created_at .. Time.now
       @latest_picks = Pick.where(created_at: @range).all
       @latest_picks_array = @latest_picks.pluck(:user_id).uniq

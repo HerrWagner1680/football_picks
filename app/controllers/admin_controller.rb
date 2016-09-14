@@ -57,8 +57,6 @@ class AdminController < ApplicationController
       if Pickchart.maximum(:week).nil?
         cookies[:wk] = 1
       end
-    else
-      cookies[:wk] = Pickchart.maximum(:week) # aka @latest
     end
 
     @latest = cookies[:wk]

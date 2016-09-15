@@ -79,15 +79,15 @@ hideSwitch = function(pc_style, pick_style, bool) {
 
 var oldchartPicks;
 oldchartPicks = function(){
-  var old_ch_num = $(".hidden").length
+  var old_ch_num = $(".oc_winner").length // previously hidden length
   total_wins = 0
 
   if (!$('.oc_winner')[0]) { return false } //if no oc_winner stop function
 
   for (var i=0; i < old_ch_num; i++){
-    var current_pick = $(".hidden")[i].innerHTML
+    var current_pick = $(".hidden")[i+1].innerHTML // visit
     // comment out oc_winner when user not admin
-    var the_win = $('.oc_winner')[i].innerHTML
+    var the_win = $('.oc_winner')[i].innerHTML // visitor
     //console.log("oldmanchart - i:" + i);
 
     if (current_pick === the_win){
@@ -96,7 +96,7 @@ oldchartPicks = function(){
 
     if ($(".v_checkbox").length){
 
-    if (current_pick === "visitor" && the_win === "visitor") {
+    if (current_pick === "visit" && the_win === "visitor") {
       $(".v_checkbox").eq(i).html("&#10003");
       $(".h_checkbox").eq(i).html("...");
       $(".v_pick").eq(i).css('text-decoration', 'underline');
@@ -108,7 +108,7 @@ oldchartPicks = function(){
       $(".h_checkbox").eq(i).parent().css("background-color", "#b2d8b2");
 
   
-    } else if (current_pick === "visitor" && the_win === "home") {
+    } else if (current_pick === "visit" && the_win === "home") {
       $(".v_checkbox").eq(i).html("&#10003");
       $(".h_checkbox").eq(i).html("...");
       $(".v_pick").eq(i).css('text-decoration', 'underline');
@@ -117,7 +117,7 @@ oldchartPicks = function(){
 
       $(".h_checkbox").eq(i).parent().css("background-color", "#ffcccc");
 
-     } else if (current_pick === "visitor" && the_win === "") {
+     } else if (current_pick === "visit" && the_win === "") {
         $(".v_checkbox").eq(i).html("&#10003");
         $(".h_checkbox").eq(i).html("...");
         $(".v_pick").eq(i).css('text-decoration', 'underline');

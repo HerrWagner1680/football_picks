@@ -256,6 +256,16 @@ $('#testing_stuff').ready(function(){
               //document.getElementById('testing_stuff').innerHTML = "mousemove" + "Y POS: " + yyy + " ----- X and Y ";
           }); */
 
+          /* adding the touchstart section to make site play well with Android */
+          /* code snippet from http://uihacker.blogspot.com/2011/01/android-touchmove-event-bug.html */
+          document.getElementById('horiz_overflow_standing').addEventListener( "touchstart", function(e){ onStart(e); }, false );
+            function onStart ( touchEvent ) {
+                if( navigator.userAgent.match(/Android/i) ) {
+                  touchEvent.preventDefault();
+              }
+          }
+          /* end of code snippet added for Android */
+
           document.getElementById('horiz_overflow_standing').addEventListener("touchmove", function(e){
               event.preventDefault() ;
               var origin_x = e.pageX

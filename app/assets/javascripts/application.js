@@ -267,7 +267,7 @@ $('#testing_stuff').ready(function(){
           /* end of code snippet added for Android */
 
           document.getElementById('horiz_overflow_standing').addEventListener("touchmove", function(e){
-              event.preventDefault() ;
+              event.preventDefault();
               var origin_x = e.pageX
               var origin_y = e.pageY
               if ( typeof xxx === 'undefined' || typeof xxx === 'object'){ xxx = origin_x; }; 

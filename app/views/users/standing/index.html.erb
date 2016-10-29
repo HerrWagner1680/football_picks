@@ -74,11 +74,22 @@
 	<div class="a_blank"></div>
 	<% end %>
 	</div>
-<div id="android_up"></div>
-<div id="android_left"></div>
-<div id="android_right"></div>
-<div id="android_down"></div>
-<script>android();</script>
+<div id="android_up" class="droid"></div>
+<div id="android_left" class="droid"></div>
+<div id="android_right" class="droid"></div>
+<div id="android_down" class="droid"></div>
+<script>
+var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+	    if (/android/i.test(userAgent)) {
+	    	android();
+	        //return "Android";
+	    }
+	    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+			android();
+	        // return "iOS";
+	        /* ID: iphone_text */
+	    }
+</script>
 <br>
 <br>
 <br>

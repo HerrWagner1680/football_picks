@@ -1,7 +1,7 @@
 <%= javascript_include_tag "admin" %>
 
 <%= link_to ("#{@current_user.user_name} make your picks"), "/admin/charts", method: :get, class: "admin_link_button" %>
-<%= link_to ("Game Listings"), "/admin/charts/new", method: :get, class: "admin_link_button" %> 
+<%= link_to ("Game Listings"), "/admin/charts/new", method: :get, class: "admin_link_button" %>
 <%= link_to ("Wins"), "/admin/wins", method: :get, class: "admin_link_button" %>
 <%= link_to ("Standings"), "/admin/standing", method: :get, class: "admin_link_button" %>
 <%= link_to ("Create New User"), "/admin/new",method: :get, class: "admin_link_button" %>
@@ -9,7 +9,6 @@
 <p id="latest_wk" class="hidden"><%= cookie_wk %></p>
 
 <!--render partial: 'cookie', locals: {latest: @latest, cook: cookie_wk} -->
-
 <br>
 <p id="master_wk">MASTER &nbsp;PICK &nbsp;LIST &nbsp;FOR &nbsp;<%= name_wk(cookie_wk).upcase %></p>
 <!-- MASTER PICK LIST FOR  name_wk(latest_wk(@pickcharts)).upcase -->
@@ -56,11 +55,11 @@
 			<% end %>
 		<% end %>
 
-	</tr>	
+	</tr>
 	<% end %>
 <% end %>
 
-</table>	
+</table>
 	<% end %> <!-- end of if picks -->
 </div> <!-- end of #horiz_overflow div -->
 <div id="shaded_background">

@@ -1,5 +1,15 @@
 class Admin::StandingController < ApplicationController
 
+    helper_method :current_user
+
+    def current_user
+      if session[:user_id]
+        @current_user = User.find(session[:user_id])
+      else
+        @current_user = nil
+      end
+    end
+
   def create
     @number_of_wins = params[:picks][0].length
     @win_values = params[:picks][0].values
@@ -11,10 +21,10 @@ class Admin::StandingController < ApplicationController
     @number_of_wins.times do |i|
  #       @standing = Standing.new(user_id: current_user.id, pickchart_id: @pick_keys[i], user_pick: @pick_values[i])
     @standing = Standing.new
-          if @standing.save! 
+          if @standing.save!
             flash[:notice] = "Standing Created"
           else
-            flash[:alert] = @standing.errors.full_messages   
+            flash[:alert] = @standing.errors.full_messages
           end
     end
     @current_user = User.find(session[:user_id])
@@ -30,14 +40,14 @@ class Admin::StandingController < ApplicationController
     @user = User.all
     @picks = Pick.all
     @pickchart = Pickchart.new
-    @pickcharts = Pickchart.all
-    @latest = Pickchart.maximum(:week)
+    @pickcharts = Pickchart.where($created_after, $timestamp).all
+    @latest = Pickchart.where($created_after, $timestamp).maximum(:week)
     #latest_text
-    @latest_charttees = Pickchart.where(week: @latest)
+    @latest_charttees = Pickchart.where($created_after, $timestamp).where(week: @latest)
     @latest_charts = @latest_charttees.order('id')
-    @earliest = Pickchart.minimum(:week)
+    @earliest = Pickchart.where($created_after, $timestamp).minimum(:week)
 
-    @standings = Standing.order('week').all
+    @standings = Standing.where($created_after, $timestamp).order('week').all
     @standings = @standings.order('user_id')
     @standing_users = @standings.pluck(:user_id).uniq
     #the leftmost player is FIRSTLY earliest week number in STANDING
@@ -60,6 +70,20 @@ class Admin::StandingController < ApplicationController
   end
 
   def show
+    current_user
+    p "SHOWSHOWSHOWSHOWSHOWSHOW"
+    p params[:id]
+    if params[:id] == "2016"
+      p "YES YOU ARE CORRECT SIR!"
+    else
+      redirect_to "/admin/standing"
+    end
+    @current_user = User.find(session[:user_id])
+    if @current_user.admin == false or @current_user.admin == nil
+        redirect_to "/users"
+    end
+    @standings = Standing.where(week: 24).all
+
   end
 
   def update

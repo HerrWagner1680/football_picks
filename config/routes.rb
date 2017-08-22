@@ -7,34 +7,38 @@ Rails.application.routes.draw do
 
   root 'home#index' #get'/' => 'home#index'
 
-  namespace :admin do  
+  namespace :admin do
     resource :charts #, defaults: {format: 'js'}
     resources :password, only: [:index, :show, :update]
     #match '/password', :to => 'password#updating_password', :via => :patch
     patch '/password', :to => 'password#updating_password'
     #match '/wins', :to => 'wins#update_wins_and_standings', :via => :update
     resources :standing, only: [:index, :show, :create, :update, :new]
+        #resource :archive, only: [:index]
+    #match '/archive', :to => 'archive#index', :via => [:get]
     resources :wins, only: [:index, :show]
     match '/wins', :to => 'wins#update_wins_and_standings', :via => :patch
   end
   #below example of route
   #patch "admin/usersupdate" => "admin#usersupdate", :as => "admin/usersupdate"
-  #get 'admin/standing', :to => 'admin/#standing' 
+  #get 'admin/standing', :to => 'admin/#standing'
   #get 'admin/wins', :to => 'admin/#wins'
 
   namespace :users do
     resources :password, only: [:index, :show, :update]
     resources :standing, only: [:index, :show]
+        #resource :archive, only: [:index]
+    #match '/archive', :to => 'archive#index', :via => [:get]
   end
 
   resources :admin
-  resources :users 
+  resources :users
   resources :picks
   resources :sessions
 
   #resources :chart, path: "/admin/chart"
 
-
+  # get path line redirects all unrecognized routes back to login page
   get '*path' => redirect('/admin')   unless Rails.env.development?
 
   # The priority is based upon order of creation: first created -> highest priority.

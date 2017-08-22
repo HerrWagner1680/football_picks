@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+  # GLOBAL $TIMESTAMP VARIABLES IN admin_helper.rb
   helper_method :current_user
   helper_method :latest_picks
 
@@ -14,14 +16,14 @@ class UsersController < ApplicationController
     current_user
 
     if cookies[:wk] === nil
-      cookies[:wk] = Pickchart.maximum(:week) # aka @latest
+      cookies[:wk] = Pickchart.where($created_after, $timestamp).maximum(:week) # aka @latest
     end
 
-    @latest = Pickchart.maximum(:week)
+    @latest = Pickchart.where($created_after, $timestamp).maximum(:week)
     latest_picks(@latest)
 
     #@current_user = User.find(session[:user_id])
-
+    @something = $whatzittt
     #@user = User.new
     if @current_user.admin == true
         redirect_to "/admin"
@@ -44,16 +46,16 @@ class UsersController < ApplicationController
     @user = User.all
     @picks = Pick.all
     @pickchart = Pickchart.new
-    @pickcharts = Pickchart.all
-    @latest = Pickchart.maximum(:week)
-    @latest_charttees = Pickchart.where(week: @latest)
+    @pickcharts = Pickchart.where($created_after, $timestamp).all
+    @latest = Pickchart.where($created_after, $timestamp).maximum(:week)
+    @latest_charttees = Pickchart.where($created_after, $timestamp).where(week: @latest)
     @latest_chart = @latest_charttees.order('id')
     @latest_charts = @latest_chart.where(winner: nil)
     @latest_charts_over = @latest_chart.where.not(winner: nil)
 
-    @earliest = Pickchart.minimum(:week)
+    @earliest = Pickchart.where($created_after, $timestamp).minimum(:week)
 
-    @pc_time = Pickchart.where(week: @latest).first.created_at
+    @pc_time = Pickchart.where($created_after, $timestamp).where(week: @latest).first.created_at
     @range = @pc_time .. Time.now
     @any_picks = Pick.where(user_id: current_user.id, created_at: @range).exists?
 
@@ -83,7 +85,7 @@ class UsersController < ApplicationController
 
   def latest_picks(latest)
     # Getting week = latest and put it in order by id
-    @latest_charttees = Pickchart.where(week: latest)
+    @latest_charttees = Pickchart.where($created_after, $timestamp).where(week: latest)
     @latest_charts = @latest_charttees.order('id')
 
     @latest_pc_wk_created_at = @latest_charts.first.created_at
@@ -144,6 +146,6 @@ class UsersController < ApplicationController
       p "you are running user_record_invalid"
       flash[:alert] = "User Name or Email already taken."
       redirect_to "/admin/new"
-    end  
+    end
 
 end

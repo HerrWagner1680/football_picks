@@ -8,12 +8,12 @@ class Admin::WinsController < ApplicationController
     @user = User.all
     @picks = Pick.all
     @pickchart = Pickchart.new
-    @pickcharts = Pickchart.all
-    @latest = Pickchart.maximum(:week)
+    @pickcharts = Pickchart.where($created_after, $timestamp).all
+    @latest = Pickchart.where($created_after, $timestamp).maximum(:week)
     #latest_text
-    @latest_charttees = Pickchart.where(week: @latest)
+    @latest_charttees = Pickchart.where($created_after, $timestamp).where(week: @latest)
     @latest_charts = @latest_charttees.order('id')
-    @earliest = Pickchart.minimum(:week)
+    @earliest = Pickchart.where($created_after, $timestamp).minimum(:week)
 
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
@@ -31,8 +31,8 @@ class Admin::WinsController < ApplicationController
   end
 
   def update_wins_and_standings
-    @latest = Pickchart.maximum(:week)
-    @latest_charttees = Pickchart.where(week: @latest)
+    @latest = Pickchart.where($created_after, $timestamp).maximum(:week)
+    @latest_charttees = Pickchart.where($created_after, $timestamp).where(week: @latest)
     @latest_charts = @latest_charttees.order('id')
 
     # Saving a win is actually updating a Pickchart
@@ -101,18 +101,18 @@ class Admin::WinsController < ApplicationController
          if @user_pick.last.nil?
             @loss_tot = @loss_tot + 1
          elsif @user_pick.last.user_pick === winner_hash.values[x]
-            @wins_tot = @wins_tot + 1 
-         else 
+            @wins_tot = @wins_tot + 1
+         else
             @loss_tot = @loss_tot + 1
          end
       end
-        @latest = Pickchart.maximum(:week)
+        @latest = Pickchart.where($created_after, $timestamp).maximum(:week)
         #p "wins and losses"
         #p @wins_tot
         #p @loss_tot
 
-        Standing.where(user_id: users_array[i], week: @latest).first_or_create
-        Standing.find_by(user_id: users_array[i], week: @latest).update(wins: @wins_tot, losses: @loss_tot)
+        Standing.where($created_after, $timestamp).where(user_id: users_array[i], week: @latest).first_or_create
+        Standing.where($created_after, $timestamp).find_by(user_id: users_array[i], week: @latest).update(wins: @wins_tot, losses: @loss_tot)
      end
   end
 

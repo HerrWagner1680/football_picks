@@ -11,7 +11,7 @@
 <br>
 	<div id="horiz_overflow_standing">
 	<% @standing_users.each do |standing_user| %>
-	
+
 	<div class="vertical_wrapper">
 		<div class="fixed">
 			<!-- @standing_users.each do |standing_user| -->
@@ -41,7 +41,7 @@
 
 
 			<% if standing_cells(standing_user, week_num).exists? %>
-			
+
 					<tr class="standing_row">
 						<td class="green"><%= standing_cells(standing_user, week_num).last.wins %></td>
 						<td class="gray"><%= week_wo_week(week_num) %></td>
@@ -55,7 +55,7 @@
 						<td class="red pale">-</td>
 					</tr>
 
-			<% end %> 
+			<% end %>
 			<% end %>
 			</table>
 		</div>
@@ -71,9 +71,17 @@
 			<!-- end -->
 		</div>
 	</div>
+
+# Standing.where(week: 24).exists?
+# then offer link to users/standing/2016
+
 	<div class="a_blank"></div>
 	<% end %>
 	</div>
+
+
+
+
 <div id="android_up" class="droid"></div>
 <div id="android_left" class="droid"></div>
 <div id="android_right" class="droid"></div>

@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-
+  # GLOBAL $TIMESTAMP VARIABLES IN admin_helper.rb
   protect_from_forgery with: :exception
 
   helper_method :current_user
@@ -53,27 +53,27 @@ class AdminController < ApplicationController
     current_user
 
     if cookies[:wk] === nil
-      cookies[:wk] = Pickchart.maximum(:week) # aka @latest
-      if Pickchart.maximum(:week).nil?
+      cookies[:wk] = Pickchart.where($created_after, $timestamp).maximum(:week) # aka @latest
+      if Pickchart.where($created_after, $timestamp).maximum(:week).nil?
         cookies[:wk] = 1
       end
     end
 
     @latest = cookies[:wk]
     #@latest = Pickchart.maximum(:week)
-    p "the @latest line 60"
+    p "the @latest line 62"
     p @latest
-
-    # if @latest.nil?
+    # below is code that lists the first unfiltered pickchart
+    #@testing = Pickchart.where($created_after, $timestamp).first.created_at
 
     latest_picks(@latest)
 
     @user = User.all
     @picks = Pick.all
     @pickchart = Pickchart.new
-    @pickcharts = Pickchart.all
+    @pickcharts = Pickchart.where($created_after, $timestamp).all
 
-    @earliest = Pickchart.minimum(:week)
+    @earliest = Pickchart.where($created_after, $timestamp).minimum(:week)
 
     if @current_user.admin == nil or @current_user.admin == false
         redirect_to "/users"
@@ -85,7 +85,7 @@ class AdminController < ApplicationController
     # @ latest is cookies[:wk]
     # else
     #@latest = Pickchart.maximum(:week)
-    @latest_charttees = Pickchart.where(week: latest)
+    @latest_charttees = Pickchart.where($created_after, $timestamp).where(week: latest)
     #p "latest charttees"
     #p @latest_charttees[0]
     if @latest_charttees[0].nil?
@@ -111,9 +111,9 @@ class AdminController < ApplicationController
   end
 
   def this_weeks_charts(cookie)
-    @this_weeks_charts = Pickchart.where(week: cookie)
+    @this_weeks_charts = Pickchart.where($created_after, $timestamp).where(week: cookie)
     @this_weeks_charts_ordered = @this_weeks_charts.order('id')
-   
+
     p "THIS WEEKS CHARTS ORDERED"
     p @this_weeks_charts_ordered
     return @this_weeks_charts_ordered
@@ -134,9 +134,9 @@ class AdminController < ApplicationController
         redirect_to "/users"
     end
     @pickchart = Pickchart.new
-    @pickcharts = Pickchart.all
-    @latest = Pickchart.maximum(:week)
-    @latest_charts = Pickchart.where(week: @latest)
+    @pickcharts = Pickchart.where($created_after, $timestamp).all
+    @latest = Pickchart.where($created_after, $timestamp).maximum(:week)
+    @latest_charts = Pickchart.where($created_after, $timestamp).where(week: @latest)
   end
 
   def show

@@ -16,17 +16,17 @@ class Admin::ChartsController < ApplicationController
   def create
     p 'charts create zzzzzzzzzzzz'
     p pickchart_params
-    @latest = Pickchart.maximum(:week)
+    @latest = Pickchart.where($created_after, $timestamp).maximum(:week)
 
     @params = pickchart_params
     @pickchart = Pickchart.new(pickchart_params)
     if @pickchart.save
       @pc = Pickchart.where(:id => params[:id])
       redirect_to "/admin/charts/new#new_pc"
-    else 
-      flash[:alert] = @pickchart.errors.full_messages    
+    else
+      flash[:alert] = @pickchart.errors.full_messages
     end
- 
+
 
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
@@ -41,7 +41,7 @@ class Admin::ChartsController < ApplicationController
     # @ latest is cookies[:wk]
     # else
     #@latest = Pickchart.maximum(:week)
-    @latest_charttees = Pickchart.where(week: latest)
+    @latest_charttees = Pickchart.where($created_after, $timestamp).where(week: latest)
     @latest_chart = @latest_charttees.order('id')
     #PREV  @latest_charts = @latest_charttees.order('id')
     @latest_charts = @latest_chart.where(winner: nil)
@@ -58,8 +58,8 @@ class Admin::ChartsController < ApplicationController
     @pickchart = Pickchart.new
     @pick = Pick.new
 
-    @pickcharts = Pickchart.all
-    @latest = Pickchart.maximum(:week)
+    @pickcharts = Pickchart.where($created_after, $timestamp).all
+    @latest = Pickchart.where($created_after, $timestamp).maximum(:week)
     latest_picks(@latest)
 
     @current_user = User.find(session[:user_id])
@@ -73,13 +73,13 @@ class Admin::ChartsController < ApplicationController
 
     if @pc.destroy
       # the 'latest' cookie must be reset
-      cookies[:wk] = Pickchart.maximum(:week) # aka @latest
+      cookies[:wk] = Pickchart.where($created_after, $timestamp).maximum(:week) # aka @latest
       respond_to do |format|
         format.html { redirect_to "/admin/charts/new" }
         format.js { render "destroy.js.erb", :locals => {:id => @pc.id} }# render charts/create.js.erb
       end
-    else 
-      flash[:alert] = @pc.errors.full_messages    
+    else
+      flash[:alert] = @pc.errors.full_messages
     end
 
     @current_user = User.find(session[:user_id])
@@ -97,13 +97,13 @@ class Admin::ChartsController < ApplicationController
     @user = User.all
     @picks = Pick.all
     @pickchart = Pickchart.new
-    @pickcharts = Pickchart.all
-    @latest = Pickchart.maximum(:week)
+    @pickcharts = Pickchart.where($created_after, $timestamp).all
+    @latest = Pickchart.where($created_after, $timestamp).maximum(:week)
     #latest_text
-    @latest_charttees = Pickchart.where(week: @latest)
+    @latest_charttees = Pickchart.where($created_after, $timestamp).where(week: @latest)
     @latest_charts = @latest_charttees.order('id')
 
-    @earliest = Pickchart.minimum(:week)
+    @earliest = Pickchart.where($created_after, $timestamp).minimum(:week)
 
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
@@ -115,7 +115,7 @@ class Admin::ChartsController < ApplicationController
     current_user
 
     if cookies[:wk] === nil
-      cookies[:wk] = Pickchart.maximum(:week) # aka @latest
+      cookies[:wk] = Pickchart.where($created_after, $timestamp).maximum(:week) # aka @latest
     end
 
     # @latest = Pickchart.maximum(:week)
@@ -131,8 +131,8 @@ class Admin::ChartsController < ApplicationController
     @user = User.all
     @picks = Pick.all
     @pickchart = Pickchart.new
-    @pickcharts = Pickchart.all
-    @latest = Pickchart.maximum(:week)
+    @pickcharts = Pickchart.where($created_after, $timestamp).all
+    @latest = Pickchart.where($created_after, $timestamp).maximum(:week)
     #latest_text
     latest_picks(@latest)
 

@@ -2,8 +2,53 @@
 <h2> users / standing / :id </h2>
 <%= link_to ("STANDINGS"), "/users/standing", method: :get %>
 
-----NOT YET SET UP TO READ URL FOR ID----
+----2016 - 17 RESULTS----
+
+<%= @standings %>
+
+
+<% if @standings %>
+<table class="archive_standings">
+  <tr>
+    <td>win</td>
+    <td> </td>
+    <td>name</td>
+    <td></td>
+    <td>loss</td>
+  </tr>
+    <% @standings.each do |standing| %>
+    <tr>
+    <!-- <div class="pick_div"> -->
+      <td><%= standing.wins %></td>
+      <td> ... </td>
+      <td><%= User.find(standing.user_id).user_name %></td>
+      <td> ... </td>
+      <td><%= standing.losses %></td>
+    <!-- </div> -->
+    </tr>
+
+    <% end %>
+  </table>
+<% end %>
 
 <h4>show lists detailed picks of one particular player</h4>
 
-	<%= render partial: "old_picks", locals: {pickcharts: @latest_charts, picks: @picks} %>
+<h4>WIN     NAME     LOSS</h4>
+<br>
+<h5>173 .... Matt ... 81</h5>
+<h5>175 ... Tim ... 79</h5>
+<h5>0 .... Julie .... 0</h5>
+<h5>167 ... Mike .... 87</h5>
+<h5>134 ... Peter ... 88</h5>
+<h5>23 .... Lori .... 9</h5>
+<h5>162 ... Scott ... 92</h5>
+
+You might be able to save the year total as WEEK 20
+on the Standings WINS LOSS entries.
+That limits your database calls.
+That way the score isn't hard coded.
+<br>
+<br>
+LINK GOING BACK TO HOME AND OR CURRENT STANDINGS PAGE
+
+<br>

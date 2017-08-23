@@ -159,6 +159,7 @@ module AdminHelper
 	#GLOBAL VARIABLES
 	$created_after = "created_at > ?"
 	#$created_before = "created_at < ?"
-	$timestamp = "2017-08-14 17:59:00"
+	#$timestamp = "2017-08-14 17:59:00"
+	$timestamp = "2015-08-01 12:00:00"
 
 end

@@ -1,20 +1,19 @@
-<h1>USERS STANDING SHOW</h1>
-<h2> users / standing / :id </h2>
-<%= link_to ("STANDINGS"), "/users/standing", method: :get %>
 
-----2016 - 17 RESULTS----
-
-<%= @standings %>
-
+<%= link_to ("HOME"), "/users", method: :get %>
+<br>
+<h2>2016 - 2017 STANDINGS</h2>
+<br>
+<h4># any instructions can be placed here #</h4>
+<br>
 
 <% if @standings %>
 <table class="archive_standings">
   <tr>
-    <td>win</td>
+    <td>WINS</td>
     <td> </td>
-    <td>name</td>
+    <td>NAME</td>
     <td></td>
-    <td>loss</td>
+    <td>LOSSES</td>
   </tr>
     <% @standings.each do |standing| %>
     <tr>
@@ -31,6 +30,7 @@
   </table>
 <% end %>
 
+<% if false %>
 <h4>show lists detailed picks of one particular player</h4>
 
 <h4>WIN     NAME     LOSS</h4>
@@ -47,8 +47,10 @@ You might be able to save the year total as WEEK 20
 on the Standings WINS LOSS entries.
 That limits your database calls.
 That way the score isn't hard coded.
+<% end %>
 <br>
 <br>
-LINK GOING BACK TO HOME AND OR CURRENT STANDINGS PAGE
+<!-- LINK GOING BACK TO HOME AND OR CURRENT STANDINGS PAGE -->
+<%= link_to ("BACK TO CURRENT STANDINGS"), "/users/standing", method: :get %>
 
 <br>

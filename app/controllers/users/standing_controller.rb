@@ -33,15 +33,19 @@ class Users::StandingController < ApplicationController
 
   def show
   	current_user
-    @user = User.all
-    @picks = Pick.all
-    @pickchart = Pickchart.new
-    @pickcharts = Pickchart.where($created_after, $timestamp).all
-    @latest = Pickchart.where($created_after, $timestamp).maximum(:week)
+    #@user = User.all
+    #@picks = Pick.all
+    #@pickchart = Pickchart.new
+    #@pickcharts = Pickchart.where($created_after, $timestamp).all
+    #@latest = Pickchart.where($created_after, $timestamp).maximum(:week)
     #latest_text
-    @latest_charttees = Pickchart.where($created_after, $timestamp).where(week: @latest)
-    @latest_charts = @latest_charttees.order('id')
-    @earliest = Pickchart.where($created_after, $timestamp).minimum(:week)
+    #@latest_charttees = Pickchart.where($created_after, $timestamp).where(week: @latest)
+    #@latest_charts = @latest_charttees.order('id')
+    #@earliest = Pickchart.where($created_after, $timestamp).minimum(:week)
+
+    if Standing.where(week: 24).exists? == false or Standing.where(week: 24).exists? == nil
+      redirect_to "/users/standing"
+    end
 
     @current_user = User.find(session[:user_id])
 
@@ -54,7 +58,7 @@ class Users::StandingController < ApplicationController
     end
 
     @standings = Standing.where(week: 24).all
-    
+
   end
 
 end

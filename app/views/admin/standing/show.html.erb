@@ -1,6 +1,37 @@
-<h1>ADMIN STANDING SHOW</h1>
-<h2> admin / standing / :id </h2>
-<%= link_to ("STANDINGS"), "/admin/standing", method: :get %>
+<%= link_to ("HOME"), "/admin", method: :get %>
+<br>
+<h2>2016 - 2017 STANDINGS</h2>
+<br>
+<h4># any instructions can be placed here #</h4>
+<br>
 
-Display last year scores here
-using week 24 hard-coded stats
+<% if @standings %>
+<table class="archive_standings">
+  <tr>
+    <td>WINS</td>
+    <td> </td>
+    <td>NAME</td>
+    <td></td>
+    <td>LOSSES</td>
+  </tr>
+    <% @standings.each do |standing| %>
+    <tr>
+    <!-- <div class="pick_div"> -->
+      <td><%= standing.wins %></td>
+      <td> ... </td>
+      <td><%= User.find(standing.user_id).user_name %></td>
+      <td> ... </td>
+      <td><%= standing.losses %></td>
+    <!-- </div> -->
+    </tr>
+
+    <% end %>
+  </table>
+<% end %>
+
+<br>
+<br>
+<!-- LINK GOING BACK TO HOME AND OR CURRENT STANDINGS PAGE -->
+<%= link_to ("BACK TO CURRENT STANDINGS"), "/admin/standing", method: :get %>
+
+<br>

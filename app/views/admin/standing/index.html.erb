@@ -4,7 +4,7 @@
 	<%= link_to ("HOME"), "/admin", method: :get %><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 	<%= link_to ("WINS"), "/admin/wins", method: :get %>
 
-	<h2>STANDING - INDEX - scroll on chart to see other weeks (or players)</h2>
+	<h2>2017 - 2018 STANDINGS - scroll on chart to see other weeks (or players)</h2>
 
 <% if false %>
 	<% if @standings %>
@@ -15,7 +15,7 @@
 <br>
 	<div id="horiz_overflow_standing">
 	<% @standing_users.each do |standing_user| %>
-	
+
 	<div class="vertical_wrapper">
 		<div class="fixed">
 			<!-- @standing_users.each do |standing_user| -->
@@ -45,7 +45,7 @@
 
 
 			<% if standing_cells(standing_user, week_num).exists? %>
-			
+
 					<tr class="standing_row">
 						<td class="green"><%= standing_cells(standing_user, week_num).last.wins %></td>
 						<td class="gray"><%= week_wo_week(week_num) %></td>
@@ -59,7 +59,7 @@
 						<td class="red pale">-</td>
 					</tr>
 
-			<% end %> 
+			<% end %>
 			<% end %>
 			</table>
 		</div>
@@ -78,6 +78,15 @@
 	<div class="a_blank"></div>
 	<% end %>
 	</div>
+
+<br>
+<br>
+	<!-- Standing.where(week: 24).exists? -->
+	<!-- then offer link to users/standing/2016 -->
+<% if Standing.where(week: 24).exists? %>
+	<%= link_to ("2016 - 2017 SEASON"), "/admin/standing/2016", method: :get %>
+<% end %>
+
 <div id="android_up" class="droid"></div>
 <div id="android_left" class="droid"></div>
 <div id="android_right" class="droid"></div>

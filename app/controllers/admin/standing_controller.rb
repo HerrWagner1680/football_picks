@@ -73,6 +73,9 @@ class Admin::StandingController < ApplicationController
     current_user
     p "SHOWSHOWSHOWSHOWSHOWSHOW"
     p params[:id]
+    if Standing.where(week: 24).exists? == false or Standing.where(week: 24).exists? == nil
+      redirect_to "/admin/standing"
+    end
     if params[:id] == "2016"
       p "YES YOU ARE CORRECT SIR!"
     else
@@ -80,7 +83,7 @@ class Admin::StandingController < ApplicationController
     end
     @current_user = User.find(session[:user_id])
     if @current_user.admin == false or @current_user.admin == nil
-        redirect_to "/users"
+        redirect_to "/admin"
     end
     @standings = Standing.where(week: 24).all
 

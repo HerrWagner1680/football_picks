@@ -44,7 +44,7 @@ $(document).ready(function(){
 });
 
 count = 0
-function asdfasdf(f) { 
+function asdfasdf(f) {
   var clr = $(".buttonGrey[pc="+f+"]").css('color');
   if (clr === 'rgb(51, 51, 51)'){
     $(".buttonGrey[pc="+f+"]").css('color','rgb(255, 0, 0)');
@@ -54,9 +54,9 @@ function asdfasdf(f) {
   } else if (clr === 'rgb(255, 0, 0)') {
     $(".buttonGrey[pc="+f+"]").css('color', 'rgb(51, 51, 51)')
     $('.buttonGrey[pc='+f+']').html("&nbsp;&nbsp;&nbsp;&nbsp;edit&nbsp;&nbsp;&nbsp;&nbsp;")
-    $('.game_form[pc='+f+']').css('display', 'none') 
+    $('.game_form[pc='+f+']').css('display', 'none')
     $('.game_text[pc='+f+']').css('display', 'table-cell')
-    updateText(f); 
+    updateText(f);
   } else {  alert("The Toggler is askew")}
   count = count + 1;
 };
@@ -87,3 +87,22 @@ function android(){
     $("#android_right").bind("click", function(){ var horizScroll = $("#horiz_overflow_standing").scrollLeft(); $("#horiz_overflow_standing").scrollLeft(horizScroll + 310);});
     $("#android_down").bind("click", function(){ var vertTop = $(".vertical").scrollTop(); $(".vertical").scrollTop(vertTop + 160);});
 }
+
+
+/*
+function Comparator(a, b) {
+	if (a[1] < b[1]) return -1;
+	if (a[1] > b[1]) return 1;
+	return 0;
+}
+
+var myArray = [
+	[1, 'alfred', '...'],
+	[23, 'berta', '...'],
+	[2, 'zimmermann', '...'],
+	[4, 'albert', '...'],
+];
+
+myArray = myArray.sort(Comparator);
+console.log(myArray);
+*/

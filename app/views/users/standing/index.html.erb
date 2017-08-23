@@ -1,5 +1,5 @@
 <%= link_to ("HOME"), "/users", method: :get %>
-<h2>USERS STANDING INDEX - scroll on chart to see other weeks (or players)</h2>
+<h2>2017 - 2018 STANDINGS - scroll on chart to see other weeks (or players)</h2>
 <br>
 
 <% if false %>
@@ -72,14 +72,17 @@
 		</div>
 	</div>
 
-# Standing.where(week: 24).exists?
-# then offer link to users/standing/2016
-
 	<div class="a_blank"></div>
 	<% end %>
 	</div>
 
-
+<br>
+<br>
+	<!-- Standing.where(week: 24).exists? -->
+	<!-- then offer link to users/standing/2016 -->
+	<% if Standing.where(week: 24).exists? %>
+		<%= link_to ("2016 - 2017 SEASON"), "/users/standing/2016", method: :get %>
+	<% end %>
 
 
 <div id="android_up" class="droid"></div>
